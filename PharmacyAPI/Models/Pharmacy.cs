@@ -5,6 +5,7 @@ namespace PharmacyAPI.Models
 	public class Pharmacy
 	{
         [Required]
+        [Editable(false)]
         public int Id { get; set; }
 
         [Required]
@@ -24,16 +25,15 @@ namespace PharmacyAPI.Models
         public string State { get; set; }
 
         [Required]
-        [RegularExpression(@"^\d{5}([-]|\s*)?(\d{4})?$", ErrorMessage = "Please enter a valid 5-9 digit zipcode")]
-        public string Zip { get; set; }
+        [RegularExpression(@"^\d{5}(\d{4})?$", ErrorMessage = "Please enter a valid 5-9 digit zipcode")]
+        public string Zipcode { get; set; }
 
-        public int? FilledPrescriptions { get; set; } = 0;
+        public int FilledPrescriptionsMonthToDate { get; set; } = 0;
 
-        [Required]
         [Editable(false)]
         public DateTime CreatedAt { get; } = DateTime.Now;
 
         [Editable(false)]
-        public DateTime? UpdatedAt { get; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
