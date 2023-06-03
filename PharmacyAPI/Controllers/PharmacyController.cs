@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PharmacyAPI.Models;
-using PharmacyAPI.Services;
 
 namespace PharmacyAPI.Controllers
 {

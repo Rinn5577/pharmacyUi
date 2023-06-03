@@ -1,7 +1,4 @@
-﻿using System;
-using PharmacyAPI.Models;
-
-namespace PharmacyAPI.Services
+﻿namespace PharmacyAPI.Services
 {
 	public interface IPharmacyService
 	{
@@ -10,4 +7,3 @@ namespace PharmacyAPI.Services
 		Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy pharmacy);
 	}
 }
-

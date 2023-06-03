@@ -1,6 +1,4 @@
-﻿using PharmacyAPI.Models;
-
-namespace PharmacyAPI.Services
+﻿namespace PharmacyAPI.Services
 {
 	public class PharmacyService : IPharmacyService
 	{
@@ -87,4 +85,3 @@ namespace PharmacyAPI.Services
         }
     }
 }
-
