@@ -2,6 +2,7 @@
 global using PharmacyAPI.Database;
 global using PharmacyAPI.Services;
 global using PharmacyAPI.Models;
+global using PharmacyAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPharmacyService, PharmacyService>();
+builder.Services.AddScoped<IPharmacyRepository, PharmacyRepository>();
 
 var app = builder.Build();
 
@@ -22,7 +24,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+} 
 
 app.UseHttpsRedirection();
 
