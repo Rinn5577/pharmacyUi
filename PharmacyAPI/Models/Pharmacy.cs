@@ -4,7 +4,6 @@ namespace PharmacyAPI.Models
 {
 	public class Pharmacy
 	{
-        [Required]
         [Editable(false)]
         public int Id { get; set; }
 
@@ -34,6 +33,6 @@ namespace PharmacyAPI.Models
         public DateTime CreatedAt { get; } = DateTime.Now;
 
         [Editable(false)]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
