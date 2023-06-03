@@ -27,12 +27,13 @@ namespace PharmacyAPI.Models
         [RegularExpression(@"^\d{5}(\d{4})?$", ErrorMessage = "Please enter a valid 5-9 digit zipcode")]
         public string Zipcode { get; set; }
 
-        public int FilledPrescriptionsMonthToDate { get; set; } = 0;
+        public int? FilledPrescriptionsMonthToDate { get; set; }
+
+        [Required]
+        [Editable(false)]
+        public DateTime CreatedAt { get; }
 
         [Editable(false)]
-        public DateTime CreatedAt { get; } = DateTime.Now;
-
-        [Editable(false)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
