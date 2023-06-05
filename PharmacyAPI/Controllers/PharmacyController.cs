@@ -42,14 +42,12 @@ namespace PharmacyAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Pharmacy>> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
-            var pharmacy = await _pharmacyService.GetPharmacyById(id);
+            var pharmacy = await _pharmacyService.UpdatePharmacyById(id, updatedPharmacy);
 
             if (pharmacy is null)
             {
                 return NotFound("Sorry, a pharmacy with id: " + id + " does not exist.");
             }
-
-            await _pharmacyService.UpdatePharmacyById(id, updatedPharmacy);
 
             return Ok(pharmacy);
         }

@@ -1,6 +1,4 @@
-﻿using PharmacyAPI.Models;
-
-namespace PharmacyAPI.Repositories
+﻿namespace PharmacyAPI.Repositories
 {
 	public class PharmacyRepository : IPharmacyRepository
 	{
@@ -26,7 +24,6 @@ namespace PharmacyAPI.Repositories
         public async Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
             var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharmacy => pharmacy.Id == id);
-
             if(pharmacy is not null)
             {
                 pharmacy.Name =
