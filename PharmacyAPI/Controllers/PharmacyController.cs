@@ -12,6 +12,7 @@ namespace PharmacyAPI.Controllers
             this._pharmacyService = pharmacyService;
         }
 
+        // Retries all pharmacies
         [HttpGet]
         public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies()
         {
@@ -25,7 +26,7 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacies);
         }
 
-        
+        // Retries a pharmacy by id
         [HttpGet("{id}")]
         public async Task<ActionResult<Pharmacy>> GetPharmacyById(int id)
         {
@@ -39,17 +40,16 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacy);
         }
 
+        // Updates a pharmacy by id
         [HttpPut("{id}")]
         public async Task<ActionResult<Pharmacy>> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
-            var pharmacy = await _pharmacyService.GetPharmacyById(id);
+            var pharmacy = await _pharmacyService.UpdatePharmacyById(id, updatedPharmacy);
 
             if (pharmacy is null)
             {
                 return NotFound("Sorry, a pharmacy with id: " + id + " does not exist.");
             }
-
-            await _pharmacyService.UpdatePharmacyById(id, updatedPharmacy);
 
             return Ok(pharmacy);
         }

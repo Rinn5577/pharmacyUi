@@ -67,7 +67,7 @@ namespace PharmacyAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pharmacies");
+                    b.ToTable("Pharmacies", (string)null);
 
                     b.HasData(
                         new

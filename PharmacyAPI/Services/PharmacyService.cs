@@ -9,7 +9,7 @@
             this._pharmacyRepository = pharmacyRepository;
         }
 
-        public async Task<List<Pharmacy>?> GetAllPharmacies()
+        public async Task<List<Pharmacy>> GetAllPharmacies()
         {
             var pharmacies = await _pharmacyRepository.GetAllPharmacies();
             return  pharmacies;
@@ -23,7 +23,13 @@
 
         public async Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
+            if(updatedPharmacy is null)
+            {
+                return updatedPharmacy;
+            }
+
             var pharmacy = await _pharmacyRepository.UpdatePharmacyById(id, updatedPharmacy);
+
             return pharmacy;
         }
     }
