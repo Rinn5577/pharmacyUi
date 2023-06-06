@@ -8,8 +8,8 @@ CREATE TABLE Pharmacy(
    State NVARCHAR (2) NOT NULL,
    Zipcode NVARCHAR (9) NOT NULL, 
    CreatedDate DATETIME2 NOT NULL DEFAULT(GETUTCDATE()),
-   UpdatedDate DATE
-)
+   UpdatedDate DATE,
+   PRIMARY KEY (PharmacyId));
 
 INSERT INTO Pharmacy(PharmacyId, Name, Address, City, State, Zipcode)
 VALUES (1, 'Pharmacy 1', '123 Test Street', 'Dallas', 'TX', '75024'),
@@ -28,7 +28,7 @@ CREATE TABLE Pharmacist(
    PrimaryDrugSold NVARCHAR (25) NOT NULL, 
    DateOfHire DATE NOT NULL,
    PharmacyId INT NOT NULL, 
-   FOREIGN KEY (PharmacyId) REFERENCES Pharmacies(Id),     
+   FOREIGN KEY (PharmacyId) REFERENCES Pharmacy(PharmacyId),     
    PRIMARY KEY (PharmacistId));
 
 INSERT INTO Pharmacist (PharmacistId, FirstName, LastName, DateOfBirth, PrimaryDrugSold, DateOfHire, PharmacyId)
@@ -65,7 +65,7 @@ CREATE TABLE Delivery(
    DeliveryDate DATE NOT NULL,
    PharmacyId INT NOT NULL,
    WarehouseId INT NOT NULL,
-   FOREIGN KEY (PharmacyId) REFERENCES Pharmacies(Id), 
+   FOREIGN KEY (PharmacyId) REFERENCES Pharmacy(PharmacyId), 
    FOREIGN KEY (WarehouseId) REFERENCES Warehouse(WarehouseId),    
    PRIMARY KEY (DeliveryId));
 
