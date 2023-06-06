@@ -12,6 +12,11 @@ namespace PharmacyAPI.Controllers
             this._pharmacyService = pharmacyService;
         }
 
+        /// <summary>
+        /// Retries all pharmacies
+        /// </summary>
+        /// <response code="200">Pharmacies found</response>
+        /// <response code="404">No pharmacies found</response>
         [HttpGet]
         public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies()
         {
@@ -25,7 +30,11 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacies);
         }
 
-        
+        /// <summary>
+        /// Retries a pharmacy by id
+        /// </summary>
+        /// <response code="200">Pharmacy found</response>
+        /// <response code="404">No pharmacy found</response>
         [HttpGet("{id}")]
         public async Task<ActionResult<Pharmacy>> GetPharmacyById(int id)
         {
@@ -39,6 +48,11 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacy);
         }
 
+        /// <summary>
+        /// Updates a pharmacy by id
+        /// </summary>
+        /// <response code="200">Pharmacy found</response>
+        /// <response code="404">No pharmacy found</response>
         [HttpPut("{id}")]
         public async Task<ActionResult<Pharmacy>> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {

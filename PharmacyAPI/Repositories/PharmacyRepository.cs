@@ -17,15 +17,16 @@
 
         public async Task<Pharmacy?> GetPharmacyById(int id)
         {
-            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharmacy => pharmacy.Id == id);
+            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
             return pharmacy;
         }
 
         public async Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
-            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharmacy => pharmacy.Id == id);
+            var pharmacy = await GetPharmacyById(id);
             if(pharmacy is not null)
             {
+                //Update occurs only if fields contain a value other than null or white spaces 
                 pharmacy.Name =
                     !String.IsNullOrWhiteSpace(updatedPharmacy.Name) ? updatedPharmacy.Name : pharmacy.Name;
                 pharmacy.Address =

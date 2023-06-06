@@ -9,7 +9,7 @@
             this._pharmacyRepository = pharmacyRepository;
         }
 
-        public async Task<List<Pharmacy>?> GetAllPharmacies()
+        public async Task<List<Pharmacy>> GetAllPharmacies()
         {
             var pharmacies = await _pharmacyRepository.GetAllPharmacies();
             return  pharmacies;
