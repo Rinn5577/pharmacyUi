@@ -24,8 +24,8 @@ SELECT CONCAT(FirstName, ' ', LastName) AS Name, Pharmacy.Name AS PharmacyName, 
     AND Delivery.PharmacyId = Pharmacist.PharmacyId) AS PrimaryUnitCount,
     (SELECT ISNULL(SUM(UnitCount), 0) 
     FROM Delivery 
-    WHERE Delivery.DrugName = Pharmacist.PrimaryDrugSold 
-    AND Delivery.PharmacyId != Pharmacist.PharmacyId) AS NonPrimaryUnitCount
+    WHERE Delivery.DrugName != Pharmacist.PrimaryDrugSold 
+    AND Delivery.PharmacyId = Pharmacist.PharmacyId) AS NonPrimaryUnitCount
 FROM Pharmacist
 INNER JOIN Pharmacy ON Pharmacist.PharmacyId = Pharmacy.PharmacyId
 ORDER BY Name;
