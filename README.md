@@ -1,35 +1,11 @@
-# C# .NET 7 Web API Using Entity Framework 7
-This is a simple example Web API built using a repository pattern and dependency injection. 
+# SQL Reporting Exercise
+There are two files in the Database folder:
+- CreateAdditionalTables.sql - This creates tables for `Pharmacy`, `Pharmacist`, `Warehouse`, and `Delivery` and then seed each one with test data
+- ExerciseReports.sql - The queries in this file create 3 reports based on the exercise
+  - Report 1 - All delivery records with Warehouse and Pharmacy names instead of IDs
+  - Report 2 - All Warehouses with total revenue, unit count, and average revenue per unit
+  - Report 3 - All pharmacists with total unit count of their primary drug vs non primary drug sold at their Pharmacy
+  - (BONUS) Report 4 - Count of filled prescriptions month-to-date (starting 6/1), by pharmacy
 
-## Getting Started
-- Open the solution in Visual Studio
-- Modify the connection string in appsettings.json to reflect your database environment
-- Run the following commands
-  - `dotnet ef update database InitialMigration`
-  - `dotnet ef update database SeedPharmacyDbDatabase`
-- Build and run the PharamacyAPI project
-
-## Pharmacy API
-
-### Get list of Pharmacies
-`Get /api/pharmacy`
-
-### Get a specfic Pharmacy
-`Get /api/pharmacy/{id}`
-
-### Update a Pharmacy
-`Put /api/pharmacy/{id}`
-
-Request body:
-```
-{
-  "id": 0,
-  "name": "string",
-  "address": "string",
-  "city": "string",
-  "state": "st",
-  "zipcode": "920251666",
-  "filledPrescriptionsMonthToDate": 0,
-  "updatedAt": "2023-06-05T12:12:30.539Z"
-}
-```
+## A note on the differences in the Pharmacy table
+In the first exercise, a table called `Pharmacies `was created with a `FilledPrescriptionsMonthToDate` field as per Exercie 1 requirements. This second exercise creates and uses the `Pharmacy` table instead, and removes the `FilledPrescriptionMonthToDate` field. Removing this field was more appropriate for Exercise 2 because that particular field can be computed based on data from other tables as seen in Report 4.
