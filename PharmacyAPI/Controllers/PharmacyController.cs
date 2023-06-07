@@ -12,7 +12,7 @@ namespace PharmacyAPI.Controllers
             this._pharmacyService = pharmacyService;
         }
 
-        // Retries all pharmacies
+        // Returns all pharmacies
         [HttpGet]
         public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies()
         {
@@ -26,7 +26,7 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacies);
         }
 
-        // Retries a pharmacy by id
+        // Returns a pharmacy by id
         [HttpGet("{id}")]
         public async Task<ActionResult<Pharmacy>> GetPharmacyById(int id)
         {
