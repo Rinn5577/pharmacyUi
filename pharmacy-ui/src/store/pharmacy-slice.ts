@@ -23,7 +23,7 @@ const pharmacySlice=createSlice({
         setPharmacies(state,action:PayloadAction<PharmacyModel[]>){
             state.all_pharmacies=action.payload;
         },
-        setParticularTodo(state,action:PayloadAction<PharmacyModel>){
+        setParticularPharmacy(state,action:PayloadAction<PharmacyModel>){
             state.particular_pharmacy=action.payload;
         }
     }
