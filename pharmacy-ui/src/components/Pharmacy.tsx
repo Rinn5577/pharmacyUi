@@ -1,6 +1,7 @@
 import { useAppDispatch,useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacies, fetchParticularPharmacy } from "../store/pharmacy-actions";
 import { useState } from "react";
+import React from "react";
 import './Pharmacy.css'
 
 const Pharmacy=()=>{
