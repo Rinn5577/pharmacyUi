@@ -2,7 +2,7 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyModel } from '../models/redux-models';
+import { PharmacyModel } from '../models/Pharmacy';
 import PharmacyService from "../service/pharmacyService"
 
 

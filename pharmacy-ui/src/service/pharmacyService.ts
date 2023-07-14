@@ -1,5 +1,5 @@
 import api from './pharmacyApi'
-import { PharmacyModel } from '../models/redux-models'
+import { PharmacyModel } from '../models/pharmacy'
 
 
 export default{

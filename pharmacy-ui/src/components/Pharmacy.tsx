@@ -1,5 +1,5 @@
 import { useAppDispatch,useAppSelector } from "../hooks/redux-hooks";
-import { fetchPharmacies, fetchParticularPharmacy } from "../store/pharmacy-actions";
+import { fetchPharmacyList, fetchPharmacy } from '../store/pharmacy-actions';
 import { useState } from "react";
 import React from "react";
 import './Pharmacy.css'
@@ -7,22 +7,22 @@ import './Pharmacy.css'
 const Pharmacy=()=>{
     const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
-    const allpharmacies=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    const particularPharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
+    const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
+    const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
     const clickHandler=()=>[
-        dispatch(fetchPharmacies())
+        dispatch(fetchPharmacyList())
     ]
     const searchHandler=()=>{
-        dispatch(fetchParticularPharmacy(pharmacy_id))
+        dispatch(fetchPharmacy(pharmacy_id))
     }
-    const checkPharmacy=():boolean=>{
-        if(allpharmacies.length==0){
+    const checkPharmacyList=():boolean=>{
+        if(pharmacyList.length==0){
             return false
         }
         return true
     }
-    const checkPArticularPharmacy=():boolean=>{
-        if(particularPharmacy.id===0){
+    const checkPharmacy=():boolean=>{
+        if(pharmacy.id===0){
             return false
         }
         return true
@@ -37,12 +37,12 @@ const Pharmacy=()=>{
             <div>
                 <h3>Particular Pharmacy</h3>
                 {
-                    checkPArticularPharmacy() && 
-                    (<div className="pharmacy-container" key={particularPharmacy.id}>
-                        <p className="pharmacy-child1">{particularPharmacy.id}</p>
-                        <p className="pharmacy-child2">{particularPharmacy.name}</p>
-                        <p className="pharmacy-child3">{particularPharmacy.filledPrescriptionsMonthToDate}</p>
-                        <p className="pharmacy-child4">{particularPharmacy.createdAt}</p>
+                    checkPharmacy() && 
+                    (<div className="pharmacy-container" key={pharmacy.id}>
+                        <p className="pharmacy-child1">{pharmacy.id}</p>
+                        <p className="pharmacy-child2">{pharmacy.name}</p>
+                        <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
+                        <p className="pharmacy-child4">{pharmacy.createdAt}</p>
                         </div>)
                 }
             </div>
@@ -56,8 +56,8 @@ const Pharmacy=()=>{
                     <p className="pharmacy-child2">NAME</p>
                     <p className="pharmacy-child3">CREATED</p>
                 </div>
-                {checkPharmacy() &&
-                    allpharmacies.map((pharmacy)=>(
+                {checkPharmacyList() &&
+                    pharmacyList.map((pharmacy)=>(
                         <div className="pharmacy-container" key={pharmacy.id}>
                             <p className="pharmacy-child1"></p>
                             <p className="pharmacy-child2"></p>

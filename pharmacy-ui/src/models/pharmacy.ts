@@ -13,7 +13,3 @@ export interface PharmacyArrayModel{
     pharmacy_list:PharmacyModel[],
     pharmacy:PharmacyModel
 }
-
-
-//give each model its own file
-//model folder - pharmacy and pharmacyList
