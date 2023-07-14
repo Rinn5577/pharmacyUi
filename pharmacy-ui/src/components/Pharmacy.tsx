@@ -1,57 +1,32 @@
 import { useAppDispatch,useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, fetchPharmacy } from '../store/pharmacy-actions';
-import { useState } from "react";
 import { Button } from "@mui/material";
 import React from "react";
 import UpdateForm from "./UpdateForm";
 import './Pharmacy.css'
+import Search from "./Search";
 
 const Pharmacy=()=>{
-    const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
     const clickHandler=()=>[
         dispatch(fetchPharmacyList())
     ]
-    const searchHandler=()=>{
-        dispatch(fetchPharmacy(pharmacy_id))
-    }
+
     const checkPharmacyList=():boolean=>{
         if(pharmacyList.length==0){
             return false
         }
         return true
     }
-    const checkPharmacy=():boolean=>{
-        if(pharmacy.id===0){
-            return false
-        }
-        return true
-    }
+
 
     return(
         <>
-        <div>
-            <label>Enter pharmacy id: </label>
-            <input onChange={(event)=>setPharmacy_id(parseInt(event.target.value))} type="number"></input>
-            <Button onClick={searchHandler}>Find</Button>
+        <Search></Search>
 
-            <div>
-                <h3>Particular Pharmacy</h3>
-                {
-                    checkPharmacy() && 
-                    (<div className="pharmacy-container" key={pharmacy.id}>
-                        <p className="pharmacy-child1">{pharmacy.id}</p>
-                        <p className="pharmacy-child2">{pharmacy.name}</p>
-                        <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
-                        <p className="pharmacy-child4">{pharmacy.createdAt}</p>
-                        </div>)
-                }
-            </div>
-        </div>
         <div>
-            <button onClick={clickHandler}>All Pharmacies</button>
+            <Button onClick={clickHandler}>All Pharmacies</Button>
             <div>
                 <h3>Pharmacy List: </h3>
                 <div className="pharmacy-container">
