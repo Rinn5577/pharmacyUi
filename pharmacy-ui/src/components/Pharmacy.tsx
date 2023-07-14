@@ -1,7 +1,9 @@
 import { useAppDispatch,useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, fetchPharmacy } from '../store/pharmacy-actions';
 import { useState } from "react";
+import { Button } from "@mui/material";
 import React from "react";
+import UpdateForm from "./UpdateForm";
 import './Pharmacy.css'
 
 const Pharmacy=()=>{
@@ -33,7 +35,8 @@ const Pharmacy=()=>{
         <div>
             <label>Enter pharmacy id: </label>
             <input onChange={(event)=>setPharmacy_id(parseInt(event.target.value))} type="number"></input>
-            <button onClick={searchHandler}>Find</button>
+            <Button onClick={searchHandler}>Find</Button>
+
             <div>
                 <h3>Particular Pharmacy</h3>
                 {
@@ -59,13 +62,18 @@ const Pharmacy=()=>{
                 {checkPharmacyList() &&
                     pharmacyList.map((pharmacy)=>(
                         <div className="pharmacy-container" key={pharmacy.id}>
-                            <p className="pharmacy-child1"></p>
-                            <p className="pharmacy-child2"></p>
-                            <p className="pharmacy-child3"></p>
+                        <p className="pharmacy-child1">{pharmacy.id}</p>
+                        <p className="pharmacy-child2">{pharmacy.name}</p>
+                        <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
+                        <p className="pharmacy-child4">{pharmacy.createdAt}</p>
+
                         </div>
                     ))
                 }
             </div>
+        </div>
+        <div>
+            <UpdateForm></UpdateForm>
         </div>
         </>
 

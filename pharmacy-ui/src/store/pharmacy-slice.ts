@@ -1,4 +1,4 @@
-import { PharmacyModel, PharmacyArrayModel} from '../models/Pharmacy'
+import { PharmacyModel, PharmacyArrayModel} from '../models/pharmacy'
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
 
 const initialPharmacyState:PharmacyArrayModel={
