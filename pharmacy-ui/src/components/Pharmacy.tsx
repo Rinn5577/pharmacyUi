@@ -7,8 +7,8 @@ import './Pharmacy.css'
 const Pharmacy=()=>{
     const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
-    const allpharmacies=useAppSelector(state=>state.pharmacy.all_pharmacies);
-    const particularPharmacy=useAppSelector(state=>state.pharmacy.particular_pharmacy)
+    const allpharmacies=useAppSelector(state=>state.pharmacy.pharmacy_list);
+    const particularPharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
     const clickHandler=()=>[
         dispatch(fetchPharmacies())
     ]

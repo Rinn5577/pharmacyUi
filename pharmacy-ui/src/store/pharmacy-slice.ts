@@ -2,8 +2,8 @@ import { PharmacyModel, PharmacyArrayModel } from "../models/redux-models";
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
 
 const initialPharmacyState:PharmacyArrayModel={
-    all_pharmacies:[],
-    particular_pharmacy:{
+    pharmacy_list:[],
+    pharmacy:{
         "id": 0,
         "name": "",
         "address": "",
@@ -15,16 +15,17 @@ const initialPharmacyState:PharmacyArrayModel={
         "updatedAt": ""
     }
 }
+//
 
 const pharmacySlice=createSlice({
     name:'pharmacy',
     initialState: initialPharmacyState,
     reducers:{
-        setPharmacies(state,action:PayloadAction<PharmacyModel[]>){
-            state.all_pharmacies=action.payload;
+        setPharmacyList(state,action:PayloadAction<PharmacyModel[]>){
+            state.pharmacy_list=action.payload;
         },
-        setParticularPharmacy(state,action:PayloadAction<PharmacyModel>){
-            state.particular_pharmacy=action.payload;
+        setPharmacy(state,action:PayloadAction<PharmacyModel>){
+            state.pharmacy=action.payload;
         }
     }
 })

@@ -5,3 +5,4 @@ export default ()=>{
         baseURL:'https://localhost:7128/api/Pharmacy'
     })
 }
+

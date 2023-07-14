@@ -10,6 +10,10 @@ export interface PharmacyModel{
     "updatedAt": string
 }
 export interface PharmacyArrayModel{
-    all_pharmacies:PharmacyModel[],
-    particular_pharmacy:PharmacyModel
+    pharmacy_list:PharmacyModel[],
+    pharmacy:PharmacyModel
 }
+
+
+//give each model its own file
+//model folder - pharmacy and pharmacyList
