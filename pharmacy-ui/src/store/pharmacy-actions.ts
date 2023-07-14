@@ -2,9 +2,9 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyModel } from "../models/redux-models";
+import { PharmacyModel } from '../models/redux-models';
 import PharmacyService from "../service/pharmacyService"
-import { async } from "q";
+
 
 
 export const pharmacyActions=pharmacySlice.actions
@@ -24,3 +24,12 @@ export const fetchParticularPharmacy=(pharmacy_id:number):ThunkAction<void,RootS
         dispatch(pharmacyActions.setParticularPharmacy(response))
     }
 }
+
+
+//im 99% sure this is incorrect. i dont think i should be using dispatch. maybe something about saving changes, need to research 
+// export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
+//     return async(dispatch,getState)=>{
+//         const response:PharmacyModel=await PharmacyService.updatePharmacy(pharmacy);
+//         dispatch(pharmacyActions.setParticularPharmacy(response))
+//     }
+// }
