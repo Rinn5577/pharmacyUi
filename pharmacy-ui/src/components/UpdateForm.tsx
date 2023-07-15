@@ -15,10 +15,12 @@ const UpdateForm=()=>{
 //in the handle submit i will use postpharm function i imported
 
 //currently using search to set the pharmacy. but i want to have a button on the pharmacy it's self. need to work on individual pharmacy display for that to work
-
+// i think one of the main problems here is im not loading the pharmacy i want when the page loads. so i need to work on pharmacy display and
+//when you click update it send the infromation. 
+//however im worried about coupling? I guess you don't have access to this page without clicking that button but, idk yet 
 const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 const [updatedPharmacy, setUpdatedPharmacy] = useState(pharmacy)
-console.log("This is the pharmacy: " + pharmacy)
+console.log("This is the updatedPharmacy: " + updatedPharmacy)
 const dispatch=useAppDispatch();
 
 
@@ -29,13 +31,10 @@ const checkPharmacy=():boolean=>{
     return true
 }
 
-function captureInput(userInput:string){
-    //this is where i will capture the input and set the new loacl state obj 
-    //i think ill need to use the spread operator 
-   // var aNewObject = userInput
-    //setUpdatedPharmacy(aNewObject)
 
 
+const changeHandler = (event : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setUpdatedPharmacy({...updatedPharmacy,[event.target.name] : event.target.value})
 }
 
 
@@ -46,7 +45,8 @@ function handleSubmit(event:any){
     event.preventDefault();
     //i think this might be all i need 
     //might do some validation here?
-    dispatch(postPharmacyUpdate(updatedPharmacy))
+    //dispatch(postPharmacyUpdate(updatedPharmacy))
+    console.log(updatedPharmacy)
 }
     return(
         <>
@@ -77,40 +77,45 @@ function handleSubmit(event:any){
                 variant='outlined'
                 color='secondary'
                 label="Pharmacy Name"
-                //onChange={(e)=> setPharmacyName(e.target.value)}
-                //value={pharmacyName}
+                onChange={(e) => changeHandler(e)}
+                value={updatedPharmacy.name}
+                name="name"
                 />
                 <TextField
                 type="text"
                 variant='outlined'
                 color='secondary'
                 label="Street Address"
-                //onChange={(e)=> setPharmacyAddress(e.target.value)}
-                //value={pharmacyAddress}
+                onChange={(e) => changeHandler(e)}
+                //value={updatedPharmacy.address}
+                name="address"
                 />
                 <TextField
                 type="text"
                 variant='outlined'
                 color='secondary'
                 label="City"
-                //onChange={(e)=> setPharmacyAddress(e.target.value)}
-                //value={pharmacyAddress}
+                onChange={(e) => changeHandler(e)}
+                //value={updatedPharmacy.city}
+                name="city"
                 />
                 <TextField
                 type="text"
                 variant='outlined'
                 color='secondary'
                 label="State"
-                //onChange={(e)=> setPharmacyAddress(e.target.value)}
-                //value={pharmacyAddress}
+                onChange={(e) => changeHandler(e)}
+                //value={updatedPharmacy.state}
+                name="state"
                 />
                 <TextField
                 type="text"
                 variant='outlined'
                 color='secondary'
                 label="Zipcode"
-                //onChange={(e)=> setPharmacyAddress(e.target.value)}
-                //value={pharmacyAddress}
+                onChange={(e) => changeHandler(e)}
+                //value={updatedPharmacy.zipcode}
+                name="zipcode"
                 />
             </Stack>
             <Button variant="outlined" type="submit">Update</Button>

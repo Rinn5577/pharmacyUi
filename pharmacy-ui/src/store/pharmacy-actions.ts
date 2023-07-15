@@ -31,10 +31,19 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
 
         } catch (error) {
             //need to figure out how to use this error to display some info about the id not being valid?
+            //maybe if i define the error as a type? like everything included in the error object and then i can access that information. 
+            //would i then need to make an error slice for the store? need to look into this more
             console.log(error)
         }
 
 
+    }
+}
+
+//added this for the pharmacyView button to set the target pharmacy as the active pharmacy so updateForm can reach it
+export const setPharmacy=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
+    return async(dispatch, getState)=>{
+        dispatch(pharmacyActions.setPharmacy(pharmacy))
     }
 }
 

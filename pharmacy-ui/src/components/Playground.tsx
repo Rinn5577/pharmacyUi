@@ -1,29 +1,29 @@
 import { useAppDispatch,useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, fetchPharmacy } from '../store/pharmacy-actions';
-import { Button } from "@mui/material";
 import React from "react";
 import UpdateForm from "./UpdateForm";
-import './Pharmacy.css'
 import Search from "./Search";
+import PharmacyView from "./PharmacyView";
 
 const Pharmacy=()=>{
-    const dispatch=useAppDispatch();
-    const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    const clickHandler=()=>[
-        dispatch(fetchPharmacyList())
-    ]
+    // const dispatch=useAppDispatch();
+    // const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
+    // const clickHandler=()=>[
+    //     dispatch(fetchPharmacyList())
+    // ]
 
-    const checkPharmacyList=():boolean=>{
-        if(pharmacyList.length==0){
-            return false
-        }
-        return true
-    }
+    // const checkPharmacyList=():boolean=>{
+    //     if(pharmacyList.length==0){
+    //         return false
+    //     }
+    //     return true
+    // }
 
 
     return(
         <>
-        <Search></Search>
+        <PharmacyView></PharmacyView>
+        {/* <Search></Search> */}
 
         {/* <div>
             <Button variant="outlined" onClick={clickHandler} >All Pharmacies</Button>
@@ -47,9 +47,9 @@ const Pharmacy=()=>{
                 }
             </div>
         </div> */}
-        <div>
+        {/* <div>
             <UpdateForm></UpdateForm>
-        </div>
+        </div> */}
         </>
 
     )

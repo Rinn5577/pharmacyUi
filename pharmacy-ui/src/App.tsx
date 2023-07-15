@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Pharmacy from './components/Pharmacy';
+import Playground from './components/Playground';
 
 function App() {
   return (
-    <Pharmacy></Pharmacy>
+    <Playground></Playground>
   );
 }
 

@@ -15,7 +15,7 @@ const initialPharmacyState:PharmacyArrayModel={
         "updatedAt": ""
     }
 }
-//
+
 
 const pharmacySlice=createSlice({
     name:'pharmacy',
