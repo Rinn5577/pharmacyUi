@@ -25,8 +25,8 @@ const Pharmacy=()=>{
         <>
         <Search></Search>
 
-        <div>
-            <Button onClick={clickHandler}>All Pharmacies</Button>
+        {/* <div>
+            <Button variant="outlined" onClick={clickHandler} >All Pharmacies</Button>
             <div>
                 <h3>Pharmacy List: </h3>
                 <div className="pharmacy-container">
@@ -46,7 +46,7 @@ const Pharmacy=()=>{
                     ))
                 }
             </div>
-        </div>
+        </div> */}
         <div>
             <UpdateForm></UpdateForm>
         </div>

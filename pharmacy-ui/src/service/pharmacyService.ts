@@ -14,8 +14,9 @@ export default{
     },
     //no idea if this is going to work yet, but i think this is what it will look like. need to do more research
     async updatePharmacy(pharmacy:PharmacyModel){
-        var response=await api().put(pharmacy.id.toString());
-        return response
+        //passes the pharmacy id and pharmacy object
+        var response=await api().put(pharmacy.id.toString(), pharmacy);
+        return response.data
     }
 }
 
