@@ -5,7 +5,6 @@ import { PharmacyModel } from '../models/pharmacy'
 export default{
     async getPharmacyList(){
         var response=await api().get("");
-        console.log(response.data)
         return response.data;
     },
     async getPharmacy(pharmacy_id:number){

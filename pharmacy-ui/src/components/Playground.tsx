@@ -3,16 +3,14 @@ import { fetchPharmacyList, fetchPharmacy } from '../store/pharmacy-actions';
 import React from "react";
 import UpdateForm from "./UpdateForm";
 import Search from "./Search";
-import PharmacyView from "./PharmacyView";
+import PharmacyView from "./PharmacyList";
 
 const Pharmacy=()=>{
-    //const dispatch=useAppDispatch();
-    const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy);
-    console.log(pharmacy)
-    // const clickHandler=()=>[
-    //     dispatch(fetchPharmacyList())
-    // ]
 
+    //checks to see if the pharmacy set in state has an id other than 0
+    //if it does it will render the updateform component. 
+    //this is temporary, will replace by making updateform open as a modal
+    const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy);
     const checkPharmacy=():boolean=>{
         if(pharmacy.id === 0){
             return false
@@ -23,14 +21,15 @@ const Pharmacy=()=>{
 
     return(
         <>
-        <PharmacyView></PharmacyView>
+        <Search></Search>
+        {/* <PharmacyView></PharmacyView>
         {
             checkPharmacy() &&
             <div>
                 <UpdateForm></UpdateForm>
             </div>
 
-        }
+        } */}
 
         </>
 

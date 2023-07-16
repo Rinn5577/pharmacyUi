@@ -8,12 +8,14 @@ const Search=()=>{
     const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
     const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
-    console.log(pharmacy)
 
+//triggers the api call to get pharmacy by id, this also sets the pharmacy state
     const searchHandler=()=>{
         dispatch(fetchPharmacy(pharmacy_id))
     }
 
+//makes sure the id of the pharmacy isn't 0 
+//if anything other than 0 it will render. 
     const checkPharmacy=():boolean=>{
         if(pharmacy.id===0){
             return false
@@ -31,15 +33,19 @@ const Search=()=>{
             <Button variant="outlined" onClick={searchHandler}>Find</Button>
 
             <div>
-                <h3>Particular Pharmacy</h3>
-                                {
+
+                {
                     checkPharmacy() && 
-                    (<div className="pharmacy-container" key={pharmacy.id}>
+                    (
+                        
+                    <div className="pharmacy-container" key={pharmacy.id}>
+                        <h3>Pharmacy Info</h3>
                         <p className="pharmacy-child1">{pharmacy.id}</p>
                         <p className="pharmacy-child2">{pharmacy.name}</p>
                         <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
                         <p className="pharmacy-child4">{pharmacy.createdAt}</p>
-                        </div>) 
+                        </div>
+                        ) 
                 }
             </div>
         </div>

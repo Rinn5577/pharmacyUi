@@ -3,7 +3,7 @@ import {Button} from '@mui/material'
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
 
-const PharmacyView = () =>{
+const PharmacyList = () =>{
 
     const dispatch=useAppDispatch();
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
@@ -47,4 +47,4 @@ const PharmacyView = () =>{
     )
 }
 
-export default PharmacyView;
+export default PharmacyList;

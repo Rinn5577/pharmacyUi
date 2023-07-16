@@ -47,15 +47,10 @@ export const setPharmacy=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unk
     }
 }
 
-
-//im 99% sure this is incorrect. i dont think i should be using dispatch. maybe something about saving changes, need to research 
+//updates the database
 export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch,getState)=>{
         const response:PharmacyModel=await PharmacyService.updatePharmacy(pharmacy);
-        //to reload pharmacy list? might be a better way to do this
-        fetchPharmacyList()
-        console.log(response)
-        //sets the pharmacy with the returned info 
         dispatch(pharmacyActions.setPharmacy(response))
     }
 }
