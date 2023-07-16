@@ -4,8 +4,9 @@ import React from "react";
 import UpdateForm from "./UpdateForm";
 import Search from "./Search";
 import PharmacyView from "./PharmacyList";
+import PharmacyList from "./PharmacyList";
 
-const Pharmacy=()=>{
+const Playground=()=>{
 
     //checks to see if the pharmacy set in state has an id other than 0
     //if it does it will render the updateform component. 
@@ -22,18 +23,17 @@ const Pharmacy=()=>{
     return(
         <>
         <Search></Search>
-        {/* <PharmacyView></PharmacyView>
+        <PharmacyList></PharmacyList>
         {
-            checkPharmacy() &&
-            <div>
-                <UpdateForm></UpdateForm>
-            </div>
-
-        } */}
+                        checkPharmacy() &&
+                        <div>
+                            <UpdateForm></UpdateForm>
+                        </div>
+        }
 
         </>
 
     )
 }
 
-export default Pharmacy;
+export default Playground;

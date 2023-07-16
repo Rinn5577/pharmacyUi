@@ -2,6 +2,7 @@ import { Button, Stack, TextField } from "@mui/material";
 import React, {useState} from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { postPharmacyUpdate } from "../store/pharmacy-actions";
+import Pharmacy from "./Pharmacy";
 
 //TODO - turn this into a pop up modal? 
 const UpdateForm=()=>{
@@ -39,15 +40,7 @@ function handleSubmit(event:any){
 <h3>Current Pharmacy Information</h3>
      
 <div>
-    <p>Name: {pharmacy.name}</p>
-    <p>ID: {pharmacy.id}</p>
-    <p>Address: {pharmacy.address}</p>
-    <p>City: {pharmacy.city}</p>
-    <p>State: {pharmacy.state}</p>
-    <p>Created: {pharmacy.createdAt}</p>
-    <p>Updated: {pharmacy.updatedAt || "No updates"}</p>
-
-
+    <Pharmacy {...pharmacy}></Pharmacy>
 </div>
 
 </div>

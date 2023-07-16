@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacy } from "../store/pharmacy-actions";
 import { Button } from "@mui/material";
+import Pharmacy from "./Pharmacy";
 
 const Search=()=>{
 
@@ -32,22 +33,24 @@ const Search=()=>{
             <input onChange={(event)=>setPharmacy_id(parseInt(event.target.value))} type="number"></input>
             <Button variant="outlined" onClick={searchHandler}>Find</Button>
 
-            <div>
+            {/* <div>
 
                 {
                     checkPharmacy() && 
                     (
-                        
-                    <div className="pharmacy-container" key={pharmacy.id}>
-                        <h3>Pharmacy Info</h3>
-                        <p className="pharmacy-child1">{pharmacy.id}</p>
-                        <p className="pharmacy-child2">{pharmacy.name}</p>
-                        <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
-                        <p className="pharmacy-child4">{pharmacy.createdAt}</p>
+                        <div>
+                            <Pharmacy {...pharmacy}></Pharmacy>
                         </div>
+                    // <div className="pharmacy-container" key={pharmacy.id}>
+                    //     <h3>Pharmacy Info</h3>
+                    //     <p className="pharmacy-child1">{pharmacy.id}</p>
+                    //     <p className="pharmacy-child2">{pharmacy.name}</p>
+                    //     <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
+                    //     <p className="pharmacy-child4">{pharmacy.createdAt}</p>
+                    //     </div>
                         ) 
                 }
-            </div>
+            </div> */}
         </div>
         </>
     )

@@ -1,7 +1,8 @@
 import React from "react";
-import {Button} from '@mui/material'
+import {Button, Grid, Stack} from '@mui/material'
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
+import Pharmacy from "./Pharmacy";
 
 const PharmacyList = () =>{
 
@@ -21,12 +22,7 @@ const PharmacyList = () =>{
         return true
     }
 
-    //when edit is clicked the id is passed in, the pharmacy with a matching id is grabbed from the pharmacy array
-    //it is then dispatched to the setPharmacy function in pharmacy actions. 
-    const editClickHandler=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
-        var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
-        dispatch(setPharmacy(targetPharmacy))
-    }
+
 
     return(
         <>
@@ -35,13 +31,20 @@ const PharmacyList = () =>{
             <Button variant="outlined" onClick={clickHandler} >View All Pharmacies</Button>
         </div>
 
-        {checkPharmacyList() &&  
-        pharmacyList.map((pharmacy)=>(
-        <div key={pharmacy.id}>
-            <h2>{pharmacy.name}</h2>
-            <Button  variant="outlined" onClick={(e)=>editClickHandler(e,pharmacy.id)}>Edit Pharmacy</Button>
-        </div>
-        ))}
+        <Grid className="pharmacyContainer" container rowSpacing={3} columnSpacing={{ xs: 1}} sx={{paddingTop: 5, paddingLeft: 10}}>
+            {checkPharmacyList() &&  
+            pharmacyList.map((pharmacy)=>(
+                <Grid item xs={3} className="pharmacyGrid"  key={pharmacy.id} >
+            
+                <Pharmacy {...pharmacy}></Pharmacy>
+           
+                </Grid>
+
+            ))}
+        </Grid>
+
+
+
 
         </>
     )
