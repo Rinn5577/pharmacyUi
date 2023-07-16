@@ -2,14 +2,13 @@ import { Button, Stack, TextField } from "@mui/material";
 import React, {useState} from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { postPharmacyUpdate } from "../store/pharmacy-actions";
-import Pharmacy from "./Pharmacy";
 
-//TODO - turn this into a pop up modal? 
+
 const UpdateForm=()=>{
 
 const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 
-//this should create a copy of the states pharmacy called updatedPharmacy, 
+//creates a copy of the states pharmacy called updatedPharmacy, 
 //so we can manipulate it and send it back
 const [updatedPharmacy, setUpdatedPharmacy] = useState(pharmacy)
 
@@ -35,16 +34,6 @@ function handleSubmit(event:any){
     return(
         
         <>
-        <div>
-
-<h3>Current Pharmacy Information</h3>
-     
-<div>
-    <Pharmacy {...pharmacy}></Pharmacy>
-</div>
-
-</div>
-
 
 <h2>Update Pharmacy Form</h2>
 <form onSubmit={handleSubmit}>

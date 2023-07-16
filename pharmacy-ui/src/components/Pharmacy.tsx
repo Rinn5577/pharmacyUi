@@ -5,6 +5,7 @@ import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
 import { PharmacyModel } from "../models/pharmacy";
 import {Card} from '@mui/material'
 import "./Pharmacy.css"
+import { useNavigate } from "react-router-dom";
 
 //this should be the individual pharmacies, but from the list
 //then i can import it into the search to display the info, and into pharmacy list  
@@ -21,6 +22,7 @@ const Pharmacy = (pharmacy:PharmacyModel) => {
 
 const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
 const dispatch=useAppDispatch();
+const navigate = useNavigate();
 
     //when edit is clicked the id is passed in, the pharmacy with a matching id is grabbed from the pharmacy array
     //it is then dispatched to the setPharmacy function in pharmacy actions. 
@@ -29,6 +31,7 @@ const dispatch=useAppDispatch();
     const editClickHandler=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
         var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
         dispatch(setPharmacy(targetPharmacy))
+        navigate('/updatePharmacy')
     }
 
     return(

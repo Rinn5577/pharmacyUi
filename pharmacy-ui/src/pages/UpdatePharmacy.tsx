@@ -1,0 +1,28 @@
+import React from "react";
+import UpdateForm from "../components/UpdateForm";
+import Pharmacy from "../components/Pharmacy";
+import { useAppSelector } from "../hooks/redux-hooks";
+
+const UpdatePharmacy = () => {
+    const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
+
+    return(
+        <>
+            <div>
+
+                <h3>Current Pharmacy Information</h3>
+     
+                <div>
+                    <Pharmacy {...pharmacy}></Pharmacy>
+                </div>
+
+            </div>
+
+            <div>
+                <UpdateForm></UpdateForm>
+            </div>
+        </>
+    )
+}
+
+export default UpdatePharmacy;

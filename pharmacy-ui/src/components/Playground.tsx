@@ -23,7 +23,7 @@ const Playground=()=>{
 
     return(
         <>
-        <NavBar></NavBar>
+
         <Search></Search>
         <PharmacyList></PharmacyList>
         {

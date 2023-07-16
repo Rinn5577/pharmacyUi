@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,10 +12,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 
-const pages = ['All Pharmacies', 'Search By Id', 'FAQ'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBar() {
+    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
 
@@ -52,10 +52,10 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
-                href=""
+                href="/pharmacyList"
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                All Pharmacies
+                Pharmacy List
             </Button>
             <Button
                 href=""

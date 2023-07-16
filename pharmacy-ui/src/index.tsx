@@ -5,15 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Playground from './components/Playground';
+import UpdatePharmacy from './pages/UpdatePharmacy';
+import Home from './pages/Home';
+import PharmacyList from './components/PharmacyList';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    
     <Provider store={store}>
       <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/updatePharmacy" element={<UpdatePharmacy/>}/>
+        <Route path="/pharmacyList" element={<PharmacyList/>}/>
+      </Routes>
+    </BrowserRouter>
     </Provider>
+
   </React.StrictMode>
 );
 
