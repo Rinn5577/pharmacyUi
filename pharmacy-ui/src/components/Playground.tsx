@@ -5,6 +5,7 @@ import UpdateForm from "./UpdateForm";
 import Search from "./Search";
 import PharmacyView from "./PharmacyList";
 import PharmacyList from "./PharmacyList";
+import NavBar from "./NavBar";
 
 const Playground=()=>{
 
@@ -22,6 +23,7 @@ const Playground=()=>{
 
     return(
         <>
+        <NavBar></NavBar>
         <Search></Search>
         <PharmacyList></PharmacyList>
         {
