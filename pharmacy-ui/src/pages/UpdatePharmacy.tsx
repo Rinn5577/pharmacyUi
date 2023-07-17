@@ -15,12 +15,13 @@ const UpdatePharmacy = () => {
                 <div>
                     <Pharmacy {...pharmacy}></Pharmacy>
                 </div>
+                <div>
+                    <UpdateForm></UpdateForm>
+                </div>
 
             </div>
 
-            <div>
-                <UpdateForm></UpdateForm>
-            </div>
+
         </>
     )
 }
