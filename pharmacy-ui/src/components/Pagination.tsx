@@ -7,7 +7,6 @@ const Pagination = () => {
 
 
     const dispatch = useAppDispatch();
-    //const [currentPage, setCurrentPage] = useState(1)
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     //need to pull in total pages from API
     const [totalPages, setTotalPages] = useState(2)
@@ -39,12 +38,13 @@ const Pagination = () => {
  
 
     return(
-        <div>
+        <div >
             {checkRender() &&
-                                <div className=" self-center inline space-x-5">
+                            <div className=" inline space-x-5">
                                 <button onClick={backClickHandler} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                                     Back
                                 </button> 
+                                <p className="inline">Page ___ of ___ </p>
                                 <button onClick={nextClickHandler} disabled={currentPage === totalPages ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                                     Next
                                 </button> 
