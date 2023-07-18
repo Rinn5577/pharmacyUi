@@ -1,58 +1,48 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacy } from "../store/pharmacy-actions";
-import { Button } from "@mui/material";
-import Pharmacy from "./Pharmacy";
+import { setViewAll } from "../store/utils-actions";
+
+
 
 const Search=()=>{
 
     const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
     const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
+    const viewAllUtil=useAppSelector(state=>state.utils.viewAll)
 
-//triggers the api call to get pharmacy by id, this also sets the pharmacy state
+
     const searchHandler=()=>{
         dispatch(fetchPharmacy(pharmacy_id))
-    }
-
-//makes sure the id of the pharmacy isn't 0 
-//if anything other than 0 it will render. 
-    const checkPharmacy=():boolean=>{
-        if(pharmacy.id===0){
-            return false
-        }
-        return true
+        dispatch(setViewAll(false))
     }
 
 
-    //can probably extract out the view from this, just keep the logic perhaps? 
     return(
-        <>
-                <div>
-            <label>Enter pharmacy id: </label>
-            <input onChange={(event)=>setPharmacy_id(parseInt(event.target.value))} type="number"></input>
-            <Button variant="outlined" onClick={searchHandler}>Find</Button>
+        <div>
+            <div className="max-w-fit relative">
+                <label className="inline left-0 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                    Enter pharmacy ID
+                </label>
+            </div>
+            <div className="max-w-fit inline">
+                <div className="flex flex-wrap justify-between -mx-3 mb-2">
+                    <div className=" max-w-fit md:w-1/3 px-3 mb-6 md:mb-0">
+                    <input onChange={(event)=>setPharmacy_id(parseInt(event.target.value))} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="number"/>
+                    </div>
+                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <button onClick={searchHandler} className=" bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full">
+                            Search
+                        </button> 
+                    </div>
 
-            {/* <div>
+                </div>
 
-                {
-                    checkPharmacy() && 
-                    (
-                        <div>
-                            <Pharmacy {...pharmacy}></Pharmacy>
-                        </div>
-                    // <div className="pharmacy-container" key={pharmacy.id}>
-                    //     <h3>Pharmacy Info</h3>
-                    //     <p className="pharmacy-child1">{pharmacy.id}</p>
-                    //     <p className="pharmacy-child2">{pharmacy.name}</p>
-                    //     <p className="pharmacy-child3">{pharmacy.filledPrescriptionsMonthToDate}</p>
-                    //     <p className="pharmacy-child4">{pharmacy.createdAt}</p>
-                    //     </div>
-                        ) 
-                }
-            </div> */}
+
+
         </div>
-        </>
+        </div>
     )
 }
 export default Search;

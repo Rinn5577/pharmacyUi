@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import pharmacySlice from "./pharmacy-slice";
+import utilsSlice from "./utils-slice";
 
 
 const store=configureStore(
     {
-        reducer:{pharmacy:pharmacySlice.reducer}
+        reducer:{pharmacy:pharmacySlice.reducer, utils:utilsSlice.reducer}
+
     }
 )
 

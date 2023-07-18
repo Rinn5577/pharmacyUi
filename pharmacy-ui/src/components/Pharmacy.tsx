@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, CardActions, CardContent, Container, Typography} from '@mui/material'
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
+import { setPharmacy } from "../store/pharmacy-actions";
 import { PharmacyModel } from "../models/pharmacy";
 import {Card} from '@mui/material'
 import "./Pharmacy.css"

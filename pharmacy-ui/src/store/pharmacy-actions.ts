@@ -4,7 +4,7 @@ import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
 import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
-import { AxiosError } from "axios";
+
 
 
 
