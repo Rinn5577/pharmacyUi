@@ -10,10 +10,10 @@ import PharmacyService from "../service/pharmacyService"
 
 export const pharmacyActions=pharmacySlice.actions
 
-export const fetchPharmacyList=():ThunkAction<void,RootState,unknown,AnyAction>=>{
+export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
 
     return async(dispatch,getState)=>{
-            const response:PharmacyModel[]=await PharmacyService.getPharmacyList();
+            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(pageNumber,pageSize);
             dispatch(pharmacyActions.setPharmacyList(response))
             //this is saying if the current state is 0 then you can get the list, not sure i need it 
         // if(getState().pharmacy.pharmacy_list.length===0){

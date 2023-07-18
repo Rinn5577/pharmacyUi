@@ -9,6 +9,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
 import Home from './pages/Home';
 import PharmacyList from './components/PharmacyList';
+import { fetchPharmacyList } from './store/pharmacy-actions';
+
+store.dispatch(fetchPharmacyList(1,3))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

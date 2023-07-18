@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import {Button, Grid, Stack} from '@mui/material'
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
 import HorizontalPharmacyCard from "./HorizontalPharmacyCard";
 import Search from "./Search";
-import { setViewAll } from "../store/utils-actions";
+import { setCurrentPage, setViewAll } from "../store/utils-actions";
+import Pagination from "./Pagination";
 
 const PharmacyList = () =>{
 
@@ -15,8 +15,9 @@ const PharmacyList = () =>{
 
 
     const clickHandler=()=>[
-        dispatch(fetchPharmacyList()),
-        dispatch(setViewAll(true))
+        dispatch(fetchPharmacyList(1,3)),
+        dispatch(setViewAll(true)),
+        dispatch(setCurrentPage(1))
     ]
 
 
@@ -34,6 +35,7 @@ const PharmacyList = () =>{
             return false
         }
 
+    
 
 
 
@@ -77,6 +79,7 @@ const PharmacyList = () =>{
                 </div>
 
                 </div>
+                <Pagination></Pagination>
             </div>
     
         </div>

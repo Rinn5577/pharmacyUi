@@ -14,7 +14,7 @@ namespace PharmacyAPI.Controllers
 
         // Returns all pharmacies
         [HttpGet]
-        public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies(int page = 1, int pageSize = 3)
+        public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies(int page, int pageSize)
         {
             
             var pharmacies = await _pharmacyService.GetAllPharmacies();

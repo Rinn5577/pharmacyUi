@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacy } from "../store/pharmacy-actions";
-import { setViewAll } from "../store/utils-actions";
+import { setCurrentPage, setViewAll } from "../store/utils-actions";
 
 
 

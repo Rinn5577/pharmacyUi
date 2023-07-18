@@ -3,8 +3,11 @@ import { PharmacyModel } from '../models/pharmacy'
 
 
 export default{
-    async getPharmacyList(){
-        var response=await api().get("");
+    async getPharmacyList(pageNumber:number, pageSize:number){
+        var num = pageNumber.toString();
+        var size = pageSize.toString();
+        var url = `?page=${num}&pageSize=${size}`;
+        var response=await api().get(url);
         return response.data;
     },
     async getPharmacy(pharmacy_id:number){

@@ -1,18 +1,24 @@
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
-import { BooleanUtilsArrayModel, } from "../models/utils";
+import { UtilsArrayModel} from "../models/utils";
 
 
-const initialBooleanUtilsState:BooleanUtilsArrayModel={
-    viewAll: false
+const initialUtilsState:UtilsArrayModel={
+    viewAll: true,
+    currentPage: 1
 };
+
 
 const utilsSlice=createSlice({
     name:'utils',
-    initialState: initialBooleanUtilsState,
+    initialState: initialUtilsState,
     reducers:{
         setViewAll(state,action:PayloadAction<Boolean>){
             state.viewAll=action.payload;
+        },
+        setCurrentPage(state,action:PayloadAction<number>){
+            state.currentPage=action.payload;
         }
     }
 })
 export default utilsSlice;
+
