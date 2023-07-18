@@ -11,7 +11,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
 
-    const handleEditClick=(e: React.MouseEvent<HTMLAnchorElement>, value: number)=>{
+    const handleEditClick=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
         var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
         dispatch(setPharmacy(targetPharmacy))
         navigate('/updatePharmacy')
@@ -26,15 +26,18 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                     Pharmacy ID: {pharmacy.id}
                 </p>
                 <div className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</div>
-                <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                <p className="text-gray-700 text-base">{pharmacy.address}</p>
+                <p className="text-gray-700 text-base">{pharmacy.city + ", " + pharmacy.state + ", " + pharmacy.zipcode}</p>
+                <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p>
+
                 </div>
                 <div>
-                    <a href="/" className="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-full">
-                    Info
-                    </a> 
-                    <a onClick={(e)=>handleEditClick(e,pharmacy.id)} className="bg-blue-500 hover:bg-blue-700 text-white text-center ml-2 py-2 px-4 rounded-full">
+                    <button className="bg-nuvemGreen hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
+                    +Favorite
+                    </button> 
+                    <button onClick={(e)=>handleEditClick(e,pharmacy.id)} className="bg-nuvemBlue hover:bg-nuvemGreen hover:text-nuvemBlue text-white text-center ml-2 py-2 px-4 rounded-full">
                     Edit
-                    </a> 
+                    </button> 
                 </div>
 
             </div>
