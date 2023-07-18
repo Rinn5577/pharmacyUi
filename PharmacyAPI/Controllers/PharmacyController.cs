@@ -14,16 +14,20 @@ namespace PharmacyAPI.Controllers
 
         // Returns all pharmacies
         [HttpGet]
-        public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies()
+        public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies(int page = 1, int pageSize = 3)
         {
+            
             var pharmacies = await _pharmacyService.GetAllPharmacies();
+            var totalCount = pharmacies.Count();
+            var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+            var pharmaciesPerPage = pharmacies.Skip((page -1) * pageSize).Take(pageSize).ToList();
 
             if (pharmacies is null)
             {
                 return NotFound("Sorry, no pharmacies to display.");
             }
 
-            return Ok(pharmacies);
+            return Ok(pharmaciesPerPage);
         }
 
         // Returns a pharmacy by id
