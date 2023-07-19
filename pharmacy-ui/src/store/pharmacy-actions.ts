@@ -4,6 +4,7 @@ import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
 import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
+import { AxiosError } from 'axios';
 
 
 
@@ -24,16 +25,19 @@ export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<
 }
 
 export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+    
     return async(dispatch,getState)=>{
         try {
                 const response:PharmacyModel=await PharmacyService.getPharmacy(pharmacy_id);
                 dispatch(pharmacyActions.setPharmacy(response))
 
-        } catch (error) {
+        } catch (_err) {
+            let err =(_err as AxiosError)
             //need to figure out how to use this error to display some info about the id not being valid?
             //maybe if i define the error as a type? like everything included in the error object and then i can access that information. 
             //would i then need to make an error slice for the store? need to look into this more
-            console.log(error)
+            console.log(err.message)
+            console.log(err.response?.data)
         }
 
 
