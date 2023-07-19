@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { fetchPharmacyList, setPharmacy } from "../store/pharmacy-actions";
+import { fetchPharmacyList} from "../store/pharmacy-actions";
 import HorizontalPharmacyCard from "./HorizontalPharmacyCard";
 import Search from "./Search";
 import { setCurrentPage, setViewAll } from "../store/utils-actions";

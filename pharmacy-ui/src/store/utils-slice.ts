@@ -1,10 +1,16 @@
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
-import { UtilsArrayModel} from "../models/utils";
+import { ErrorModel, UtilsArrayModel} from "../models/utils";
 
 
 const initialUtilsState:UtilsArrayModel={
     viewAll: true,
-    currentPage: 1
+    currentPage: 1,
+    pharmacyError:{
+        "code": "",
+        "message": "",
+        "response": "",
+        "status": 0
+    }
 };
 
 
@@ -17,7 +23,14 @@ const utilsSlice=createSlice({
         },
         setCurrentPage(state,action:PayloadAction<number>){
             state.currentPage=action.payload;
+        },
+        setPharmacyError(state,action:PayloadAction<ErrorModel>){
+            state.pharmacyError=action.payload;
+        },
+        resetPharmacyError(state){
+            state.pharmacyError=initialUtilsState.pharmacyError
         }
+        
     }
 })
 export default utilsSlice;

@@ -29,4 +29,5 @@ const pharmacySlice=createSlice({
         }
     }
 })
+
 export default pharmacySlice;

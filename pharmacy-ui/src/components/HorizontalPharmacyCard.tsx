@@ -2,7 +2,7 @@ import React from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
-import { setPharmacy } from "../store/pharmacy-actions";
+import { setTargetPharmacy } from "../store/pharmacy-actions";
 
 
 const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
@@ -13,7 +13,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     const handleEditClick=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
         var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
-        dispatch(setPharmacy(targetPharmacy))
+        dispatch(setTargetPharmacy(targetPharmacy))
         navigate('/updatePharmacy')
     }
     return(

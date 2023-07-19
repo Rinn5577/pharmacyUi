@@ -13,3 +13,4 @@ export interface PharmacyArrayModel{
     pharmacy_list:PharmacyModel[],
     pharmacy:PharmacyModel
 }
+
