@@ -14,13 +14,12 @@ const Pagination = () => {
     const [pageSize, setPageSize] = useState(3)
     const viewAllUtil=useAppSelector(state=>state.utils.viewAll)
 
-
+    //Handlers
     const backClickHandler = () =>{
         var newNum = (currentPage-1); 
         dispatch(fetchPharmacyList(newNum,pageSize))
         dispatch(setCurrentPage(newNum))
     }
-
 
     const nextClickHandler = () =>{
         var newNum = (currentPage+1); 
@@ -29,6 +28,7 @@ const Pagination = () => {
 
     }
 
+    //Render toggle checks
     const checkRender = () =>{
         if(viewAllUtil){
             return true

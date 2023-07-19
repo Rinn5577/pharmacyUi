@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy } from "../store/pharmacy-actions";
 
-
 const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
@@ -16,6 +15,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
         dispatch(setTargetPharmacy(targetPharmacy))
         navigate('/updatePharmacy')
     }
+
     return(
         <>
         <div className="p-1">

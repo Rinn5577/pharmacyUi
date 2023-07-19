@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacy } from "../store/pharmacy-actions";
-import { setCurrentPage, setViewAll } from "../store/utils-actions";
-
-
+import { setViewAll } from "../store/utils-actions";
 
 const Search=()=>{
 
     const [pharmacy_id,setPharmacy_id]=useState(1);
     const dispatch=useAppDispatch();
 
-
     const searchHandler=()=>{
         dispatch(fetchPharmacy(pharmacy_id))
         dispatch(setViewAll(false))
     }
-
 
     return(
         <div>
@@ -34,12 +30,8 @@ const Search=()=>{
                             Search
                         </button> 
                     </div>
-
                 </div>
-
-
-
-        </div>
+            </div>
         </div>
     )
 }

@@ -8,8 +8,8 @@ import {Provider} from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
 import Home from './pages/Home';
-import PharmacyList from './components/PharmacyList';
 import { fetchPharmacyList } from './store/pharmacy-actions';
+import Pharmacies from './pages/Pharmacies';
 
 store.dispatch(fetchPharmacyList(1,3))
 
@@ -25,7 +25,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/updatePharmacy" element={<UpdatePharmacy/>}/>
-        <Route path="/pharmacyList" element={<PharmacyList/>}/>
+        <Route path="/pharmacyList" element={<Pharmacies/>}/>
       </Routes>
     </BrowserRouter>
     </Provider>
