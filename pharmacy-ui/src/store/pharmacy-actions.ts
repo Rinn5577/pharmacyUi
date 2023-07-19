@@ -2,7 +2,7 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyModel } from '../models/pharmacy';
+import { PharmacyArrayModel, PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
 import { utilsActions } from "./utils-actions";
@@ -83,5 +83,8 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
 }
 
 
-
-///lookinto pre-fetch 
+export const setPharmacyFavoritesList=(favoritePharmacyList:PharmacyModel[]):ThunkAction<void, RootState, unknown,AnyAction>=>{
+    return async(dispatch)=>{
+            dispatch(pharmacyActions.setPharmacyFavoriteList(favoritePharmacyList))
+    }
+}

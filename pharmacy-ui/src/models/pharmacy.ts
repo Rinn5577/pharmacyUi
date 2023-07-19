@@ -11,6 +11,7 @@ export interface PharmacyModel{
 }
 export interface PharmacyArrayModel{
     pharmacy_list:PharmacyModel[],
+    pharmacy_favorites:PharmacyModel[],
     pharmacy:PharmacyModel
 }
 

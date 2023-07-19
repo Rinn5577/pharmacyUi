@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
-import { setTargetPharmacy } from "../store/pharmacy-actions";
+import { setPharmacyFavoritesList, setTargetPharmacy } from "../store/pharmacy-actions";
+
 
 const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
+
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
+    const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
+
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
 
@@ -14,6 +18,15 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
         var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
         dispatch(setTargetPharmacy(targetPharmacy))
         navigate('/updatePharmacy')
+    }
+
+    //something is happening where undefined is returned when favoriting from search view 
+    const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, value: number) =>{
+        var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
+        var currentFavorites = favorites.concat([]) //concat merges array, returns a new one, without this array is read only
+        currentFavorites.push(favoritePharmacy)
+        dispatch(setPharmacyFavoritesList(currentFavorites))
+
     }
 
     return(
@@ -32,7 +45,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
                 </div>
                 <div>
-                    <button className="bg-nuvemGreen hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
+                    <button onClick={(e)=>handleFavoriteClick(e,pharmacy.id)} className="bg-nuvemGreen hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
                     +Favorite
                     </button> 
                     <button onClick={(e)=>handleEditClick(e,pharmacy.id)} className="bg-nuvemBlue hover:bg-nuvemGreen hover:text-nuvemBlue text-white text-center ml-2 py-2 px-4 rounded-full">

@@ -3,6 +3,7 @@ import {createSlice,PayloadAction} from "@reduxjs/toolkit";
 
 const initialPharmacyState:PharmacyArrayModel={
     pharmacy_list:[],
+    pharmacy_favorites:[],
     pharmacy:{
         "id": 0,
         "name": "",
@@ -26,7 +27,11 @@ const pharmacySlice=createSlice({
         },
         setPharmacy(state,action:PayloadAction<PharmacyModel>){
             state.pharmacy=action.payload;
+        },
+        setPharmacyFavoriteList(state,action:PayloadAction<PharmacyModel[]>){
+            state.pharmacy_favorites=action.payload;
         }
+       
     }
 })
 

@@ -36,7 +36,7 @@ const PharmacyList = () =>{
                 ? (
                     pharmacyList.map((pharmacy)=>(
                         <div>
-                            <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
+                            <HorizontalPharmacyCard {...pharmacy}/>
                         </div>
                     )) 
                 )
