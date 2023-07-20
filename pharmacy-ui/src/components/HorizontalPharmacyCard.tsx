@@ -22,12 +22,33 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     //something is happening where undefined is returned when favoriting from search view 
     const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, value: number) =>{
-        var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
+        var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0] //checked, fine
         var currentFavorites = favorites.concat([]) //concat merges array, returns a new one, without this array is read only
-        currentFavorites.push(favoritePharmacy)
-        dispatch(setPharmacyFavoritesList(currentFavorites))
-
+        currentFavorites.push(favoritePharmacy) //working
+        dispatch(setPharmacyFavoritesList(currentFavorites)) //working
     }
+
+    //this listens to the favorites array and when it is updated it adds the last added favorite to the
+    //local storage
+    useEffect(() =>{
+        if(favorites.length > 0){
+            var favoriteKey = (favorites[favorites.length-1]?.id.toString())
+            //check if the key exists in local storage already 
+            var allLocalStorage = JSON.stringify(localStorage) //all of local storage into a string
+            var allLocalAsObject = JSON.parse(allLocalStorage) 
+            var arrayOfKeys = Object.keys(allLocalAsObject)//array of keys in local storage
+            if(!arrayOfKeys.includes(favoriteKey)){
+                localStorage.setItem(favoriteKey, JSON.stringify(favorites[favorites.length-1]))
+            } console.log("nothing added, key already exists")
+            
+        }
+        console.log("from H card fave store state")
+        console.log(favorites)
+        console.log("local storage")
+        console.log(localStorage)
+
+    },[favorites])
+
 
     return(
         <>

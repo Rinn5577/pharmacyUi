@@ -10,6 +10,7 @@ import UpdatePharmacy from './pages/UpdatePharmacy';
 import Home from './pages/Home';
 import { fetchPharmacyList } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
+import Favorites from './pages/Favorites';
 
 store.dispatch(fetchPharmacyList(1,3))
 
@@ -26,6 +27,7 @@ root.render(
         <Route path="/" element={<Home/>}/>
         <Route path="/updatePharmacy" element={<UpdatePharmacy/>}/>
         <Route path="/pharmacyList" element={<Pharmacies/>}/>
+        <Route path="/favorites" element={<Favorites/>}/>
       </Routes>
     </BrowserRouter>
     </Provider>

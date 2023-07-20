@@ -4,42 +4,36 @@ import { PharmacyModel } from '../models/pharmacy';
 
 const Home = () => {
 
+
+
+
+ 
+
+
     
-    const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
-
-    useEffect(() =>{
-        var favoriteKey = (favorites[favorites.length-1]?.id.toString())
-        localStorage.setItem(favoriteKey, JSON.stringify(favorites))
-    },[favorites])
+    //  var numberFourKey = arrayofKeys.filter(key => key === true).toString(); //this was a test, need to 
 
 
-    //keeping for reference
-    var specificFave = (localStorage.getItem("4") || '{}');
+    //   var specificFave = (localStorage.getItem(numberFourKey) || '{}'); //a string you need to parse
+    //   var test = JSON.parse(specificFave) //an array you can itterate over maybe?
+    //   var test2 = test[0]; // the object I want, but im not sure how to tell typscript this is a PharmacyModel Object
+    //   console.log(test2)
 
-    //gets local storage 
-    var allLocalStorage = JSON.stringify(localStorage)
-    var allLocalAsObject = JSON.parse(allLocalStorage) //this is returning an object with the favorites stored key: string of info
-    var arrayofKeys = Object.keys(allLocalAsObject)
-    var favesFromLocal = [];
 
-    const updateArray = () =>{
-        var fave = {}
-        var faveString = ""
-        arrayofKeys.map((key)=>(
-           faveString = JSON.stringify(localStorage.getItem(key)),
-           console.log("test" +faveString),
-           fave = JSON.parse(faveString),
-            favesFromLocal.push(fave)
-        ))
-    }
-    updateArray()
+
 
       
 
     //var testObj = Object.values(allLocalAsObject).filter((fave:PharmacyModel) => fave.id === 4)[0];
-    console.log(Object.keys(allLocalAsObject))
+
 
     //var testObj = allLocalAsObject.filter((fave:PharmacyModel) => fave.id === 4)[0];
+    //localStorage.clear()
+    console.log("from home page: local storage")
+    console.log(localStorage)
+    console.log("from home page, faves in store")
+    const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
+    console.log(favorites)
 
      
 

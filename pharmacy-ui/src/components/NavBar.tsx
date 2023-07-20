@@ -21,6 +21,9 @@ function NavBar() {
         <a href="/pharmacyList" className="block mt-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
           Pharmacies
         </a>
+        <a href="/favorites" className="block mt-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
+          favorites
+        </a>
       </div>
     </div>
   </nav>
