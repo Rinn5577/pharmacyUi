@@ -30,6 +30,22 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmaciesPerPage);
         }
 
+
+        //Returns pharmacies that include name 
+        [HttpGet("byName/{name}")]
+        public async Task<ActionResult<Pharmacy>> GetPharmacyByName(string name)
+        {
+            var pharmacy = await _pharmacyService.GetPharmacyByName(name);
+
+            if (pharmacy is null)
+            {
+                return NotFound("Sorry, a pharmacy with id " + name + " does not exist.");
+            }
+
+            return Ok(pharmacy);
+
+        }
+
         // Returns a pharmacy by id
         [HttpGet("{id}")]
         public async Task<ActionResult<Pharmacy>> GetPharmacyById(int id)
@@ -43,6 +59,8 @@ namespace PharmacyAPI.Controllers
 
             return Ok(pharmacy);
         }
+
+
 
         // Updates a pharmacy by id
         [HttpPut("{id}")]

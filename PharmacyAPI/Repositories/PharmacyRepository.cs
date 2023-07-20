@@ -14,7 +14,11 @@
             var pharmacies = await _pharmacyDbContext.Pharmacies.ToListAsync();
             return pharmacies;
         }
-
+        public async Task<Pharmacy?> GetPharmacyByName(string name)
+        {
+            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Name == name);
+            return pharmacy;
+        }
         public async Task<Pharmacy?> GetPharmacyById(int id)
         {
             var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
