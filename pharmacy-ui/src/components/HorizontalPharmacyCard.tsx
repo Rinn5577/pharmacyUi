@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
@@ -10,26 +10,15 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
     const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
-
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
+    const [faveDisable, setFaveDisable] = useState(false)
 
-    const handleEditClick=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
-        var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
-        dispatch(setTargetPharmacy(targetPharmacy))
-        navigate('/updatePharmacy')
-    }
-
-    //something is happening where undefined is returned when favoriting from search view 
-    const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, value: number) =>{
-        var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0] //checked, fine
-        var currentFavorites = favorites.concat([]) //concat merges array, returns a new one, without this array is read only
-        currentFavorites.push(favoritePharmacy) //working
-        dispatch(setPharmacyFavoritesList(currentFavorites)) //working
-    }
 
     //this listens to the favorites array and when it is updated it adds the last added favorite to the
     //local storage
+    //this is here because wherever this card is rendered it needs to run incase a favorite is added
+    //however it doesn't need to run everytime a card is rendered. So is there somewhere else i can put this
     useEffect(() =>{
         if(favorites.length > 0){
             var favoriteKey = (favorites[favorites.length-1]?.id.toString())
@@ -42,12 +31,28 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
             } console.log("nothing added, key already exists")
             
         }
-        console.log("from H card fave store state")
-        console.log(favorites)
-        console.log("local storage")
-        console.log(localStorage)
 
     },[favorites])
+
+    const handleEditClick=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
+        var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
+        dispatch(setTargetPharmacy(targetPharmacy))
+        navigate('/updatePharmacy')
+    }
+
+    //something is happening where undefined is returned when favoriting from search view 
+    // i want to refactor this where maybe im dispatching straight to the local storage? 
+    //will need to look into that
+    const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, value: number) =>{
+        var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0] //checked, fine
+        var currentFavorites = favorites.concat([]) //concat merges array, returns a new one, without this array is read only
+        currentFavorites.push(favoritePharmacy) //working
+        dispatch(setPharmacyFavoritesList(currentFavorites)) //working
+        setFaveDisable(true) // works but i need to pull if its on the faves list to determine if the button should be disabled
+        //also instead of disabled i want it to switch to a remove from faves 
+    }
+
+
 
 
     return(
@@ -66,7 +71,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
                 </div>
                 <div>
-                    <button onClick={(e)=>handleFavoriteClick(e,pharmacy.id)} className="bg-nuvemGreen hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
+                    <button disabled={faveDisable} onClick={(e)=>handleFavoriteClick(e,pharmacy.id)} className="bg-nuvemGreen disabled:bg-gray-500 hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
                     +Favorite
                     </button> 
                     <button onClick={(e)=>handleEditClick(e,pharmacy.id)} className="bg-nuvemBlue hover:bg-nuvemGreen hover:text-nuvemBlue text-white text-center ml-2 py-2 px-4 rounded-full">
