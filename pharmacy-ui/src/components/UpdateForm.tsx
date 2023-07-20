@@ -14,7 +14,7 @@ const dispatch=useAppDispatch();
 //Handlers
 const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
     setUpdatedPharmacy({...updatedPharmacy,[event.target.name] : event.target.value})
-    validation()
+    //validation()
 
 }
 
@@ -24,18 +24,15 @@ const handleSubmit = (event:any) =>{
 }
 
 //not currently working. It does disable the button but it wont re enable it when fixed 
-const validation = () =>{
-    let stateLength = updatedPharmacy.state.length
-    let stateLengthIsValid = (stateLength === 2)
-    let zipLength = updatedPharmacy.zipcode.length
-    let zipLengthIsValid = (zipLength === 5 || zipLength === 9)
-    if(stateLengthIsValid && zipLengthIsValid){
-        setDisabled(false)
-    } setDisabled(true)
-}
-
-
-
+// const validation = () =>{
+//     let stateLength = updatedPharmacy.state.length
+//     let stateLengthIsValid = (stateLength === 2)
+//     let zipLength = updatedPharmacy.zipcode.length
+//     let zipLengthIsValid = (zipLength === 5 || zipLength === 9)
+//     if(stateLengthIsValid && zipLengthIsValid){
+//         setDisabled(false)
+//     } setDisabled(true)
+// }
 
  
     return(

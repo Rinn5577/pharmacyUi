@@ -13,7 +13,7 @@ const Pharmacies = () =>{
         //Handlers
         const clickHandler=()=>[
             dispatch(fetchPharmacyList(1,3)),
-            dispatch(setViewAll(true)),
+            //dispatch(setViewAll(true)),
             dispatch(setCurrentPage(1))
         ]
 

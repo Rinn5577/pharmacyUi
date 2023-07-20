@@ -28,7 +28,8 @@ const Pagination = () => {
 
     }
 
-    //Render toggle checks
+    //Right now this is necessary for how I have the search set up 
+    //in future it will always render if there are pharmacies to be viewed. 
     const checkRender = () =>{
         if(viewAllUtil){
             return true

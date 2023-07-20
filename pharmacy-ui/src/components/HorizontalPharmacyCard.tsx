@@ -4,7 +4,8 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setPharmacyFavoritesList, setTargetPharmacy } from "../store/pharmacy-actions";
 
-
+//TODO:
+//Switch favorite button to remove from favorites - (isFavorited somewhere in state?)
 const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
 
@@ -15,17 +16,17 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const [faveDisable, setFaveDisable] = useState(false)
 
 
-    //this listens to the favorites array and when it is updated it adds the last added favorite to the
-    //local storage
+    //listens to the favorites state and when it is updated it adds the last added favorite to local storage
     //this is here because wherever this card is rendered it needs to run incase a favorite is added
     //however it doesn't need to run everytime a card is rendered. So is there somewhere else i can put this
+    //do i need this at all, can i setup a store slice to take care of this and dispatch from the button click? 
     useEffect(() =>{
         if(favorites.length > 0){
             var favoriteKey = (favorites[favorites.length-1]?.id.toString())
             //check if the key exists in local storage already 
-            var allLocalStorage = JSON.stringify(localStorage) //all of local storage into a string
-            var allLocalAsObject = JSON.parse(allLocalStorage) 
-            var arrayOfKeys = Object.keys(allLocalAsObject)//array of keys in local storage
+            var allLocalStorage = JSON.stringify(localStorage) //returns localStorage as a string
+            var allLocalAsObject = JSON.parse(allLocalStorage) //returns an object of localStorage w/ key:value pairs
+            var arrayOfKeys = Object.keys(allLocalAsObject)//returns an array of keys from localStorage
             if(!arrayOfKeys.includes(favoriteKey)){
                 localStorage.setItem(favoriteKey, JSON.stringify(favorites[favorites.length-1]))
             } console.log("nothing added, key already exists")
@@ -42,17 +43,13 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     //something is happening where undefined is returned when favoriting from search view 
     // i want to refactor this where maybe im dispatching straight to the local storage? 
-    //will need to look into that
     const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, value: number) =>{
         var favoritePharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0] //checked, fine
         var currentFavorites = favorites.concat([]) //concat merges array, returns a new one, without this array is read only
         currentFavorites.push(favoritePharmacy) //working
         dispatch(setPharmacyFavoritesList(currentFavorites)) //working
-        setFaveDisable(true) // works but i need to pull if its on the faves list to determine if the button should be disabled
-        //also instead of disabled i want it to switch to a remove from faves 
+        setFaveDisable(true) 
     }
-
-
 
 
     return(

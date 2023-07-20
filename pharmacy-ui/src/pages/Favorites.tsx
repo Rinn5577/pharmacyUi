@@ -3,10 +3,12 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks'
 import { PharmacyModel } from '../models/pharmacy'
 import { setPharmacyFavoritesList } from '../store/pharmacy-actions';
 import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
+import Pharmacies from './Pharmacies';
 
 const Favorites = () => {
 
     const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
+    const pharmacies=useAppSelector(state=>state.pharmacy.pharmacy_list)
     const dispatch=useAppDispatch();
 
     useEffect(() =>{
@@ -25,11 +27,18 @@ const Favorites = () => {
         var favoriteAsString = ""
         var favoriteAsObj = {} as PharmacyModel
         var favesFromLocal = [] as PharmacyModel[];
-
+        //var theKey = 0
         arrayOfKeys.map((key)=>(
+
             favoriteAsString = JSON.stringify(localStorage.getItem(key)), //gets each favorite one by one
             favoriteAsObj = JSON.parse(JSON.parse(favoriteAsString)) as PharmacyModel, //parses strings into objects
             favesFromLocal.push(favoriteAsObj as PharmacyModel) //pushes to our placeholder array
+
+            //to be used later
+            //theKey = parseInt(key), //turns the key into a number
+            //this isnt going to work because of the pagination. 
+            //ill need to fetch the pharm from the api, set it somwhere in store and then access it there
+            //favoriteAsObj = pharmacies.filter(pharm => pharm.id === theKey )[0], //finds the pharm with matching id
 
         ))
         dispatch(setPharmacyFavoritesList(favesFromLocal))

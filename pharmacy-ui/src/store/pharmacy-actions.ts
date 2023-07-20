@@ -29,6 +29,7 @@ export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<
         try {
             const response:PharmacyModel[]=await PharmacyService.getPharmacyList(pageNumber,pageSize);
             dispatch(pharmacyActions.setPharmacyList(response))
+            dispatch(utilsActions.resetPharmacyError())
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
@@ -44,7 +45,9 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
     return async(dispatch)=>{
         try {
                 const response:PharmacyModel=await PharmacyService.getPharmacy(pharmacy_id);
-                dispatch(pharmacyActions.setPharmacy(response))
+                const newArray:PharmacyModel[] = [];
+                newArray.push(response)
+                dispatch(pharmacyActions.setPharmacyList(newArray))
                 dispatch(utilsActions.resetPharmacyError())
 
         } catch (_err) {
@@ -73,6 +76,7 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
         try {
             const response:PharmacyModel=await PharmacyService.updatePharmacy(pharmacy);
             dispatch(pharmacyActions.setPharmacy(response))
+            dispatch(utilsActions.resetPharmacyError())
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)

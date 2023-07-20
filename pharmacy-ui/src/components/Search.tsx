@@ -3,6 +3,11 @@ import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacy } from "../store/pharmacy-actions";
 import { setViewAll } from "../store/utils-actions";
 
+//currently when a user searches, the request is sent to the API and the one pharmacy response is stored in state
+//i want to change this behavior so that the item is stored in an array to be viewed
+//this will allow me to search by other props that might return more than one result 
+//anything the user wants to view will be taken from the store and placed into a toBeViewed array that can be iterated over. 
+
 const Search=()=>{
 
     const [pharmacy_id,setPharmacy_id]=useState(1);
@@ -10,7 +15,7 @@ const Search=()=>{
 
     const searchHandler=()=>{
         dispatch(fetchPharmacy(pharmacy_id))
-        dispatch(setViewAll(false))
+        //dispatch(setViewAll(false))
     }
 
     return(
