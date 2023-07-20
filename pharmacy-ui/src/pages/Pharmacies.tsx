@@ -4,7 +4,7 @@ import Pagination from "../components/Pagination";
 import PharmacyList from "../components/PharmacyList";
 import { useAppDispatch } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/pharmacy-actions";
-import { setCurrentPage, setViewAll } from "../store/utils-actions";
+import { setCurrentPage} from "../store/utils-actions";
 
 const Pharmacies = () =>{
 
@@ -13,7 +13,6 @@ const Pharmacies = () =>{
         //Handlers
         const clickHandler=()=>[
             dispatch(fetchPharmacyList(1,3)),
-            //dispatch(setViewAll(true)),
             dispatch(setCurrentPage(1))
         ]
 

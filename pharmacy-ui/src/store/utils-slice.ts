@@ -3,7 +3,6 @@ import { ErrorModel, UtilsArrayModel} from "../models/utils";
 
 
 const initialUtilsState:UtilsArrayModel={
-    viewAll: true,
     currentPage: 1,
     pharmacyError:{
         "code": "",
@@ -18,9 +17,6 @@ const utilsSlice=createSlice({
     name:'utils',
     initialState: initialUtilsState,
     reducers:{
-        setViewAll(state,action:PayloadAction<Boolean>){
-            state.viewAll=action.payload;
-        },
         setCurrentPage(state,action:PayloadAction<number>){
             state.currentPage=action.payload;
         },

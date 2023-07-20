@@ -6,7 +6,6 @@ export interface ErrorModel{
 }
 
 export interface UtilsArrayModel{
-    viewAll:Boolean
     currentPage:number
     pharmacyError: ErrorModel
 }

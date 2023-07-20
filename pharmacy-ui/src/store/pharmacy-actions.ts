@@ -2,14 +2,10 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyArrayModel, PharmacyModel } from '../models/pharmacy';
+import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
 import { utilsActions } from "./utils-actions";
-
-
-
-
 
 export const pharmacyActions=pharmacySlice.actions
 
