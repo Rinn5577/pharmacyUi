@@ -14,8 +14,10 @@ export default{
         var response=await api().get(pharmacy_id.toString());
         return response.data
     },
-    async getPharmacyByName(pharmacy_name:string){
-        var url = `/byName/${pharmacy_name}`
+    async getPharmacyByName(pharmacy_name:string, pageNumber:number, pageSize:number){
+        var num = pageNumber.toString();
+        var size = pageSize.toString();
+        var url = `/byName/${pharmacy_name}?page=${num}&pageSize=${size}`
         var response=await api().get(url);
         return response.data
     },

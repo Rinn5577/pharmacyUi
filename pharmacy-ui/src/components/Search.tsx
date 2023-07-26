@@ -11,7 +11,7 @@ const Search=()=>{
         if(searchBy === "Id"){
             dispatch(fetchPharmacy(parseInt(input)))
         }else if (searchBy === "Name"){
-            dispatch(fetchPharmacyByName(input))
+            dispatch(fetchPharmacyByName(input,1,3))
         }
     }
 

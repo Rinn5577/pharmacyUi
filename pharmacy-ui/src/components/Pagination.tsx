@@ -14,6 +14,8 @@ const Pagination = () => {
     const [pageSize, setPageSize] = useState(3) //i only want 3 pharmacies returned at a time right now
 
     //Handlers
+    //doesnt work when navigating through search results, calls an un filtered fetch
+    //need to set search params in state and then make decisions on what to call based on that
     const backClickHandler = () =>{
         var newNum = (currentPage-1); 
         dispatch(fetchPharmacyList(newNum,pageSize))

@@ -20,11 +20,9 @@ namespace PharmacyAPI.Controllers
         {
             
             var pharmacies = await _pharmacyService.GetAllPharmacies();
-            //var totalCount = pharmacies.Count();
-            //var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
             var pharmaciesPerPage = pharmacies.Skip((page -1) * pageSize).Take(pageSize).ToList();
 
-            if (pharmacies is null)
+            if (pharmaciesPerPage is null)
             {
                 return NotFound("Sorry, no pharmacies to display.");
             }
@@ -35,16 +33,17 @@ namespace PharmacyAPI.Controllers
 
         //Returns pharmacy by name 
         [HttpGet("byName/{name}")]
-        public async Task<ActionResult<List<Pharmacy>>> GetPharmacyByName(string name)
+        public async Task<ActionResult<List<Pharmacy>>> GetPharmacyByName(string name, int page, int pageSize)
         {
-            var pharmacy = await _pharmacyService.GetPharmacyByName(name);
+            var pharmacies = await _pharmacyService.GetPharmacyByName(name);
+            var pharmaciesPerPage = pharmacies.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            if (pharmacy is null)
+            if (pharmaciesPerPage is null)
             {
                 return NotFound("Sorry, a pharmacy with id " + name + " does not exist.");
             }
 
-            return Ok(pharmacy);
+            return Ok(pharmaciesPerPage);
 
         }
 

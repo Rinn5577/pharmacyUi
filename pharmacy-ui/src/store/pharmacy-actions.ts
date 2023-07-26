@@ -57,11 +57,11 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
     }
 }
 
-export const fetchPharmacyByName=(pharmacy_name:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
+export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     
     return async(dispatch)=>{
         try {
-                const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name);
+                const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name, pageNumber, pageSize);
                 dispatch(pharmacyActions.setPharmacyList(response))
                 dispatch(utilsActions.resetPharmacyError())
 
