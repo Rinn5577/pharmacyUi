@@ -1,22 +1,20 @@
 import React from "react";
 import UpdateForm from "../components/UpdateForm";
 import { useAppSelector } from "../hooks/redux-hooks";
-import HorizontalPharmacyCard from "../components/HorizontalPharmacyCard";
+import SmallPharmacyCard from "../components/SmallPharmacyCard";
 
 const UpdatePharmacy = () => {
     const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 
     return(
         <>
-            <div>
 
-                <h3>Current Pharmacy Information</h3>
-     
-                <div>
-                    <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
+            <div className="flex flex-row mt-24 ml-48">
+                <div className="w-full max-w-lg mr-6">
+                <SmallPharmacyCard {...pharmacy}></SmallPharmacyCard>
                 </div>
-                <div>
-                    <UpdateForm></UpdateForm>
+                <div >
+                <UpdateForm></UpdateForm>
                 </div>
 
             </div>
