@@ -2,16 +2,19 @@ import React from "react";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 import PharmacyList from "../components/PharmacyList";
-import { useAppDispatch } from "../hooks/redux-hooks";
+import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/pharmacy-actions";
-import { setCurrentPage} from "../store/utils-actions";
+import { resetSearchParams, setCurrentPage} from '../store/utils-actions';
+
 
 const Pharmacies = () =>{
 
     const dispatch=useAppDispatch();
+
     
         //Handlers
         const clickHandler=()=>[
+            dispatch(resetSearchParams()),
             dispatch(fetchPharmacyList(1,3)),
             dispatch(setCurrentPage(1))
         ]

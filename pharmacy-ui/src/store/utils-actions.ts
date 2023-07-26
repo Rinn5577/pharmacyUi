@@ -2,7 +2,7 @@ import { ThunkAction } from "redux-thunk";
 import utilsSlice from "./utils-slice";
 import { RootState } from './index';
 import { AnyAction } from "@reduxjs/toolkit";
-import { ErrorModel } from "../models/utils";
+import { ErrorModel, SearchParamsModel } from "../models/utils";
 
 export const utilsActions=utilsSlice.actions
 
@@ -15,4 +15,15 @@ export const setPharmacyError=(error:ErrorModel):ThunkAction<void,RootState,unkn
     return async(dispatch)=>{
         dispatch(utilsActions.setPharmacyError(error))
     }
+}
+export const setSearchParams=(searchParams:SearchParamsModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
+    return async(dispatch)=>{
+        dispatch(utilsActions.setSearchParams(searchParams))
+    }
+}
+export const resetSearchParams=():ThunkAction<void,RootState,unknown,AnyAction>=>{
+    return async(dispatch)=>{
+        dispatch(utilsActions.resetSearchParams())
+    }
+
 }
