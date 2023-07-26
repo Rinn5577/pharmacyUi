@@ -14,6 +14,11 @@ export default{
         var response=await api().get(pharmacy_id.toString());
         return response.data
     },
+    async getPharmacyByName(pharmacy_name:string){
+        var url = `/byName/${pharmacy_name}`
+        var response=await api().get(url);
+        return response.data
+    },
     async updatePharmacy(pharmacy:PharmacyModel){
         var response=await api().put(pharmacy.id.toString(), pharmacy);
         return response.data

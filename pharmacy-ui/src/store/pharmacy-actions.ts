@@ -57,6 +57,25 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
     }
 }
 
+export const fetchPharmacyByName=(pharmacy_name:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
+    
+    return async(dispatch)=>{
+        try {
+                const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name);
+                dispatch(pharmacyActions.setPharmacyList(response))
+                dispatch(utilsActions.resetPharmacyError())
+
+        } catch (_err) {
+            let err =(_err as AxiosError)
+            const newError = createErrorObj(err)
+            dispatch(utilsActions.setPharmacyError(newError))
+
+        }
+
+
+    }
+}
+
 
 
 //added this for the pharmacyView button to set the target pharmacy as the active pharmacy so updateForm can reach it
