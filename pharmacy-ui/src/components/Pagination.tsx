@@ -11,6 +11,7 @@ const Pagination = () => {
     const dispatch = useAppDispatch();
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
+    const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
     const [totalPages, setTotalPages] = useState(2) //need to pull in total pages from API
     const [pageSize, setPageSize] = useState(3) //i only want 3 pharmacies returned at a time right now
 
@@ -42,18 +43,24 @@ const Pagination = () => {
 
 
     }
+
+
  
     return(
+
         <div >
-            <div className=" inline space-x-5">
-                 <button onClick={backClickHandler} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
-                     Back
-                </button> 
-                <p className="inline">Page ___ of ___ </p>
-                <button onClick={nextClickHandler} disabled={currentPage === totalPages ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
-                    Next
-                </button> 
-            </div>
+     
+                                <div className=" inline space-x-5">
+                                <button onClick={backClickHandler} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                                    Back
+                               </button> 
+                               <p className="inline">Page ___ of ___ </p>
+                               <button onClick={nextClickHandler} disabled={((currentPage === totalPages)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                                   Next
+                               </button> 
+                           </div>
+        
+
         </div>
     )
 }
