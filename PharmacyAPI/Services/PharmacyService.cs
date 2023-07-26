@@ -14,7 +14,7 @@
             var pharmacies = await _pharmacyRepository.GetAllPharmacies();
             return  pharmacies;
         }
-        public async Task<Pharmacy?> GetPharmacyByName(string name)
+        public async Task<List<Pharmacy>> GetPharmacyByName(string name)
         {
             var pharmacy = await _pharmacyRepository.GetPharmacyByName(name);
             return pharmacy;

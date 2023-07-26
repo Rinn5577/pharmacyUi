@@ -14,10 +14,11 @@
             var pharmacies = await _pharmacyDbContext.Pharmacies.ToListAsync();
             return pharmacies;
         }
-        public async Task<Pharmacy?> GetPharmacyByName(string name)
+        public async Task<List<Pharmacy>> GetPharmacyByName(string name)
         {
-            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Name == name);
-            return pharmacy;
+
+            var test = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
+            return test;
         }
         public async Task<Pharmacy?> GetPharmacyById(int id)
         {

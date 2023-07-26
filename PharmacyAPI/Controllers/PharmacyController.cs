@@ -13,13 +13,15 @@ namespace PharmacyAPI.Controllers
         }
 
         // Returns all pharmacies
+        //rename to getPaginationPharmacyList - paginated - paged 
+        //remove plurals 
         [HttpGet]
         public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies(int page, int pageSize)
         {
             
             var pharmacies = await _pharmacyService.GetAllPharmacies();
-            var totalCount = pharmacies.Count();
-            var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+            //var totalCount = pharmacies.Count();
+            //var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
             var pharmaciesPerPage = pharmacies.Skip((page -1) * pageSize).Take(pageSize).ToList();
 
             if (pharmacies is null)
@@ -31,9 +33,9 @@ namespace PharmacyAPI.Controllers
         }
 
 
-        //Returns pharmacies that include name 
+        //Returns pharmacy by name 
         [HttpGet("byName/{name}")]
-        public async Task<ActionResult<Pharmacy>> GetPharmacyByName(string name)
+        public async Task<ActionResult<List<Pharmacy>>> GetPharmacyByName(string name)
         {
             var pharmacy = await _pharmacyService.GetPharmacyByName(name);
 
