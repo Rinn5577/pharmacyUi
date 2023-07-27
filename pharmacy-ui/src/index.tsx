@@ -25,9 +25,10 @@ root.render(
       <App />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        {/* <Route path="/" element={<Home/>}/> */}
+        <Route path="/" element={<Pharmacies/>}/>
         <Route path="/:id" element={<UpdatePharmacy/>}/>
-        <Route path="/pharmacyList" element={<Pharmacies/>}/>
+        {/* <Route path="/" element={<Pharmacies/>}/> */}
         <Route path="/favorites" element={<Favorites/>}/>
       </Routes>
     </BrowserRouter>

@@ -21,7 +21,6 @@ const Favorites = () => {
         var allLocalAsObject = JSON.parse(allLocalStorage) //an object with the favorites stored key: string of info
         var arrayOfKeys = Object.keys(allLocalAsObject) // pulls out just the keys so we dont have to know them ahead of time
         dispatch(fetchFavoritePharmacyList(arrayOfKeys))
-
     }
  
     const checkFavoritePharmacyList = () => {
@@ -29,7 +28,6 @@ const Favorites = () => {
             return false
         } return true
     }
-
 
     return(
             <div className=" ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">

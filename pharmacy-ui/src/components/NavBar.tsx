@@ -16,15 +16,11 @@ function NavBar() {
     <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div className="text-sm lg:flex-grow">
         <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white mr-4">
-          Home
+          Pharmacy List
         </a>
         <a href="/favorites" className="block mt-4 mr-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
           Favorites
         </a>
-        <a href="/pharmacyList" className="block mt-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
-          Pharmacies
-        </a>
-
       </div>
     </div>
   </nav>
