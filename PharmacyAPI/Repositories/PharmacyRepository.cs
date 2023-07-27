@@ -17,8 +17,8 @@
         public async Task<List<Pharmacy>> GetPharmacyByName(string name)
         {
 
-            var test = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
-            return test;
+            var pharmacies = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
+            return pharmacies;
         }
         public async Task<Pharmacy?> GetPharmacyById(int id)
         {

@@ -60,7 +60,7 @@ const Favorites = () => {
 <div>
             <div className=" ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <div className="px-6 py-8">
-                <h2>Your Favorites</h2>
+<h2>Your Favorites</h2>
                 { checkFavoritePharmacyList() &&
                 favorites.map((pharmacy) =>(
                     <div>
