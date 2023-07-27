@@ -55,7 +55,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     return(
         <>
         <div className="p-1">
-            <div className=" w-full lg:max-w-full lg:flex">
+            <div >
             <div className="border-r border-b border-l border-gray-400  lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
                 <p className="text-sm text-gray-600 flex items-center">
@@ -64,7 +64,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                 <div className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</div>
                 <p className="text-gray-700 text-base">{pharmacy.address}</p>
                 <p className="text-gray-700 text-base">{pharmacy.city + ", " + pharmacy.state + ", " + pharmacy.zipcode}</p>
-                <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p>
+                {/* <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p> */}
 
                 </div>
                 <div>

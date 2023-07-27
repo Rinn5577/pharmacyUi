@@ -5,7 +5,7 @@ const SmallPharmacyCard = (pharmacy:PharmacyModel) =>{
     return(
         <div>
             
-            <div className=" ">
+            <div>
             <div className="border-r border-b border-l border-gray-400  lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div className="mb-8">
                 <p className="text-sm text-gray-600 flex items-center">
