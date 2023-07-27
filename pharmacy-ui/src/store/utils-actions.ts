@@ -4,26 +4,26 @@ import { RootState } from './index';
 import { AnyAction } from "@reduxjs/toolkit";
 import { ErrorModel, SearchParamsModel } from "../models/utils";
 
-export const utilsActions=utilsSlice.actions
+export const utilsReducers=utilsSlice.actions
 
 export const setCurrentPage=(number:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
-        dispatch(utilsActions.setCurrentPage(number))
+        dispatch(utilsReducers.setCurrentPage(number))
     }
 }
 export const setPharmacyError=(error:ErrorModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
-        dispatch(utilsActions.setPharmacyError(error))
+        dispatch(utilsReducers.setPharmacyError(error))
     }
 }
 export const setSearchParams=(searchParams:SearchParamsModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
-        dispatch(utilsActions.setSearchParams(searchParams))
+        dispatch(utilsReducers.setSearchParams(searchParams))
     }
 }
 export const resetSearchParams=():ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
-        dispatch(utilsActions.resetSearchParams())
+        dispatch(utilsReducers.resetSearchParams())
     }
 
 }

@@ -38,7 +38,8 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const handleEditClick=(e: React.MouseEvent<HTMLButtonElement>, value: number)=>{
         var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === value)[0]
         dispatch(setTargetPharmacy(targetPharmacy))
-        navigate('/updatePharmacy')
+        navigate(`/${targetPharmacy.id.toString()}`)
+        //navigate("/updatePharmacy"+)
     }
 
     //something is happening where undefined is returned when favoriting from search view 

@@ -5,9 +5,9 @@ import {RootState} from "./index"
 import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
-import { utilsActions } from "./utils-actions";
+import { utilsReducers } from "./utils-actions";
 
-export const pharmacyActions=pharmacySlice.actions
+export const pharmacyReducers=pharmacySlice.actions
 
 const createErrorObj = (err:AxiosError)=>{
     let tempError = {
@@ -24,12 +24,12 @@ export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<
     return async(dispatch)=>{
         try {
             const response:PharmacyModel[]=await PharmacyService.getPharmacyList(pageNumber,pageSize);
-            dispatch(pharmacyActions.setPharmacyList(response))
-            dispatch(utilsActions.resetPharmacyError())
+            dispatch(pharmacyReducers.setPharmacyList(response))
+            dispatch(utilsReducers.resetPharmacyError())
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
-            dispatch(utilsActions.setPharmacyError(newError))
+            dispatch(utilsReducers.setPharmacyError(newError))
         }
 
 
@@ -43,13 +43,14 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
                 const response:PharmacyModel=await PharmacyService.getPharmacy(pharmacy_id);
                 const newArray:PharmacyModel[] = [];
                 newArray.push(response)
-                dispatch(pharmacyActions.setPharmacyList(newArray))
-                dispatch(utilsActions.resetPharmacyError())
+                dispatch(pharmacyReducers.setPharmacyList(newArray))
+                dispatch(utilsReducers.resetPharmacyError())
+                console.log("actions working")
 
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
-            dispatch(utilsActions.setPharmacyError(newError))
+            dispatch(utilsReducers.setPharmacyError(newError))
 
         }
 
@@ -62,13 +63,13 @@ export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageS
     return async(dispatch)=>{
         try {
                 const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name, pageNumber, pageSize);
-                dispatch(pharmacyActions.setPharmacyList(response))
-                dispatch(utilsActions.resetPharmacyError())
+                dispatch(pharmacyReducers.setPharmacyList(response))
+                dispatch(utilsReducers.resetPharmacyError())
 
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
-            dispatch(utilsActions.setPharmacyError(newError))
+            dispatch(utilsReducers.setPharmacyError(newError))
 
         }
 
@@ -81,7 +82,7 @@ export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageS
 //added this for the pharmacyView button to set the target pharmacy as the active pharmacy so updateForm can reach it
 export const setTargetPharmacy=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
-        dispatch(pharmacyActions.setPharmacy(pharmacy))
+        dispatch(pharmacyReducers.setPharmacy(pharmacy))
     }
 }
 
@@ -90,12 +91,12 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
     return async(dispatch)=>{
         try {
             const response:PharmacyModel=await PharmacyService.updatePharmacy(pharmacy);
-            dispatch(pharmacyActions.setPharmacy(response))
-            dispatch(utilsActions.resetPharmacyError())
+            dispatch(pharmacyReducers.setPharmacy(response))
+            dispatch(utilsReducers.resetPharmacyError())
         } catch (_err) {
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
-            dispatch(utilsActions.setPharmacyError(newError))
+            dispatch(utilsReducers.setPharmacyError(newError))
         }
 
     }
@@ -104,6 +105,6 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
 
 export const setPharmacyFavoritesList=(favoritePharmacyList:PharmacyModel[]):ThunkAction<void, RootState, unknown,AnyAction>=>{
     return async(dispatch)=>{
-            dispatch(pharmacyActions.setPharmacyFavoriteList(favoritePharmacyList))
+            dispatch(pharmacyReducers.setPharmacyFavoriteList(favoritePharmacyList))
     }
 }
