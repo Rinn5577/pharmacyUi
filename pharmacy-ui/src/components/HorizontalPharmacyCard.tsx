@@ -64,7 +64,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                 <div className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</div>
                 <p className="text-gray-700 text-base">{pharmacy.address}</p>
                 <p className="text-gray-700 text-base">{pharmacy.city + ", " + pharmacy.state + ", " + pharmacy.zipcode}</p>
-                {/* <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p> */}
+                <p className="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p>
 
                 </div>
                 <div>

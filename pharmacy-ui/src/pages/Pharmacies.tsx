@@ -22,7 +22,7 @@ const Pharmacies = () =>{
     return(
         <div>
             <div className=" ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
-                <div className="px-6 py-8">
+                <div className="px-6 py-8 mb-0">
                 <div className="flex justify-between">
                     <div className=" self-center inline">
                         <button onClick={clickHandler} className=" bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
@@ -33,7 +33,10 @@ const Pharmacies = () =>{
                 </div>
                 <PharmacyList></PharmacyList>
                 </div>
+                <div className="mb-6">
                 <Pagination></Pagination>
+                </div>
+                
             </div>
         </div>
     )

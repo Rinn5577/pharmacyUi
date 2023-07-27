@@ -50,11 +50,10 @@ const Pagination = () => {
 
         <div >
      
-                                <div className=" inline space-x-5">
+                                <div className=" inline space-x-[700px] ml-8">
                                 <button onClick={backClickHandler} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                                     Back
                                </button> 
-                               <p className="inline">Page ___ of ___ </p>
                                <button onClick={nextClickHandler} disabled={((currentPage === totalPages)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                                    Next
                                </button> 
