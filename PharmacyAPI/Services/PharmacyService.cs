@@ -19,6 +19,11 @@
             var pharmacy = await _pharmacyRepository.GetPharmacyByName(name);
             return pharmacy;
         }
+        public async Task<List<Pharmacy>> GetFavoriteById(List<int> id)
+        {
+            var pharmacies = await _pharmacyRepository.GetFavoriteById(id);
+            return pharmacies;  
+        }
         public async Task<Pharmacy?> GetPharmacyById(int id)
         {
             var pharmacy = await _pharmacyRepository.GetPharmacyById(id);

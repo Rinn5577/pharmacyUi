@@ -16,8 +16,20 @@
         }
         public async Task<List<Pharmacy>> GetPharmacyByName(string name)
         {
-
             var pharmacies = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
+            return pharmacies;
+        }
+        public async Task<List<Pharmacy>> GetFavoriteById(List<int> pharmacyIds)
+        {
+            var pharmacies = new List<Pharmacy>();
+            foreach (var item in pharmacyIds)
+            {
+                var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == item);
+                if (pharmacy != null)
+                {
+                    pharmacies.Add(pharmacy);
+                }
+            }
             return pharmacies;
         }
         public async Task<Pharmacy?> GetPharmacyById(int id)
