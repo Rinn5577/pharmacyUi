@@ -2,7 +2,7 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyModel } from '../models/pharmacy';
+import { PharmacyArrayModel, PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
 import { utilsReducers } from "./utils-actions";
@@ -58,6 +58,14 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
     }
 }
 
+export const fetchFavoritePharmacyList=(ids: any):ThunkAction<void, RootState, unknown,AnyAction>=>{
+    return async(dispatch)=>{
+            const response:PharmacyModel[]=await PharmacyService.getFavoritePharmacyByID(ids)
+            console.log(response)
+            dispatch(pharmacyReducers.setPharmacyFavoriteList(response))
+    }
+}
+
 export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     
     return async(dispatch)=>{
@@ -103,8 +111,9 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
 }
 
 
-export const setPharmacyFavoritesList=(favoritePharmacyList:PharmacyModel[]):ThunkAction<void, RootState, unknown,AnyAction>=>{
-    return async(dispatch)=>{
-            dispatch(pharmacyReducers.setPharmacyFavoriteList(favoritePharmacyList))
-    }
-}
+// export const setPharmacyFavoritesList=(favoritePharmacyList:PharmacyModel[]):ThunkAction<void, RootState, unknown,AnyAction>=>{
+//     return async(dispatch)=>{
+//             dispatch(pharmacyReducers.setPharmacyFavoriteList(favoritePharmacyList))
+//     }
+// }
+

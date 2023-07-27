@@ -49,7 +49,9 @@ namespace PharmacyAPI.Controllers
 
         //Return a list of favorite pharmacies by ID 
         [HttpGet("favorites")]
-        public async Task<ActionResult<List<Pharmacy>>> GetFavoriteById([FromQuery] List<int> ids)
+         public async Task<ActionResult<List<Pharmacy>>> GetFavoriteById([FromQuery] List<int> ids)
+        //public async Task<ActionResult<List<Pharmacy>>> GetFavoriteById(List<int> ids)
+
         {
             var pharmacies = await _pharmacyService.GetFavoriteById(ids);
             if (pharmacies is null) 

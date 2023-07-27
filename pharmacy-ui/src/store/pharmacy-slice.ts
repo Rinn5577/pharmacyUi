@@ -1,5 +1,6 @@
 import { PharmacyModel, PharmacyArrayModel} from '../models/pharmacy'
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
+import { fetchFavoritePharmacyList } from './pharmacy-actions';
 
 const initialPharmacyState:PharmacyArrayModel={
     pharmacy_list:[],
@@ -30,6 +31,7 @@ const pharmacySlice=createSlice({
         },
         setPharmacyFavoriteList(state,action:PayloadAction<PharmacyModel[]>){
             state.pharmacy_favorites=action.payload;
+            console.log(action.payload)
         }
        
     }
