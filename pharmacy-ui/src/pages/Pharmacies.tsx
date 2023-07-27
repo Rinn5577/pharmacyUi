@@ -21,12 +21,13 @@ const Pharmacies = () =>{
             <div className=" pb-6 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <div className="px-6 py-8 mb-0">
                     <div className="flex justify-between">
+                    <Search></Search>
                         <div className="self-end">
                             <button onClick={clickHandler} className=" bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                             View All
                             </button> 
                         </div>
-                    <Search></Search>
+                    
                     </div>
                     <PharmacyList></PharmacyList>
                 </div>

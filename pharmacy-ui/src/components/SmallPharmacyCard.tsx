@@ -3,7 +3,7 @@ import { PharmacyModel } from "../models/pharmacy";
 
 const SmallPharmacyCard = (pharmacy:PharmacyModel) =>{
     return(     
-            <div className=" mb-8 border border-gray-400  bg-white rounded p-4 flex flex-col justify-between leading-normal">
+            <div className="mb-8 border border-gray-400  bg-white rounded p-4 flex flex-col justify-between leading-normal">
                 <p className="text-sm text-gray-600 flex items-center">Pharmacy ID: {pharmacy.id}</p>
                 <p className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</p>
                 <div className="text-gray-700 text-base">
