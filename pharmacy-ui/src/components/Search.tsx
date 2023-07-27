@@ -8,7 +8,6 @@ const Search=()=>{
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const [updatedSearch, setUpdatedSearch] = useState(searchParams)
 
-
     const searchHandler=()=>{
         updatedSearch.isSearching = true;
         dispatch(setSearchParams(updatedSearch))
@@ -21,7 +20,6 @@ const Search=()=>{
 
     const onChangeHandler=(event:any)=>{
             setUpdatedSearch({...updatedSearch,[event.target.name] : event.target.value})
-
     }
 
     return(

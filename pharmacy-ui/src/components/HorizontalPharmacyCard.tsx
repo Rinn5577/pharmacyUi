@@ -2,7 +2,7 @@ import React from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
-import { fetchPharmacy, setTargetPharmacy} from "../store/pharmacy-actions";
+import { setTargetPharmacy} from "../store/pharmacy-actions";
 import { addToLocalStorage, getKeysFromLocalStorage } from "../utils/localStorage";
 
 //TODO:
