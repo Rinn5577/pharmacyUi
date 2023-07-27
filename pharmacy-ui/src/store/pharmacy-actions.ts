@@ -2,7 +2,7 @@ import pharmacySlice from "./pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import {RootState} from "./index"
-import { PharmacyArrayModel, PharmacyModel } from '../models/pharmacy';
+import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
 import { utilsReducers } from "./utils-actions";
@@ -43,9 +43,9 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
                 const response:PharmacyModel=await PharmacyService.getPharmacy(pharmacy_id);
                 const newArray:PharmacyModel[] = [];
                 newArray.push(response)
+                dispatch(pharmacyReducers.setPharmacy(response))
                 dispatch(pharmacyReducers.setPharmacyList(newArray))
                 dispatch(utilsReducers.resetPharmacyError())
-                console.log("actions working")
 
         } catch (_err) {
             let err =(_err as AxiosError)

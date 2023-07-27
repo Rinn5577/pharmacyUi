@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { postPharmacyUpdate, fetchPharmacy } from '../store/pharmacy-actions';
-import { useParams } from "react-router-dom";
+import { postPharmacyUpdate } from '../store/pharmacy-actions';
 
 
 const UpdateForm=()=>{
-let {id} = useParams();
 
 const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 const [updatedPharmacy, setUpdatedPharmacy] = useState(pharmacy)
@@ -16,11 +14,10 @@ const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
     setUpdatedPharmacy({...updatedPharmacy,[event.target.name] : event.target.value})
 }
 
-const submitHandler = (event:any) =>{
+const submitHandler = (event: any) =>{
     event.preventDefault();
     dispatch(postPharmacyUpdate(updatedPharmacy))
 }
-
  
     return(
         <>

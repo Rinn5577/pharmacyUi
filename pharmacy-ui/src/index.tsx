@@ -7,7 +7,6 @@ import store from './store'
 import {Provider} from 'react-redux';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
-import Home from './pages/Home';
 import { fetchPharmacyList } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
 import Favorites from './pages/Favorites';

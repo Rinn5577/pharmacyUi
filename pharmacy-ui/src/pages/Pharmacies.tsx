@@ -11,34 +11,27 @@ const Pharmacies = () =>{
 
     const dispatch=useAppDispatch();
 
-    
-        //Handlers
-        const clickHandler=()=>[
-            dispatch(resetSearchParams()),
-            dispatch(fetchPharmacyList(1,3)),
-            dispatch(setCurrentPage(1))
-        ]
+    const clickHandler=()=>[
+        dispatch(resetSearchParams()),
+        dispatch(fetchPharmacyList(1,3)),
+        dispatch(setCurrentPage(1))
+    ]
 
     return(
-        <div>
-            <div className=" ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
+            <div className=" pb-6 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <div className="px-6 py-8 mb-0">
-                <div className="flex justify-between">
-                    <div className=" self-center inline">
-                        <button onClick={clickHandler} className=" bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                    <div className="flex justify-between">
+                        <div className="self-end">
+                            <button onClick={clickHandler} className=" bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                             View All
-                        </button> 
+                            </button> 
+                        </div>
+                    <Search></Search>
                     </div>
-                        <Search></Search>
+                    <PharmacyList></PharmacyList>
                 </div>
-                <PharmacyList></PharmacyList>
-                </div>
-                <div className="mb-6">
                 <Pagination></Pagination>
-                </div>
-                
             </div>
-        </div>
     )
 }
 

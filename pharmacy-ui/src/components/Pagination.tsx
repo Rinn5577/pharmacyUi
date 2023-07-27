@@ -16,51 +16,34 @@ const Pagination = () => {
     const [pageSize, setPageSize] = useState(3) //i only want 3 pharmacies returned at a time right now
 
 
-    //Handlers
-    const backClickHandler = () =>{
-        const test = searchParams;
-        var newNum = (currentPage-1); 
-        if(test.isSearching === false){
-            dispatch(fetchPharmacyList(newNum,pageSize))
-            dispatch(setCurrentPage(newNum))
-        } else if (test.isSearching === true && searchParams.searchBy === "Name"){
-            dispatch(fetchPharmacyByName(test.input,newNum,pageSize))
-            dispatch(setCurrentPage(newNum))
+    const navigateClickHandler = (direction:string) =>{
+        var pageNum = currentPage
+        if(direction === "back"){
+            var pageNum = (currentPage-1);
+        }else if (direction === "next"){
+            var pageNum = (currentPage+1);
+        }
+
+        if(searchParams.isSearching === false){
+            dispatch(fetchPharmacyList(pageNum,pageSize))
+            dispatch(setCurrentPage(pageNum))
+        } else if (searchParams.isSearching === true && searchParams.searchBy === "Name"){
+            dispatch(fetchPharmacyByName(searchParams.input, pageNum,pageSize))
+            dispatch(setCurrentPage(pageNum))
         }
 
     }
 
-    const nextClickHandler = () =>{
-        const test = searchParams;
-        var newNum = (currentPage+1); 
-        if(test.isSearching === false){
-            dispatch(fetchPharmacyList(newNum,pageSize))
-            dispatch(setCurrentPage(newNum))
-        } else if (test.isSearching === true && test.searchBy === "Name"){
-            dispatch(fetchPharmacyByName(test.input, newNum,pageSize))
-            dispatch(setCurrentPage(newNum))
-        }
 
-
-    }
-
-
- 
     return(
-
-        <div >
-     
-                                <div className=" inline space-x-[700px] ml-8">
-                                <button onClick={backClickHandler} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
-                                    Back
-                               </button> 
-                               <button onClick={nextClickHandler} disabled={((currentPage === totalPages)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
-                                   Next
-                               </button> 
-                           </div>
-        
-
-        </div>
+            <div className=" inline space-x-[700px] ml-8">
+                <button onClick={() => navigateClickHandler("back")} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                Back
+                </button> 
+                <button onClick={() => navigateClickHandler("next")} disabled={((currentPage === totalPages)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                Next
+                </button> 
+            </div>
     )
 }
 

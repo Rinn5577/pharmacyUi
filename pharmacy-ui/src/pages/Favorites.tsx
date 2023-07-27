@@ -2,25 +2,19 @@ import React, { useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks'
 import { fetchFavoritePharmacyList } from '../store/pharmacy-actions';
 import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
-
+import { getKeysFromLocalStorage } from '../utils/localStorage';
 const Favorites = () => {
 
     const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
     const dispatch=useAppDispatch();
 
     useEffect(() =>{
-        if(favorites.length === 0){
-            loadFaveArray()
-        }
+        loadFavoritePharmacyList()
     }, [])
 
-    //this loads the favorites stored in local to the state store 
-    const loadFaveArray = () =>{
-        //gets local storage 
-        var allLocalStorage = JSON.stringify(localStorage) //all of local storage into a string
-        var allLocalAsObject = JSON.parse(allLocalStorage) //an object with the favorites stored key: string of info
-        var arrayOfKeys = Object.keys(allLocalAsObject) // pulls out just the keys so we dont have to know them ahead of time
-        dispatch(fetchFavoritePharmacyList(arrayOfKeys))
+    const loadFavoritePharmacyList = () =>{
+        var keys = getKeysFromLocalStorage()
+        dispatch(fetchFavoritePharmacyList(keys))
     }
  
     const checkFavoritePharmacyList = () => {
@@ -30,17 +24,13 @@ const Favorites = () => {
     }
 
     return(
-            <div className=" ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
-                <div className="px-6 py-8">
+            <div className=" px-6 py-8 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <h2>Your Favorites</h2>
                 { checkFavoritePharmacyList() &&
-                favorites.map((pharmacy) =>(
-                    <div>
-                        <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
-                    </div>
-                ) )
-            }
-                </div>
+                    favorites.map((pharmacy) =>(
+                            <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
+                    ))
+                }
             </div>
     )
 }

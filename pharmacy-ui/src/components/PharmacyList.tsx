@@ -6,29 +6,22 @@ const PharmacyList = () =>{
 
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
     
-    const checkPharmacyList=():boolean=>{
-        if(pharmacyList.length===0 ){
+    const checkPharmacyList=()=>{
+        if(pharmacyList.length === 0){
             return false
-        }
-        return true
+        } return true
+
     }
 
     return(
-        <div>    
+        
             <div className="pt-3">
-
-                {checkPharmacyList() &&
-                    (
-                        pharmacyList.map((pharmacy)=>(
-                            <div>
-                                <HorizontalPharmacyCard {...pharmacy}/>
-                            </div>
-                        )) 
-                    )
-                
-                }
+                {checkPharmacyList() && (
+                                pharmacyList.map((pharmacy)=>(
+                    <HorizontalPharmacyCard {...pharmacy}/>
+            )) 
+                )}
             </div>
-        </div>
     )
 }
 
