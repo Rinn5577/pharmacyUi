@@ -2,7 +2,6 @@
 using FluentAssertions;
 using Moq;
 using PharmacyAPI.Models;
-using PharmacyAPI.Repositories;
 using PharmacyAPI.Services;
 
 namespace PharmacyAPI.Tests.Services
@@ -10,15 +9,15 @@ namespace PharmacyAPI.Tests.Services
     public class PharamcyServiceTests
 	{
 
-        private readonly Mock<IPharmacyRepository> _repositoryMock;
+        private readonly Mock<IPharmacyService> _repositoryMock;
         private readonly PharmacyService _serviceMock;
         private readonly IFixture _fixture;
 
         public PharamcyServiceTests()
         {
             _fixture = new Fixture();
-            _repositoryMock = _fixture.Freeze<Mock<IPharmacyRepository>>();
-            _serviceMock = new PharmacyService(_repositoryMock.Object);
+            _repositoryMock = _fixture.Freeze<Mock<IPharmacyService>>();
+            //_serviceMock = new PharmacyService(_repositoryMock.Object);
         }
 
         [Fact]

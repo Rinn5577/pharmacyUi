@@ -2,8 +2,6 @@
 global using PharmacyAPI.Database;
 global using PharmacyAPI.Services;
 global using PharmacyAPI.Models;
-global using PharmacyAPI.Repositories;
-
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +14,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPharmacyService, PharmacyService>();
-builder.Services.AddScoped<IPharmacyRepository, PharmacyRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
