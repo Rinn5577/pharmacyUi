@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list)
+
 
 
     const editClickHandler=(id: number)=>{
@@ -41,7 +42,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                     <p className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</p>
                     <p className="text-gray-700 text-base">{pharmacy.address}</p>
                     <p className="text-gray-700 text-base">{pharmacy.city + ", " + pharmacy.state + ", " + pharmacy.zipcode}</p>
-                    <p className="text-gray-700 text-base mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis consectetur bibendum. Praesent quis condimentum ante. Quisque dictum ipsum a diam scelerisque blandit.</p>
+                    <p className="text-gray-700 text-base mb-6">Appeal to the client, sue the vice president . I got your invoice...it seems really high, why did you charge so much can you make the logo bigger yes bigger bigger still the logo is too big im not sure, try something else.</p>
                 
                 <div>
                     <button disabled={checkDisable(pharmacy.id)} onClick={()=>favoriteClickHandler(pharmacy.id)} className="bg-nuvemGreen disabled:bg-gray-500 hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">

@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
-import { fetchPharmacy, fetchPharmacyByName } from "../store/pharmacy-actions";
+import { fetchPharmacyById, fetchPharmacyByName } from "../store/pharmacy-actions";
 import { setSearchParams } from "../store/utils-actions";
 
 const Search=()=>{
@@ -12,7 +12,7 @@ const Search=()=>{
         updatedSearch.isSearching = true;
         dispatch(setSearchParams(updatedSearch))
         if(updatedSearch.searchBy === "Id"){
-            dispatch(fetchPharmacy(parseInt(updatedSearch.input)))
+            dispatch(fetchPharmacyById(parseInt(updatedSearch.input)))
         }else if (updatedSearch.searchBy === "Name"){
             dispatch(fetchPharmacyByName(updatedSearch.input,1,3))
         }

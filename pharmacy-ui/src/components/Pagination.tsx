@@ -12,7 +12,7 @@ const Pagination = () => {
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    const [totalPages, setTotalPages] = useState(2) //need to pull in total pages from API
+    // const [totalPages, setTotalPages] = useState(2) //need to pull in total pages from API
     const [pageSize, setPageSize] = useState(3) //i only want 3 pharmacies returned at a time right now
 
 

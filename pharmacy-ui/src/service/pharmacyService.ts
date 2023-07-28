@@ -9,7 +9,7 @@ export default{
         let response=await api().get(url);
         return response.data;
     },
-    async getPharmacy(pharmacy_id:number){
+    async getPharmacyById(pharmacy_id:number){
         let response=await api().get(pharmacy_id.toString());
         return response.data
     },

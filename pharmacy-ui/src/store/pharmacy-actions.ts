@@ -31,16 +31,14 @@ export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<
             const newError = createErrorObj(err)
             dispatch(utilsReducers.setPharmacyError(newError))
         }
-
-
     }
 }
 
-export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+export const fetchPharmacyById=(pharmacy_id:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     
     return async(dispatch)=>{
         try {
-                const response:PharmacyModel=await PharmacyService.getPharmacy(pharmacy_id);
+                const response:PharmacyModel=await PharmacyService.getPharmacyById(pharmacy_id);
                 const newArray:PharmacyModel[] = [];
                 newArray.push(response)
                 dispatch(pharmacyReducers.setPharmacy(response))
@@ -53,8 +51,6 @@ export const fetchPharmacy=(pharmacy_id:number):ThunkAction<void,RootState,unkno
             dispatch(utilsReducers.setPharmacyError(newError))
 
         }
-
-
     }
 }
 
@@ -78,23 +74,16 @@ export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageS
             let err =(_err as AxiosError)
             const newError = createErrorObj(err)
             dispatch(utilsReducers.setPharmacyError(newError))
-
         }
-
-
     }
 }
 
-
-
-//added this for the pharmacyView button to set the target pharmacy as the active pharmacy so updateForm can reach it
 export const setTargetPharmacy=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
         dispatch(pharmacyReducers.setPharmacy(pharmacy))
     }
 }
 
-//updates the database
 export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{
         try {
@@ -106,14 +95,7 @@ export const postPharmacyUpdate=(pharmacy:PharmacyModel):ThunkAction<void,RootSt
             const newError = createErrorObj(err)
             dispatch(utilsReducers.setPharmacyError(newError))
         }
-
     }
 }
 
-
-// export const setPharmacyFavoritesList=(favoritePharmacyList:PharmacyModel[]):ThunkAction<void, RootState, unknown,AnyAction>=>{
-//     return async(dispatch)=>{
-//             dispatch(pharmacyReducers.setPharmacyFavoriteList(favoritePharmacyList))
-//     }
-// }
 
