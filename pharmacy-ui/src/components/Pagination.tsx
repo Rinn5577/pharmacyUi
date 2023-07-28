@@ -17,11 +17,11 @@ const Pagination = () => {
 
 
     const navigateClickHandler = (direction:string) =>{
-        var pageNum = currentPage
+        let pageNum = currentPage
         if(direction === "back"){
-            var pageNum = (currentPage-1);
+             pageNum = (currentPage-1);
         }else if (direction === "next"){
-            var pageNum = (currentPage+1);
+             pageNum = (currentPage+1);
         }
 
         if(searchParams.isSearching === false){
@@ -40,7 +40,7 @@ const Pagination = () => {
                 <button onClick={() => navigateClickHandler("back")} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                 Back
                 </button> 
-                <button onClick={() => navigateClickHandler("next")} disabled={((currentPage === totalPages)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                <button onClick={() => navigateClickHandler("next")} disabled={((pharmacyList.length < 3)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                 Next
                 </button> 
             </div>

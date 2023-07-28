@@ -15,7 +15,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
 
     const editClickHandler=(id: number)=>{
-        var targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === id)[0]
+        let targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === id)[0]
         dispatch(setTargetPharmacy(targetPharmacy))
         navigate(`/${pharmacy.id.toString()}`)
     }
@@ -25,7 +25,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     }
 
     const checkDisable = (id: number) => {
-        var keys = getKeysFromLocalStorage()
+        let keys = getKeysFromLocalStorage()
         if(keys.includes(id.toString())){
             return true
         } return false

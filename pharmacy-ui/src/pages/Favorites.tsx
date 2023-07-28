@@ -13,7 +13,7 @@ const Favorites = () => {
     }, [])
 
     const loadFavoritePharmacyList = () =>{
-        var keys = getKeysFromLocalStorage()
+        let keys = getKeysFromLocalStorage()
         dispatch(fetchFavoritePharmacyList(keys))
     }
  
