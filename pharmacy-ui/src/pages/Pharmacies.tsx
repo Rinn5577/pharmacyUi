@@ -13,9 +13,8 @@ const Pharmacies = () =>{
 
     const clickHandler=()=>[
         dispatch(resetSearchParams()),
-        //dispatch(fetchPharmacyList(1,3)),
-        dispatch(fetchPharmacyListTest(1,3)),
-        dispatch(setCurrentPage(1))
+        dispatch(fetchPharmacyListTest(1,3,"all")),
+        //dispatch(setCurrentPage(1))
     ]
 
     return(

@@ -2,7 +2,7 @@ import React from "react";
 import { PharmacyModel } from "../models/pharmacy";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
-import { setTargetPharmacy} from "../store/pharmacy-actions";
+import { fetchPharmacyListTest, setTargetPharmacy} from "../store/pharmacy-actions";
 import { addToLocalStorage, getKeysFromLocalStorage } from "../utils/localStorage";
 
 //TODO:
@@ -12,8 +12,6 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list)
-
-
 
     const editClickHandler=(id: number)=>{
         let targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === id)[0]

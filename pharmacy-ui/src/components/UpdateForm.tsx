@@ -2,13 +2,11 @@ import React, {useState} from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { postPharmacyUpdate } from '../store/pharmacy-actions';
 
-
 const UpdateForm=()=>{
 
 const pharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 const [updatedPharmacy, setUpdatedPharmacy] = useState(pharmacy)
 const dispatch=useAppDispatch();
-
 
 const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
     setUpdatedPharmacy({...updatedPharmacy,[event.target.name] : event.target.value})

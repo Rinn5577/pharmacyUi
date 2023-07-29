@@ -11,7 +11,7 @@ const initialUtilsState:UtilsArrayModel={
         "status": 0
     },
     searchParams:{
-        "searchBy": "Id",
+        "searchBy": "default",
         "input": "",
         "isSearching": false
     }

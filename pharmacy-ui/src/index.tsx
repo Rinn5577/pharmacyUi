@@ -7,14 +7,11 @@ import store from './store'
 import {Provider} from 'react-redux';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
-import {fetchPharmacyListTest } from './store/pharmacy-actions';
+import {fetchPharmacyList } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
 import Favorites from './pages/Favorites';
 
-//store.dispatch(fetchPharmacyList(1,3))
-store.dispatch(fetchPharmacyListTest(1,3))
-
-
+store.dispatch(fetchPharmacyList(1,3,"all"))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,10 +23,8 @@ root.render(
       <App />
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Home/>}/> */}
         <Route path="/" element={<Pharmacies/>}/>
         <Route path="/:id" element={<UpdatePharmacy/>}/>
-        {/* <Route path="/" element={<Pharmacies/>}/> */}
         <Route path="/favorites" element={<Favorites/>}/>
       </Routes>
     </BrowserRouter>

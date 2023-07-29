@@ -8,19 +8,24 @@ const Search=()=>{
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const [updatedSearch, setUpdatedSearch] = useState(searchParams)
 
-    const searchHandler=()=>{
+
+    const searchClickHandler=()=>{
+        const page = 1;
+        const pageSize = 3;
+        let idArray: string[] = [];
+        let name = ""; 
+        let searchby = updatedSearch.searchBy
         updatedSearch.isSearching = true;
+
         dispatch(setSearchParams(updatedSearch))
+
         if(updatedSearch.searchBy === "Id"){
-            //dispatch(fetchPharmacyById(parseInt(updatedSearch.input)))
-            let idArray = [updatedSearch.input]
-            dispatch(fetchPharmacyListTest(1,3,idArray))
-
+            idArray = [updatedSearch.input]
         }else if (updatedSearch.searchBy === "Name"){
-            //dispatch(fetchPharmacyByName(updatedSearch.input,1,3))
-            dispatch(fetchPharmacyListTest(1,3,undefined,updatedSearch.input))
-
+            name = updatedSearch.input
         }
+
+        dispatch(fetchPharmacyListTest(page,pageSize,searchby,idArray,name))
     }
 
     const onChangeHandler=(event:any)=>{
@@ -34,6 +39,7 @@ const Search=()=>{
             <label className="inline left-0  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Select search by:</label>
             <div className="flex flex-wrap justify-between -mx-3 mb-2 px-3">
                     <select value={updatedSearch.searchBy} name="searchBy" onChange={(e) => onChangeHandler(e)}className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option value="default">Select</option>
                         <option value="Id">ID</option>
                         <option value="Name">Name</option>
                     </select>
@@ -47,7 +53,7 @@ const Search=()=>{
                         <input type={updatedSearch.searchBy === "Id" ? "number" : "text"} name="input" onChange={(e) => onChangeHandler(e)} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
                 </div>
                 <div className="md:w-1/3 px-3 mb-6 md:mb-0">
-                    <button onClick={searchHandler} name="isSearching" className=" hover:bg-nuvemBlue bg-nuvemGreen hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
+                    <button onClick={searchClickHandler} disabled={updatedSearch.searchBy === "default"}className=" disabled:bg-gray-500 hover:bg-nuvemBlue bg-nuvemGreen hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
                     Search
                     </button> 
                 </div>

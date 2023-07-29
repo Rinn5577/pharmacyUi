@@ -12,3 +12,4 @@ export const addToLocalStorage = (id:number) => {
         localStorage.setItem(id.toString(), "")
     } console.log("nothing added, key already exists")
 }
+

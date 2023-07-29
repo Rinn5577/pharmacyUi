@@ -12,34 +12,34 @@ const Pagination = () => {
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    // const [totalPages, setTotalPages] = useState(2) //need to pull in total pages from API
-    const [pageSize, setPageSize] = useState(3) //i only want 3 pharmacies returned at a time right now
-
 
     const navigateClickHandler = (direction:string) =>{
-        let pageNum = currentPage
+        let page = currentPage
+        const pageSize = 3;
+        let idArray: string[] = [];
+        let name = ""; 
+        let searchby = searchParams.searchBy
+
         if(direction === "back"){
-             pageNum = (currentPage-1);
+             page = (currentPage-1);
         }else if (direction === "next"){
-             pageNum = (currentPage+1);
+             page = (currentPage+1);
         }
 
-        if(searchParams.isSearching === false){
-            //dispatch(fetchPharmacyList(pageNum,pageSize))
-            dispatch(fetchPharmacyListTest(pageNum,pageSize))
-            dispatch(setCurrentPage(pageNum))
-        } else if (searchParams.isSearching === true && searchParams.searchBy === "Name"){
-            //dispatch(fetchPharmacyByName(searchParams.input, pageNum,pageSize))
-            dispatch(fetchPharmacyListTest(pageNum,pageSize, undefined, searchParams.input))
-            dispatch(setCurrentPage(pageNum))
+        if(searchParams.searchBy === "Id"){
+            idArray = [searchParams.input]
+        }else if (searchParams.searchBy === "Name"){
+            name = searchParams.input
         }
+
+        dispatch(fetchPharmacyListTest(page,pageSize,searchby,idArray,name))
 
     }
 
 
     return(
             <div className=" inline space-x-[700px] ml-8">
-                <button onClick={() => navigateClickHandler("back")} disabled={currentPage > 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
+                <button onClick={() => navigateClickHandler("back")} disabled={currentPage == 1 ? false:true} className="disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">
                 Back
                 </button> 
                 <button onClick={() => navigateClickHandler("next")} disabled={((pharmacyList.length < 3)|| pharmacyList.length < 3)  ? true:false}className=" disabled:bg-gray-500 bg-nuvemBlue hover:bg-nuvemGreen text-white hover:text-nuvemBlue text-center py-2 px-4 rounded-full">

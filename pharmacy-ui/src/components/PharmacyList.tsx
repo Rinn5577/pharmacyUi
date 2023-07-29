@@ -17,8 +17,10 @@ const PharmacyList = () =>{
         
             <div className="pt-3">
                 {checkPharmacyList() && (
-                                pharmacyList.map((pharmacy)=>(
-                    <HorizontalPharmacyCard {...pharmacy}/>
+                    pharmacyList.map((pharmacy)=>(
+                        <div key={pharmacy.id}>
+                        <HorizontalPharmacyCard {...pharmacy}/>
+                        </div>
             )) 
                 )}
             </div>

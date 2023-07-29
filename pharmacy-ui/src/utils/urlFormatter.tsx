@@ -1,20 +1,19 @@
-export const urlFormatter = (page:number, page_size:number, ids?:Array<string>, name?:string) =>{
+export const urlFormatter = (page:number, page_size:number, search_by:string, ids?:Array<string>, name?:string) =>{
     let baseUrl = `?page=${page}&pageSize=${page_size}`
-    if(ids !== undefined){
+    if(search_by === "Id" && ids !== undefined){
         let newUrlArray = [];
         for (const id of ids) {
             let urlSegment = `&ids=${id}`
             newUrlArray.push(urlSegment)
         }
         return baseUrl + newUrlArray.join("")
-    } else if (name !== undefined){
+    } else if (search_by === "Name" && name !== undefined){
         return baseUrl+`&name=${name}`
     }else 
-
-    return baseUrl;
-
+        return baseUrl;
+    
 }
-
+//Example URLs
 //get all 
 //'https://localhost:7128/api/Pharmacy?page=1&pageSize=3'
 
