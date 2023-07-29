@@ -58,7 +58,7 @@ export const fetchFavoritePharmacyList=(ids: any):ThunkAction<void, RootState, u
     return async(dispatch)=>{
             const response:PharmacyModel[]=await PharmacyService.getFavoritePharmacyByID(ids)
             console.log(response)
-            dispatch(pharmacyReducers.setPharmacyFavoriteList(response))
+            dispatch(pharmacyReducers.setPharmacyList(response))
     }
 }
 

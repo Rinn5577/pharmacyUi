@@ -5,7 +5,7 @@ import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
 import { getKeysFromLocalStorage } from '../utils/localStorage';
 const Favorites = () => {
 
-    const favorites=useAppSelector(state=>state.pharmacy.pharmacy_favorites)
+    const favorites=useAppSelector(state=>state.pharmacy.pharmacy_list)
     const dispatch=useAppDispatch();
 
     useEffect(() =>{
