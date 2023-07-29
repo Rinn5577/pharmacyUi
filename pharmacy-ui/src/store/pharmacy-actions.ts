@@ -38,11 +38,12 @@ export const fetchPharmacyById=(pharmacy_id:number):ThunkAction<void,RootState,u
     
     return async(dispatch)=>{
         try {
-                const response:PharmacyModel=await PharmacyService.getPharmacyById(pharmacy_id);
-                const newArray:PharmacyModel[] = [];
-                newArray.push(response)
-                dispatch(pharmacyReducers.setPharmacy(response))
-                dispatch(pharmacyReducers.setPharmacyList(newArray))
+                const response:PharmacyModel[]=await PharmacyService.getPharmacyById(pharmacy_id);
+                dispatch(pharmacyReducers.setPharmacyList(response))
+                // const newArray:PharmacyModel[] = [];
+                // newArray.push(response)
+                // dispatch(pharmacyReducers.setPharmacy(response))
+                // dispatch(pharmacyReducers.setPharmacyList(newArray))
                 dispatch(utilsReducers.resetPharmacyError())
 
         } catch (_err) {
@@ -54,7 +55,7 @@ export const fetchPharmacyById=(pharmacy_id:number):ThunkAction<void,RootState,u
     }
 }
 
-export const fetchFavoritePharmacyList=(ids: any):ThunkAction<void, RootState, unknown,AnyAction>=>{
+export const fetchFavoritePharmacyList=(ids: Array<string>):ThunkAction<void, RootState, unknown,AnyAction>=>{
     return async(dispatch)=>{
             const response:PharmacyModel[]=await PharmacyService.getFavoritePharmacyByID(ids)
             console.log(response)

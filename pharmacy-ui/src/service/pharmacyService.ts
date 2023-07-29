@@ -10,13 +10,17 @@ export default{
         return response.data;
     },
     async getPharmacyById(pharmacy_id:number){
-        let response=await api().get(pharmacy_id.toString());
+        let url = `?page=1&pageSize=3&ids=${pharmacy_id}`
+        console.log(url)
+        let response=await api().get(url);
+        //let response=await api().get(pharmacy_id.toString());
+        console.log(response.data)
         return response.data
     },
     async getPharmacyByName(pharmacy_name:string, pageNumber:number, pageSize:number){
         let num = pageNumber.toString();
         let size = pageSize.toString();
-        let url = `/byName/${pharmacy_name}?page=${num}&pageSize=${size}`
+        let url = `?page=${num}&pageSize=${size}&name=${pharmacy_name}`
         let response=await api().get(url);
         return response.data
     },
@@ -26,7 +30,7 @@ export default{
     },
 
     async getFavoritePharmacyByID(ids: Array<string>){
-        let baseUrl = `/favorites?`
+        let baseUrl = `?page=1&pageSize=3&`
         let newUrlArray = [];
 
         for (let i = 0; i < ids.length; i++) {

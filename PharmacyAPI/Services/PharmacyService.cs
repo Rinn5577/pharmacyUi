@@ -8,7 +8,7 @@
         {
             _pharmacyDbContext = pharmacyDbContext;
         }
-
+        /*
         public async Task<List<Pharmacy>> GetAllPharmacies()
         {
             var pharmacies = await _pharmacyDbContext.Pharmacies.ToListAsync();
@@ -37,10 +37,47 @@
             var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
             return pharmacy;
         }
+        */
+
+        public async Task<List<Pharmacy>> GetPharmacyList(List<int> ids, string name)
+        {
+            System.Diagnostics.Debug.WriteLine("incoming params" + ids.ToString() + name);
+            var pharmacyList = new List<Pharmacy>();
+            if (name.Length > 0)
+            {
+                pharmacyList = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
+            }
+            else if (ids.Count > 0)
+            {
+                foreach (var id in ids)
+                {
+                    var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
+                    if (pharmacy != null)
+                    {
+                        pharmacyList.Add(pharmacy);
+                    }
+                }
+            }
+            else
+            {
+                pharmacyList = await _pharmacyDbContext.Pharmacies.ToListAsync();
+            }
+            return pharmacyList;
+
+        }
 
         public async Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
-            var pharmacy = await GetPharmacyById(id);
+            //var pharmacyList = await _pharmacyDbContext.Pharmacies.ToListAsync();
+            var nameParam = "";
+            var idParam = new List<int>
+            {
+                id
+            };
+            var pharmacyList = await GetPharmacyList(idParam, nameParam);
+            System.Diagnostics.Debug.WriteLine(pharmacyList);
+            var pharmacy = pharmacyList[0];
+
             if (pharmacy is not null)
             {
                 //Update occurs only if fields contain a value other than null or white spaces 

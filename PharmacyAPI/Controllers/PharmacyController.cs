@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 namespace PharmacyAPI.Controllers
 {
@@ -15,6 +16,7 @@ namespace PharmacyAPI.Controllers
         // Returns all pharmacies
         //rename to getPaginationPharmacyList - paginated - paged 
         //remove plurals 
+        /*
         [HttpGet]
         public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies(int page, int pageSize)
         {
@@ -75,7 +77,21 @@ namespace PharmacyAPI.Controllers
             return Ok(pharmacy);
         }
 
+        */
+        [HttpGet]
+        public async Task<ActionResult<Pharmacy>> GetPharmacyList(int page, int pageSize, [Optional][FromQuery]List<int> ids, string name = "")
+        {
+            var fullPharmacyList = await _pharmacyService.GetPharmacyList(ids, name);
+            var paginatedPharmacyList = fullPharmacyList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var totalCount = fullPharmacyList.Count;
 
+            if (paginatedPharmacyList.Count == 0)
+            {
+                return NotFound("Sorry, we couldn't find any pharmacies matching that request.");
+            }
+
+            return Ok(paginatedPharmacyList);
+        }
 
         // Updates a pharmacy by id
         [HttpPut("{id}")]
