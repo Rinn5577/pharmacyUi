@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks'
-import { fetchFavoritePharmacyList } from '../store/pharmacy-actions';
+import { fetchPharmacyListTest } from '../store/pharmacy-actions';
 import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
 import { getKeysFromLocalStorage } from '../utils/localStorage';
 const Favorites = () => {
@@ -14,7 +14,8 @@ const Favorites = () => {
 
     const loadFavoritePharmacyList = () =>{
         let keys = getKeysFromLocalStorage()
-        dispatch(fetchFavoritePharmacyList(keys))
+        //dispatch(fetchFavoritePharmacyList(keys))
+        dispatch(fetchPharmacyListTest(1,3,keys))
     }
  
     const checkFavoritePharmacyList = () => {

@@ -19,65 +19,77 @@ const createErrorObj = (err:AxiosError)=>{
     return tempError;
 }
 
-export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+// export const fetchPharmacyList=(pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+
+//     return async(dispatch)=>{
+//         try {
+//             const response:PharmacyModel[]=await PharmacyService.getPharmacyList(pageNumber,pageSize);
+//             dispatch(pharmacyReducers.setPharmacyList(response))
+//             dispatch(utilsReducers.resetPharmacyError())
+//         } catch (_err) {
+//             let err =(_err as AxiosError)
+//             const newError = createErrorObj(err)
+//             dispatch(utilsReducers.setPharmacyError(newError))
+//         }
+//     }
+// }
+
+export const fetchPharmacyListTest=(page:number, page_size:number, ids?:Array<string>, name?:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
 
     return async(dispatch)=>{
         try {
-            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(pageNumber,pageSize);
+            const response:PharmacyModel[]=await PharmacyService.getPharmacyListTest(page, page_size,ids,name);
             dispatch(pharmacyReducers.setPharmacyList(response))
-            dispatch(utilsReducers.resetPharmacyError())
-        } catch (_err) {
-            let err =(_err as AxiosError)
-            const newError = createErrorObj(err)
-            dispatch(utilsReducers.setPharmacyError(newError))
+        } catch (error) {
+            
         }
     }
 }
 
-export const fetchPharmacyById=(pharmacy_id:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+// export const fetchPharmacyById=(pharmacy_id:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     
-    return async(dispatch)=>{
-        try {
-                const response:PharmacyModel[]=await PharmacyService.getPharmacyById(pharmacy_id);
-                dispatch(pharmacyReducers.setPharmacyList(response))
-                // const newArray:PharmacyModel[] = [];
-                // newArray.push(response)
-                // dispatch(pharmacyReducers.setPharmacy(response))
-                // dispatch(pharmacyReducers.setPharmacyList(newArray))
-                dispatch(utilsReducers.resetPharmacyError())
+//     return async(dispatch)=>{
+//         try {
+//                 const response:PharmacyModel[]=await PharmacyService.getPharmacyById(pharmacy_id);
+//                 dispatch(pharmacyReducers.setPharmacyList(response))
+//                 // const newArray:PharmacyModel[] = [];
+//                 // newArray.push(response)
+//                 // dispatch(pharmacyReducers.setPharmacy(response))
+//                 // dispatch(pharmacyReducers.setPharmacyList(newArray))
+//                 dispatch(utilsReducers.resetPharmacyError())
 
-        } catch (_err) {
-            let err =(_err as AxiosError)
-            const newError = createErrorObj(err)
-            dispatch(utilsReducers.setPharmacyError(newError))
+//         } catch (_err) {
+//             let err =(_err as AxiosError)
+//             const newError = createErrorObj(err)
+//             dispatch(utilsReducers.setPharmacyError(newError))
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
-export const fetchFavoritePharmacyList=(ids: Array<string>):ThunkAction<void, RootState, unknown,AnyAction>=>{
-    return async(dispatch)=>{
-            const response:PharmacyModel[]=await PharmacyService.getFavoritePharmacyByID(ids)
-            console.log(response)
-            dispatch(pharmacyReducers.setPharmacyList(response))
-    }
-}
+// export const fetchFavoritePharmacyList=(ids: Array<string>):ThunkAction<void, RootState, unknown,AnyAction>=>{
+//     return async(dispatch)=>{
+//             const response:PharmacyModel[]=await PharmacyService.getFavoritePharmacyByID(ids)
+//             console.log(response)
+//             dispatch(pharmacyReducers.setPharmacyList(response))
+//     }
+// }
 
-export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
+// export const fetchPharmacyByName=(pharmacy_name:string, pageNumber:number, pageSize:number):ThunkAction<void,RootState,unknown,AnyAction>=>{
     
-    return async(dispatch)=>{
-        try {
-                const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name, pageNumber, pageSize);
-                dispatch(pharmacyReducers.setPharmacyList(response))
-                dispatch(utilsReducers.resetPharmacyError())
+//     return async(dispatch)=>{
+//         try {
+//                 const response:PharmacyModel[]=await PharmacyService.getPharmacyByName(pharmacy_name, pageNumber, pageSize);
+//                 dispatch(pharmacyReducers.setPharmacyList(response))
+//                 dispatch(utilsReducers.resetPharmacyError())
 
-        } catch (_err) {
-            let err =(_err as AxiosError)
-            const newError = createErrorObj(err)
-            dispatch(utilsReducers.setPharmacyError(newError))
-        }
-    }
-}
+//         } catch (_err) {
+//             let err =(_err as AxiosError)
+//             const newError = createErrorObj(err)
+//             dispatch(utilsReducers.setPharmacyError(newError))
+//         }
+//     }
+// }
 
 export const setTargetPharmacy=(pharmacy:PharmacyModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
     return async(dispatch)=>{

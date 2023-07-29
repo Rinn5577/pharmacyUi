@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { fetchPharmacyByName, fetchPharmacyList } from "../store/pharmacy-actions";
+import { fetchPharmacyListTest } from '../store/pharmacy-actions';
 import { setCurrentPage } from "../store/utils-actions";
 
 //TODO:
@@ -25,10 +25,12 @@ const Pagination = () => {
         }
 
         if(searchParams.isSearching === false){
-            dispatch(fetchPharmacyList(pageNum,pageSize))
+            //dispatch(fetchPharmacyList(pageNum,pageSize))
+            dispatch(fetchPharmacyListTest(pageNum,pageSize))
             dispatch(setCurrentPage(pageNum))
         } else if (searchParams.isSearching === true && searchParams.searchBy === "Name"){
-            dispatch(fetchPharmacyByName(searchParams.input, pageNum,pageSize))
+            //dispatch(fetchPharmacyByName(searchParams.input, pageNum,pageSize))
+            dispatch(fetchPharmacyListTest(pageNum,pageSize, undefined, searchParams.input))
             dispatch(setCurrentPage(pageNum))
         }
 

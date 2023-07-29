@@ -7,11 +7,13 @@ import store from './store'
 import {Provider} from 'react-redux';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
-import { fetchPharmacyList } from './store/pharmacy-actions';
+import {fetchPharmacyListTest } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
 import Favorites from './pages/Favorites';
 
-store.dispatch(fetchPharmacyList(1,3))
+//store.dispatch(fetchPharmacyList(1,3))
+store.dispatch(fetchPharmacyListTest(1,3))
+
 
 
 const root = ReactDOM.createRoot(
