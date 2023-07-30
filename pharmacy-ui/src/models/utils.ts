@@ -1,8 +1,9 @@
-export interface ErrorModel{
+export interface ResponseModel{
     "code"?: string,
     "message": string,
     "response"?: any,
-    "status"?: number
+    "status"?: number,
+    "show": boolean
 }
 
 export interface SearchParamsModel{
@@ -12,7 +13,7 @@ export interface SearchParamsModel{
 }
 export interface UtilsArrayModel{
     currentPage:number
-    pharmacyError: ErrorModel
+    pharmacyResponse: ResponseModel
     searchParams: SearchParamsModel
 }
 

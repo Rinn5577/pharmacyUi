@@ -1,14 +1,15 @@
 import {createSlice,PayloadAction} from "@reduxjs/toolkit";
-import { ErrorModel, SearchParamsModel, UtilsArrayModel} from "../models/utils";
+import { ResponseModel, SearchParamsModel, UtilsArrayModel} from "../models/utils";
 
 
 const initialUtilsState:UtilsArrayModel={
     currentPage: 1,
-    pharmacyError:{
+    pharmacyResponse:{
         "code": "",
         "message": "",
         "response": "",
-        "status": 0
+        "status": 0,
+        "show": false
     },
     searchParams:{
         "searchBy": "default",
@@ -25,11 +26,11 @@ const utilsSlice=createSlice({
         setCurrentPage(state,action:PayloadAction<number>){
             state.currentPage=action.payload;
         },
-        setPharmacyError(state,action:PayloadAction<ErrorModel>){
-            state.pharmacyError=action.payload;
+        setPharmacyResponse(state,action:PayloadAction<ResponseModel>){
+            state.pharmacyResponse=action.payload;
         },
-        resetPharmacyError(state){
-            state.pharmacyError=initialUtilsState.pharmacyError;
+        resetPharmacyResponse(state){
+            state.pharmacyResponse=initialUtilsState.pharmacyResponse;
         },
         setSearchParams(state,action:PayloadAction<SearchParamsModel>){
             state.searchParams=action.payload;

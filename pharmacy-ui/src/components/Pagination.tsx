@@ -2,6 +2,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from '../store/pharmacy-actions';
 import { setCurrentPage } from "../store/utils-actions";
+import { getKeysFromLocalStorage } from "../utils/localStorage";
 
 //TODO:
 //ive taken out the check to render for now, but should check total count
@@ -25,8 +26,10 @@ const Pagination = () => {
             idArray = [searchParams.input]
         }else if (searchParams.searchBy === "Name"){
             name = searchParams.input
+        }else if (searchParams.searchBy === "Favorite"){
+            idArray = getKeysFromLocalStorage()
         }
-        
+
         updateCurrentPage(direction)
         dispatch(fetchPharmacyList(page,pageSize,searchby,idArray,name))
         
@@ -40,9 +43,6 @@ const Pagination = () => {
        }
         dispatch(setCurrentPage(page))
     }
-
-   
-
 
     return(
             <div className=" inline space-x-[700px] ml-8">

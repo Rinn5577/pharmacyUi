@@ -4,6 +4,7 @@ import { fetchPharmacyList } from '../store/pharmacy-actions';
 import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
 import { getKeysFromLocalStorage } from '../utils/localStorage';
 import Pagination from '../components/Pagination';
+import Toast from '../components/Toast';
 
 
 const Favorites = () => {
@@ -29,7 +30,9 @@ const Favorites = () => {
     }
 
     return(
-            <div className=" px-6 py-8 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
+        <>
+            <Toast></Toast>
+                    <div className=" px-6 py-8 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <h2>Your Favorites</h2>
                 { checkFavoritePharmacyList() &&
                 <div>
@@ -43,6 +46,8 @@ const Favorites = () => {
                 }
                 
             </div>
+        </>
+
     )
 }
 

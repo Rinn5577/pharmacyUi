@@ -5,6 +5,7 @@ import PharmacyList from "../components/PharmacyList";
 import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/pharmacy-actions";
 import { resetSearchParams, setCurrentPage} from '../store/utils-actions';
+import Toast from "../components/Toast";
 
 
 const Pharmacies = () =>{
@@ -18,7 +19,9 @@ const Pharmacies = () =>{
     ]
 
     return(
-            <div className=" pb-6 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
+        <>
+        <Toast></Toast>
+                    <div className=" pb-6 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <div className="px-6 py-8 mb-0">
                     <div className="flex justify-between">
                     <Search></Search>
@@ -33,6 +36,8 @@ const Pharmacies = () =>{
                 </div>
                 <Pagination></Pagination>
             </div>
+        </>
+
     )
 }
 
