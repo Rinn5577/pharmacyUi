@@ -2,35 +2,26 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from '../store/pharmacy-actions';
 import { setCurrentPage } from "../store/utils-actions";
-import { getKeysFromLocalStorage } from "../utils/localStorage";
 import Button from "./Button";
 
-//TODO:
-//ive taken out the check to render for now, but should check total count
-//build ui for pageSize selector 
+
 const Pagination = () => {
 
     const dispatch = useAppDispatch();
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
+
     let page = currentPage
+    const pageSize = 3;
+    const searchby = searchParams.searchBy
+    let idArray: string[] = [];
+    let name = ""; 
 
 
     const navigateClickHandler = (direction:string) =>{
-
-        const pageSize = 3;
-        const searchby = searchParams.searchBy
-        console.log(searchby)
-        let idArray: string[] = [];
-        let name = ""; 
-        
-        if(searchParams.searchBy === "Id"){
-            idArray = [searchParams.input]
-        }else if (searchParams.searchBy === "Name"){
-            name = searchParams.input
-        }
         updateCurrentPage(direction)
+        checkSearchParam()
         dispatch(fetchPharmacyList(page,pageSize,searchby,idArray,name))
     }
 
@@ -41,6 +32,14 @@ const Pagination = () => {
            page = (currentPage+1);       
        }
         dispatch(setCurrentPage(page))
+    }
+
+    const checkSearchParam = () =>{
+        if(searchParams.searchBy === "Id"){
+            idArray = [searchParams.input]
+        }else if (searchParams.searchBy === "Name"){
+            name = searchParams.input
+        }
     }
 
     return(

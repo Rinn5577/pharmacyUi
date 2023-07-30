@@ -10,6 +10,7 @@ export const addToLocalStorage = (id:number) => {
     let keys = getKeysFromLocalStorage()
     if(!keys.includes(id.toString()) && keys.length < 3){
         localStorage.setItem(id.toString(), "")
+        return true
     } else {console.log("favorite not added")}
 }
 

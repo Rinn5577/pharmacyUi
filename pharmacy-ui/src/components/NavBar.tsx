@@ -3,11 +3,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks';
 import { setSearchParams } from '../store/utils-actions';
 
 function NavBar() {
-  const searchParams = useAppSelector(state=>state.utils.searchParams)
-  const [updatedSearch, setUpdatedSearch] = useState(searchParams)
-  const dispatch = useAppDispatch();
-
-
 
   return (
     <nav className="flex items-center justify-between flex-wrap bg-nuvemBlue p-6">
