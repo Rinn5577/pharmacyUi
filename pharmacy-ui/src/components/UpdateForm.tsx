@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { postPharmacyUpdate } from '../store/pharmacy-actions';
+import Button from "./Button";
 
 const UpdateForm=()=>{
 
@@ -12,7 +13,7 @@ const changeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
     setUpdatedPharmacy({...updatedPharmacy,[event.target.name] : event.target.value})
 }
 
-const submitHandler = (event: any) =>{
+const submitHandler = (event: React.MouseEvent) =>{
     event.preventDefault();
     dispatch(postPharmacyUpdate(updatedPharmacy))
 }
@@ -54,9 +55,7 @@ const submitHandler = (event: any) =>{
                 </div>
 
                 <div className="flex items-center justify-between">
-                    <button onClick={(e) => submitHandler(e)} className=" disabled:bg-nuvemGreen bg-nuvemBlue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Update
-                    </button>
+                    <Button onClick={(e) => submitHandler(e)} variant="primary" size="lg">Submit</Button>
                 </div>
             </form>
 

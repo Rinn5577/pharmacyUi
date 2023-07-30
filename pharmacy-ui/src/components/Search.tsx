@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/pharmacy-actions";
 import { setCurrentPage, setSearchParams } from "../store/utils-actions";
+import Button from "./Button";
 
 const Search=()=>{
     const dispatch=useAppDispatch();
@@ -50,12 +51,10 @@ const Search=()=>{
             </label>
             <div className="flex flex-wrap justify-between -mx-3 mb-2">
                 <div className=" md:w-1/3 px-3 mb-6 md:mb-0">
-                        <input type={updatedSearch.searchBy === "Id" ? "number" : "text"} name="input" onChange={(e) => onChangeHandler(e)} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+                        <input disabled={updatedSearch.searchBy === "default"}type={updatedSearch.searchBy === "Id" ? "number" : "text"} name="input" onChange={(e) => onChangeHandler(e)} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
                 </div>
                 <div className="md:w-1/3 px-3 mb-6 md:mb-0">
-                    <button onClick={searchClickHandler} disabled={updatedSearch.searchBy === "default"}className=" disabled:bg-gray-500 hover:bg-nuvemBlue bg-nuvemGreen hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
-                    Search
-                    </button> 
+                <Button onClick={searchClickHandler} variant="primary" size="md" disabled={updatedSearch.searchBy === "default"}>Search</Button>
                 </div>
             </div>
         </div>

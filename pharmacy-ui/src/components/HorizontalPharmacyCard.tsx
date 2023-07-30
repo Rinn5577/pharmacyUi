@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy} from "../store/pharmacy-actions";
 import { addToLocalStorage, getKeysFromLocalStorage } from "../utils/localStorage";
+import Button from "./Button";
 
 //TODO:
 //Switch favorite button to remove from favorites - (isFavorited somewhere in state?)
@@ -43,12 +44,8 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                     <p className="text-gray-700 text-base mb-6">Appeal to the client, sue the vice president . I got your invoice...it seems really high, why did you charge so much can you make the logo bigger yes bigger bigger still the logo is too big im not sure, try something else.</p>
                 
                 <div>
-                    <button disabled={checkDisable(pharmacy.id)} onClick={()=>favoriteClickHandler(pharmacy.id)} className="bg-nuvemGreen disabled:bg-gray-500 hover:bg-nuvemBlue hover:text-nuvemGreen text-nuvemBlue text-center py-2 px-4 rounded-full">
-                    +Favorite
-                    </button> 
-                    <button onClick={()=>editClickHandler(pharmacy.id)} className="bg-nuvemBlue hover:bg-nuvemGreen hover:text-nuvemBlue text-white text-center ml-2 py-2 px-4 rounded-full">
-                    Edit
-                    </button> 
+                    <Button onClick={()=>favoriteClickHandler(pharmacy.id)} disabled={checkDisable(pharmacy.id)} variant="primary" size="lg" >Add Favorite</Button>
+                    <Button onClick={()=>editClickHandler(pharmacy.id)} variant="default" size="md">Edit</Button>
                 </div>
             </div>
             

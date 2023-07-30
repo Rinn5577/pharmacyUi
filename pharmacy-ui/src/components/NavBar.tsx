@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../hooks/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks';
+import { setSearchParams } from '../store/utils-actions';
 
 function NavBar() {
   const searchParams = useAppSelector(state=>state.utils.searchParams)
   const [updatedSearch, setUpdatedSearch] = useState(searchParams)
-  const favoriteClickHandler = () =>{
-    setUpdatedSearch({...updatedSearch, searchBy: "Favorite"})
-  }
+  const dispatch = useAppDispatch();
+
+
+
   return (
     <nav className="flex items-center justify-between flex-wrap bg-nuvemBlue p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -17,7 +19,7 @@ function NavBar() {
           <a href="/" className="block lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white mr-4">
             Pharmacy List
           </a>
-          <a onClick={()=>favoriteClickHandler()}href="/favorites" className="block mr-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
+          <a href="/favorites" className="block mr-4 lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white">
             Favorites
           </a>
       </div>

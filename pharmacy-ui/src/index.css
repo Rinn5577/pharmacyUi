@@ -15,3 +15,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@layer components {
+  .btn {
+   @apply font-bold py-2 px-4 m-2 rounded;
+  }
+  .sm {
+    @apply px-2;
+  }
+
+  .md {
+    @apply px-4;
+  }
+
+  .lg {
+    @apply px-8;
+  }
+
+  .xl {
+    @apply px-16;
+  }
+
+  /*button colors: default, primary, info, success, warning, danger, dark */
+  .default {
+    @apply bg-nuvemBlue text-white;
+  }
+  .default:hover {
+    @apply bg-nuvemGreen text-nuvemBlue;
+  }
+
+  .primary {
+    @apply bg-nuvemGreen text-nuvemBlue;
+  }
+  .primary:hover {
+    @apply bg-nuvemBlue text-white;
+  }
+
+  .disabled {
+    @apply bg-gray-500 text-black opacity-50 cursor-not-allowed;
+  }
+  .disabled:hover {
+    @apply text-white cursor-not-allowed;
+  }
+}

@@ -24,7 +24,7 @@ const Favorites = () => {
     }
  
     const checkFavoritePharmacyList = () => {
-        if(favorites.length === 0 || keys.length === 0){
+        if(keys.length === 0){
             return false
         } return true
     }
@@ -34,15 +34,20 @@ const Favorites = () => {
             <Toast></Toast>
                     <div className=" px-6 py-8 ml-80 my-6 max-w-4xl rounded overflow-hidden shadow-xl border-solid border-2 border-nuvemGreen">
                 <h2>Your Favorites</h2>
-                { checkFavoritePharmacyList() &&
-                <div>
-                   { favorites.map((pharmacy) =>(
-                        <div key={pharmacy.id}>
-                            <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
-                        </div>
-                    ))}
-                    <Pagination></Pagination>
-                    </div>
+                { checkFavoritePharmacyList() ? 
+                (
+                    <div>
+                    { favorites.map((pharmacy) =>(
+                         <div key={pharmacy.id}>
+                             <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
+                         </div>
+                     ))}
+                     </div>
+                ):
+                (
+                    <p>Select up to 3 favorite pharmacies!</p>
+                )
+
                 }
                 
             </div>

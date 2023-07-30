@@ -8,8 +8,8 @@ export const getKeysFromLocalStorage = () =>{
 
 export const addToLocalStorage = (id:number) => {
     let keys = getKeysFromLocalStorage()
-    if(!keys.includes(id.toString())){
+    if(!keys.includes(id.toString()) && keys.length < 3){
         localStorage.setItem(id.toString(), "")
-    } console.log("nothing added, key already exists")
+    } else {console.log("favorite not added")}
 }
 

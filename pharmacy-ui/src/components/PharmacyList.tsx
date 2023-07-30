@@ -16,7 +16,8 @@ const PharmacyList = () =>{
     return(
         
             <div className="pt-3">
-                {checkPharmacyList() && (
+                {checkPharmacyList() && 
+                (
                     pharmacyList.map((pharmacy)=>(
                         <div key={pharmacy.id}>
                         <HorizontalPharmacyCard {...pharmacy}/>
