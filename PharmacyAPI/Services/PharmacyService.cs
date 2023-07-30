@@ -1,4 +1,6 @@
-﻿namespace PharmacyAPI.Services
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace PharmacyAPI.Services
 {
     public class PharmacyService : IPharmacyService
     {
@@ -8,75 +10,31 @@
         {
             _pharmacyDbContext = pharmacyDbContext;
         }
-        /*
-        public async Task<List<Pharmacy>> GetAllPharmacies()
-        {
-            var pharmacies = await _pharmacyDbContext.Pharmacies.ToListAsync();
-            return pharmacies;
-        }
-        public async Task<List<Pharmacy>> GetPharmacyByName(string name)
-        {
-            var pharmacies = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
-            return pharmacies;
-        }
-        public async Task<List<Pharmacy>> GetFavoriteById(List<int> pharmacyIds)
-        {
-            var pharmacies = new List<Pharmacy>();
-            foreach (var item in pharmacyIds)
-            {
-                var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == item);
-                if (pharmacy != null)
-                {
-                    pharmacies.Add(pharmacy);
-                }
-            }
-            return pharmacies;
-        }
-        public async Task<Pharmacy?> GetPharmacyById(int id)
-        {
-            var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
-            return pharmacy;
-        }
-        */
 
-        public async Task<List<Pharmacy>> GetPharmacyList(List<int> ids, string name)
+        public async Task<List<Pharmacy>> GetPharmacyList(int page, int pageSize, List<int> ids, string? name)
         {
-            System.Diagnostics.Debug.WriteLine("incoming params" + ids.ToString() + name);
-            var pharmacyList = new List<Pharmacy>();
-            if (name.Length > 0)
-            {
-                pharmacyList = await _pharmacyDbContext.Pharmacies.Where(pharm => pharm.Name.Contains(name)).ToListAsync();
-            }
-            else if (ids.Count > 0)
-            {
-                foreach (var id in ids)
-                {
-                    var pharmacy = await _pharmacyDbContext.Pharmacies.FirstOrDefaultAsync(pharm => pharm.Id == id);
-                    if (pharmacy != null)
-                    {
-                        pharmacyList.Add(pharmacy);
-                    }
-                }
-            }
-            else
-            {
-                pharmacyList = await _pharmacyDbContext.Pharmacies.ToListAsync();
-            }
+            var query = from p in _pharmacyDbContext.Pharmacies
+                        select p;
+
+            if(ids.Count() != 0 ) query = query.Where(p => ids.Contains(p.Id));
+            if(!string.IsNullOrEmpty(name)) query = query.Where(p => p.Name.Contains(name));
+
+            query = query.OrderBy(p => p.Id).Skip((page - 1) * pageSize).Take(pageSize);
+
+            var pharmacyList = await query.ToListAsync();
             return pharmacyList;
-
         }
 
         public async Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
-            //var pharmacyList = await _pharmacyDbContext.Pharmacies.ToListAsync();
             var nameParam = "";
             var idParam = new List<int>
             {
                 id
             };
-            var pharmacyList = await GetPharmacyList(idParam, nameParam);
-            System.Diagnostics.Debug.WriteLine(pharmacyList);
+            var pharmacyList = await GetPharmacyList(1, 3, idParam, nameParam);
             var pharmacy = pharmacyList[0];
+            
 
             if (pharmacy is not null)
             {

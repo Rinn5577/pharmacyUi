@@ -3,7 +3,7 @@ import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 import PharmacyList from "../components/PharmacyList";
 import { useAppDispatch} from "../hooks/redux-hooks";
-import { fetchPharmacyListTest } from "../store/pharmacy-actions";
+import { fetchPharmacyList } from "../store/pharmacy-actions";
 import { resetSearchParams, setCurrentPage} from '../store/utils-actions';
 
 
@@ -13,8 +13,8 @@ const Pharmacies = () =>{
 
     const clickHandler=()=>[
         dispatch(resetSearchParams()),
-        dispatch(fetchPharmacyListTest(1,3,"all")),
-        //dispatch(setCurrentPage(1))
+        dispatch(setCurrentPage(1)),
+        dispatch(fetchPharmacyList(1,3,"all")),
     ]
 
     return(

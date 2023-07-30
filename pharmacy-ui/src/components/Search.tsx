@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
-import { fetchPharmacyListTest } from "../store/pharmacy-actions";
-import { setSearchParams } from "../store/utils-actions";
+import { fetchPharmacyList } from "../store/pharmacy-actions";
+import { setCurrentPage, setSearchParams } from "../store/utils-actions";
 
 const Search=()=>{
     const dispatch=useAppDispatch();
@@ -18,14 +18,14 @@ const Search=()=>{
         updatedSearch.isSearching = true;
 
         dispatch(setSearchParams(updatedSearch))
-
+        dispatch(setCurrentPage(1))
         if(updatedSearch.searchBy === "Id"){
             idArray = [updatedSearch.input]
         }else if (updatedSearch.searchBy === "Name"){
             name = updatedSearch.input
         }
 
-        dispatch(fetchPharmacyListTest(page,pageSize,searchby,idArray,name))
+        dispatch(fetchPharmacyList(page,pageSize,searchby,idArray,name))
     }
 
     const onChangeHandler=(event:any)=>{

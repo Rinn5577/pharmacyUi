@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks'
-import { fetchPharmacyListTest } from '../store/pharmacy-actions';
+import { fetchPharmacyList } from '../store/pharmacy-actions';
 import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
 import { getKeysFromLocalStorage } from '../utils/localStorage';
 import Pagination from '../components/Pagination';
@@ -18,7 +18,7 @@ const Favorites = () => {
 
     const loadFavoritePharmacyList = () =>{
         if(keys.length > 0){
-            dispatch(fetchPharmacyListTest(1,3,"Id",keys))
+            dispatch(fetchPharmacyList(1,3,"Id",keys))
         }
     }
  
