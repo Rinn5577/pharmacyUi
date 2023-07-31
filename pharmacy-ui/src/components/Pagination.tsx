@@ -9,6 +9,8 @@ const Pagination = () => {
     const dispatch = useAppDispatch();
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
+    
+    //used only for the disable hack. Otherwise paginagtion doesnt care about the list
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
 
     const navigateClickHandler = (direction:string) =>{
