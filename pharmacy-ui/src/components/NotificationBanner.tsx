@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { setPharmacyResponse } from "../store/utils-actions";
 
 const NotificationBanner = () => {
-  const response = useAppSelector((state) => state.utils.pharmacyResponse);
-  const [updatedResponse, setUpdatedResponse] = useState(response);
+  const apiResponse = useAppSelector((state) => state.utils.pharmacyResponse);
+  const [updatedResponse, setUpdatedResponse] = useState(apiResponse);
   const dispatch = useAppDispatch();
   const closeNotificationBanner = () => {
     setUpdatedResponse({ ...updatedResponse, show: false });
@@ -12,7 +12,7 @@ const NotificationBanner = () => {
   };
 
   const checkResponse = () => {
-    if (response.show === true) {
+    if (apiResponse.show === true) {
       return true;
     }
     return false;
@@ -38,7 +38,7 @@ const NotificationBanner = () => {
             </svg>
             <span className="sr-only">Warning icon</span>
           </div>
-          <div className="ml-3 text-sm font-normal">{response.message}</div>
+          <div className="ml-3 text-sm font-normal">{apiResponse.response}</div>
           <button
             onClick={closeNotificationBanner}
             type="button"
