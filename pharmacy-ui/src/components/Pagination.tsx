@@ -27,10 +27,17 @@ const Pagination = () => {
         return page
     }
 
+    const disableHack = () =>{
+        //a placeholder until I get the total count returned from api
+        if(currentPage == 2 || pharmacyList.length < 3 || pharmacyList[pharmacyList.length -1].id === 5){
+            return true
+        } return false
+    }
+
     return(
             <div className=" flex flex-row justify-between ml-6 mr-6">
                 <Button onClick={() => navigateClickHandler("back")} disabled={currentPage == 1 ? true:false} variant="default" size="lg">Back</Button>
-                <Button onClick={() => navigateClickHandler("next")} disabled={(currentPage == 2 || pharmacyList.length < 3)  ? true:false} variant="default" size="lg">Next</Button>
+                <Button onClick={() => navigateClickHandler("next")} disabled={disableHack()} variant="default" size="lg">Next</Button>
             </div>
     )
 }
