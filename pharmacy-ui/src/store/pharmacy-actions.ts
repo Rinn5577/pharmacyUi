@@ -6,8 +6,11 @@ import { Pharmacy } from "../types/pharmacy";
 import PharmacyService from "../service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
 import { ApiResponse, SearchParams } from "../types/utils";
+import { AxiosError } from "axios";
+import { newErrorResponse } from "../utils/responseFormatter";
 
 export const pharmacyReducers = pharmacySlice.actions;
+
 
 export const fetchPharmacyList = (
   page: number,
@@ -22,9 +25,9 @@ export const fetchPharmacyList = (
       dispatch(pharmacyReducers.setPharmacyList(response));
       dispatch(utilsReducers.resetPharmacyResponse());
     } catch (_err) {
-      let err = _err as ApiResponse;
-      err.show = true;
-      dispatch(utilsReducers.setPharmacyResponse(err));
+      let err = _err as AxiosError;
+      let response = newErrorResponse(err)
+      dispatch(utilsReducers.setPharmacyResponse(response));
     }
   };
 };
