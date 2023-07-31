@@ -5,7 +5,7 @@ import SmallPharmacyCard from "../components/SmallPharmacyCard";
 import NotificationBanner from "../components/NotificationBanner";
 
 
-const UpdatePharmacy = () => {
+const EditPharmacy = () => {
     const targetedPharmacy=useAppSelector(state=>state.pharmacy.pharmacy)
 
     return(
@@ -22,4 +22,4 @@ const UpdatePharmacy = () => {
     )
 }
 
-export default UpdatePharmacy;
+export default EditPharmacy;
