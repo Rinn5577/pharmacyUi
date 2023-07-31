@@ -1,37 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import EditPharmacy from './pages/EditPharmacy';
+import { BrowserRouter } from 'react-router-dom';
 import {fetchPharmacyList } from './store/pharmacy-actions';
-import Home from './pages/Home'
-import Favorites from './pages/Favorites';
-import { SearchParamsModel } from './models/utils';
-import NavBar from './components/NavBar';
+import { SearchParams } from './types/utils';
 
-store.dispatch(fetchPharmacyList(1,{} as SearchParamsModel))
+
+store.dispatch(fetchPharmacyList(1,{} as SearchParams))
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    
+  <React.StrictMode>  
     <Provider store={store}>
-      <App />
-      <NavBar/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/:id" element={<EditPharmacy/>}/>
-        <Route path="/favorites" element={<Favorites/>}/>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
-
   </React.StrictMode>
 );
 

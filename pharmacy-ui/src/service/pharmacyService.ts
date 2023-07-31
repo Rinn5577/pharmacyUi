@@ -1,24 +1,21 @@
-import api from './pharmacyApi'
-import { PharmacyModel } from '../models/pharmacy'
-import { urlFormatter } from '../utils/urlFormatter';
-import { SearchParamsModel } from '../models/utils';
+import api from "./pharmacyApi";
+import { Pharmacy } from "../types/pharmacy";
+import { urlFormatter } from "../utils/urlFormatter";
+import { SearchParams } from "../types/utils";
 
-
-export default{
-
-    async getPharmacyList(page:number, searchParams:SearchParamsModel){
-        console.log(searchParams)
-        let url = urlFormatter(page, searchParams.searchBy, searchParams.idArray, searchParams.name)
-        console.log(url)
-        let response = await api().get(url);
-        return response.data
-    },
-    async updatePharmacy(pharmacy:PharmacyModel){
-        let response=await api().put(pharmacy.id.toString(), pharmacy);
-        return response.data
-    }
-
-
-}
-
-
+export default {
+  async getPharmacyList(page: number, searchParams: SearchParams) {
+    let url = urlFormatter(
+      page,
+      searchParams.searchBy,
+      searchParams.idArray,
+      searchParams.name
+    );
+    let response = await api().get(url);
+    return response.data;
+  },
+  async updatePharmacy(pharmacy: Pharmacy) {
+    let response = await api().put(pharmacy.id.toString(), pharmacy);
+    return response.data;
+  },
+};

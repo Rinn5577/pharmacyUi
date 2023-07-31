@@ -1,15 +1,14 @@
-import { SearchParamsModel } from "../models/utils";
+import { SearchParams } from "../types/utils";
 
-export const searchFormatter = (searchParams: SearchParamsModel) =>{
+export const searchFormatter = (searchParams: SearchParams) => {
+  let newSearch = {} as SearchParams;
+  newSearch.searchBy = searchParams.searchBy;
 
-    let newSearch = {} as SearchParamsModel; 
-    newSearch.searchBy = searchParams.searchBy
+  if (searchParams.searchBy === "Id" && searchParams.input != null) {
+    newSearch.idArray = [searchParams.input];
+  } else if (searchParams.searchBy === "Name" && searchParams.input != null) {
+    newSearch.name = searchParams.input;
+  }
 
-    if(searchParams.searchBy === "Id" && searchParams.input != null){
-        newSearch.idArray = [searchParams.input]
-    }else if (searchParams.searchBy === "Name" && searchParams.input != null){
-        newSearch.name = searchParams.input
-    }
-
-    return newSearch
-}
+  return newSearch;
+};
