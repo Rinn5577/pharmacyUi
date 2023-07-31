@@ -1,5 +1,5 @@
-export const urlFormatter = (page:number, page_size:number, search_by:string, ids?:Array<string>, name?:string) =>{
-    let baseUrl = `?page=${page}&pageSize=${page_size}`
+export const urlFormatter = (page:number, search_by:string, ids?:Array<string>, name?:string) =>{
+    let baseUrl = `?page=${page}`
     if(search_by === "Id" && ids !== undefined){
         let newUrlArray = [];
         for (const id of ids) {

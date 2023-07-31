@@ -11,7 +11,7 @@ import {fetchPharmacyList } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
 import Favorites from './pages/Favorites';
 
-store.dispatch(fetchPharmacyList(1,3,"all"))
+store.dispatch(fetchPharmacyList(1,"all"))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

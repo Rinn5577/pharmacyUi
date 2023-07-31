@@ -14,8 +14,9 @@ namespace PharmacyAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Pharmacy>> GetPharmacyList(int page, int pageSize, [Optional][FromQuery] List<int> ids, string name = "")
+        public async Task<ActionResult<Pharmacy>> GetPharmacyList(int page, [Optional][FromQuery] List<int> ids, string name = "")
         {
+            var pageSize = 3;
             var pharmacyList = await _pharmacyService.GetPharmacyList(page, pageSize, ids, name);
 
             if (pharmacyList.Count == 0)

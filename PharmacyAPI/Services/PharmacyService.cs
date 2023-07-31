@@ -17,8 +17,8 @@ namespace PharmacyAPI.Services
                         select p;
 
             if(ids.Count() != 0 ) query = query.Where(p => ids.Contains(p.Id));
-            if(!string.IsNullOrEmpty(name)) query = query.Where(p => p.Name.Contains(name));
-
+            if(!string.IsNullOrEmpty(name)) query = query.Where(p => p.Name.Contains(name)); 
+            
             query = query.OrderBy(p => p.Id).Skip((page - 1) * pageSize).Take(pageSize);
 
             var pharmacyList = await query.ToListAsync();

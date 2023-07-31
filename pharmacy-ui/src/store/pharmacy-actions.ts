@@ -20,11 +20,11 @@ const createErrorObj = (err:AxiosError)=>{
     return newError;
 }
 
-export const fetchPharmacyList=(page:number, page_size:number, search_by:string, ids?:Array<string>, name?:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
+export const fetchPharmacyList=(page:number, search_by:string, ids?:Array<string>, name?:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
 
     return async(dispatch)=>{
         try {
-            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(page, page_size,search_by, ids,name);
+            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(page,search_by, ids,name);
             dispatch(pharmacyReducers.setPharmacyList(response))
             dispatch(utilsReducers.resetPharmacyResponse())
         }  catch (_err) {

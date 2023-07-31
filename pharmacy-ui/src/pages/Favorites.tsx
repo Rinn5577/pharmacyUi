@@ -19,7 +19,7 @@ const Favorites = () => {
 
     const loadFavoritePharmacyList = () =>{
         if(keys.length > 0){
-            dispatch(fetchPharmacyList(1,3,"Id",keys))
+            dispatch(fetchPharmacyList(1,"Id",keys))
         }
     }
  
