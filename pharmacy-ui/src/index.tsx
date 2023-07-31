@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -10,9 +10,12 @@ import UpdatePharmacy from './pages/UpdatePharmacy';
 import {fetchPharmacyList } from './store/pharmacy-actions';
 import Pharmacies from './pages/Pharmacies';
 import Favorites from './pages/Favorites';
+import { SearchParamsModel } from './models/utils';
 
-store.dispatch(fetchPharmacyList(1,"all"))
 
+
+//store.dispatch(fetchPharmacyList(1,"all"))
+store.dispatch(fetchPharmacyList(1,{} as SearchParamsModel))
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

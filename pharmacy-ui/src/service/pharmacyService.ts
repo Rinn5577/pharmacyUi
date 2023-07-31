@@ -1,12 +1,14 @@
 import api from './pharmacyApi'
 import { PharmacyModel } from '../models/pharmacy'
 import { urlFormatter } from '../utils/urlFormatter';
+import { SearchParamsModel } from '../models/utils';
 
 
 export default{
 
-    async getPharmacyList(page:number, search_by:string, ids?:Array<string>, name?:string){
-        let url = urlFormatter(page, search_by,ids, name)
+    async getPharmacyList(page:number, searchParams:SearchParamsModel){
+        console.log(searchParams)
+        let url = urlFormatter(page, searchParams.searchBy, searchParams.idArray, searchParams.name)
         console.log(url)
         let response = await api().get(url);
         return response.data

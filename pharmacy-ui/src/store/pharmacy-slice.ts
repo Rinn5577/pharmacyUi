@@ -16,7 +16,6 @@ const initialPharmacyState:PharmacyArrayModel={
     }
 }
 
-
 const pharmacySlice=createSlice({
     name:'pharmacy',
     initialState: initialPharmacyState,

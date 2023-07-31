@@ -3,8 +3,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from '../store/pharmacy-actions';
 import { setCurrentPage } from "../store/utils-actions";
 import Button from "./Button";
-import { searchFormatter } from "../utils/searchFormatter";
-
 
 const Pagination = () => {
 
@@ -12,22 +10,21 @@ const Pagination = () => {
     const currentPage=useAppSelector(state=>state.utils.currentPage)
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
-    let page = currentPage
-
 
     const navigateClickHandler = (direction:string) =>{
-        updateCurrentPage(direction)
-        const nextFetch = searchFormatter(searchParams)
-        dispatch(fetchPharmacyList(page,nextFetch.searchBy,nextFetch.idArray,nextFetch.name))
+        let newPage = updateCurrentPage(direction)
+        dispatch(fetchPharmacyList(newPage,searchParams))
     }
 
     const updateCurrentPage = (direction:string) =>{
+        let page = currentPage
         if(direction === "back"){
             page = (currentPage-1);
        }else if (direction === "next"){
            page = (currentPage+1);       
        }
         dispatch(setCurrentPage(page))
+        return page
     }
 
     return(

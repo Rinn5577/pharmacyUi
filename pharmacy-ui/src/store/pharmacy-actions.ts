@@ -6,6 +6,7 @@ import { PharmacyModel } from '../models/pharmacy';
 import PharmacyService from "../service/pharmacyService"
 import { AxiosError } from 'axios';
 import { utilsReducers } from "./utils-actions";
+import { SearchParamsModel } from "../models/utils";
 
 export const pharmacyReducers=pharmacySlice.actions
 
@@ -20,11 +21,11 @@ const createErrorObj = (err:AxiosError)=>{
     return newError;
 }
 
-export const fetchPharmacyList=(page:number, search_by:string, ids?:Array<string>, name?:string):ThunkAction<void,RootState,unknown,AnyAction>=>{
+export const fetchPharmacyList=(page:number, searchParams:SearchParamsModel):ThunkAction<void,RootState,unknown,AnyAction>=>{
 
     return async(dispatch)=>{
         try {
-            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(page,search_by, ids,name);
+            const response:PharmacyModel[]=await PharmacyService.getPharmacyList(page,searchParams);
             dispatch(pharmacyReducers.setPharmacyList(response))
             dispatch(utilsReducers.resetPharmacyResponse())
         }  catch (_err) {

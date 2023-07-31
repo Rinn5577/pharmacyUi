@@ -10,11 +10,9 @@ const PharmacyList = () =>{
         if(pharmacyList.length === 0){
             return false
         } return true
-
     }
 
     return(
-        
             <div className="pt-3">
                 {checkPharmacyList() && 
                 (

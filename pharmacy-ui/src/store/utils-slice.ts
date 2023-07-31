@@ -13,11 +13,10 @@ const initialUtilsState:UtilsArrayModel={
     },
     searchParams:{
         "searchBy": "default",
-        "input": "",
-        "isSearching": false
+        "name": "",
+        "idArray": [],
     }
 };
-
 
 const utilsSlice=createSlice({
     name:'utils',

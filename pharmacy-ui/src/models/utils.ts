@@ -8,10 +8,9 @@ export interface ResponseModel{
 
 export interface SearchParamsModel{
     "searchBy": string,
-    "input": string,
-    //name
-    //array
-    "isSearching": Boolean
+    "input"?: string,
+    "name": string,
+    "idArray": string[],
 }
 
 export interface UtilsArrayModel{

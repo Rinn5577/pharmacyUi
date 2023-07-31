@@ -5,31 +5,20 @@ import { setCurrentPage, setSearchParams } from "../store/utils-actions";
 import Button from "./Button";
 import { searchFormatter } from "../utils/searchFormatter";
 
-
 const Search=()=>{
     const dispatch=useAppDispatch();
     const searchParams = useAppSelector(state=>state.utils.searchParams)
     const [searchInput, setSearchInput] = useState(searchParams)
 
-
     const searchClickHandler=()=>{
-        dispatch(setSearchParams(searchInput))
         dispatch(setCurrentPage(1))
         const newSearch = searchFormatter(searchInput)
-        dispatch(fetchPharmacyList(1, newSearch.searchBy,newSearch.idArray,newSearch.name))
+        dispatch(setSearchParams(newSearch))
+        dispatch(fetchPharmacyList(1,newSearch))
     }
 
     const onChangeHandler=(event:any)=>{
-            setSearchInput({...searchInput,[event.target.name] : event.target.value}) // set searchBy 
-
-            // if(searchInput.searchBy === "Name"){
-            //     setSearchInput({...searchInput, name : event.target.value})
-            // }else {
-            //     let newArray = []
-            //     newArray.push(event.target.value)
-            //     setSearchInput({...searchInput, idArray : newArray})
-            // }
-
+        setSearchInput({...searchInput,[event.target.name] : event.target.value}) 
     }
 
     return(
@@ -49,10 +38,10 @@ const Search=()=>{
             </label>
             <div className="flex flex-wrap justify-between -mx-3 mb-2">
                 <div className=" md:w-1/3 px-3 mb-6 md:mb-0">
-                        <input disabled={searchInput.searchBy === "default"}type={searchInput.searchBy === "Id" ? "number" : "text"} name="input" onChange={(e) => onChangeHandler(e)} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
+                        <input disabled={searchInput.searchBy === "default"} type={searchInput.searchBy === "Id" ? "number" : "text"} name="input" onChange={(e) => onChangeHandler(e)} className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" />
                 </div>
                 <div className="md:w-1/3 px-3 mb-6 md:mb-0">
-                <Button onClick={searchClickHandler} variant="primary" size="md" disabled={searchInput.searchBy === "default"}>Search</Button>
+                <Button disabled={searchInput.searchBy === "default"} onClick={searchClickHandler} variant="primary" size="md" >Search</Button>
                 </div>
             </div>
         </div>

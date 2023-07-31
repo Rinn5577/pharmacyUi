@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks';
-import { setSearchParams } from '../store/utils-actions';
 
 function NavBar() {
 

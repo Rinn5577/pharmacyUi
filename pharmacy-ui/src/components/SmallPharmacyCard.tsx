@@ -12,7 +12,6 @@ const SmallPharmacyCard = (pharmacy:PharmacyModel) =>{
                 <p>Appeal to the client, sue the vice president . I got your invoice...it seems really high, why did you charge so much can you make the logo bigger yes bigger bigger still the logo is too big im not sure, try something else.</p>
                 </div>
             </div>
-        
     )
 }
 
