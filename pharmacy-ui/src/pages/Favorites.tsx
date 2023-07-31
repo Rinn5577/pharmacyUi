@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks'
 import { fetchPharmacyList } from '../store/pharmacy-actions';
-import HorizontalPharmacyCard from '../components/HorizontalPharmacyCard';
+import LargePharmacyCard from '../components/LargePharmacyCard';
 import { getKeysFromLocalStorage } from '../utils/localStorage';
 import { SearchParamsModel } from '../models/utils';
 import NotificationBanner from '../components/NotificationBanner';
@@ -43,7 +43,7 @@ const Favorites = () => {
                     <div>
                     { favorites.map((pharmacy) =>(
                          <div key={pharmacy.id}>
-                             <HorizontalPharmacyCard {...pharmacy}></HorizontalPharmacyCard>
+                             <LargePharmacyCard {...pharmacy}></LargePharmacyCard>
                          </div>
                      ))}
                      </div>

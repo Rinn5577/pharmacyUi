@@ -1,8 +1,8 @@
 import React from "react";
 import { useAppSelector } from "../hooks/redux-hooks";
-import HorizontalPharmacyCard from "./HorizontalPharmacyCard";
+import LargePharmacyCard from "./LargePharmacyCard";
 
-const PharmacyList = () =>{
+const PharmacyContainer = () =>{
 
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list);
     
@@ -18,7 +18,7 @@ const PharmacyList = () =>{
                 (
                     pharmacyList.map((pharmacy)=>(
                         <div key={pharmacy.id}>
-                        <HorizontalPharmacyCard {...pharmacy}/>
+                        <LargePharmacyCard {...pharmacy}/>
                         </div>
             )) 
                 )}
@@ -26,4 +26,4 @@ const PharmacyList = () =>{
     )
 }
 
-export default PharmacyList;
+export default PharmacyContainer;

@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
-import PharmacyList from "../components/PharmacyList";
+import PharmacyContainer from "../components/PharmacyContainer";
 import { useAppDispatch} from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/pharmacy-actions";
 import { resetSearchParams, setCurrentPage} from '../store/utils-actions';
@@ -9,7 +9,7 @@ import Button from "../components/Button";
 import { SearchParamsModel } from "../models/utils";
 import NotificationBanner from "../components/NotificationBanner";
 
-const Pharmacies = () =>{
+const Home = () =>{
     const dispatch=useAppDispatch();
 
     const clickHandler = () =>{
@@ -30,7 +30,7 @@ const Pharmacies = () =>{
                             <Button onClick={clickHandler} variant="default" size="lg">View All</Button>
                         </div>       
                     </div>
-                    <PharmacyList></PharmacyList>
+                    <PharmacyContainer></PharmacyContainer>
                 </div>
                 <Pagination></Pagination>
             </div>
@@ -39,4 +39,4 @@ const Pharmacies = () =>{
     )
 }
 
-export default Pharmacies
+export default Home;

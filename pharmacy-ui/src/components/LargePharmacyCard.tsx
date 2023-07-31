@@ -8,7 +8,7 @@ import Button from "./Button";
 import { useEffect } from 'react';
 
 
-const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
+const LargePharmacyCard = (pharmacy:PharmacyModel) => {
 
     const dispatch=useAppDispatch();
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const [disabled, setDisabled] = useState(false)
 
     useEffect(() =>{
-        setDisabled(checkDisable())
+        setDisabled(checkIsFavorite())
     }, [])
 
     const editClickHandler=(id: number)=>{
@@ -27,11 +27,11 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
 
     const  favoriteClickHandler = ( id: number) => {
        addToLocalStorage(id)
-       setDisabled(checkDisable())
+       setDisabled(checkIsFavorite())
 
     }
 
-    const checkDisable = () => {
+    const checkIsFavorite = () => {
         let id = pharmacy.id
         let keys = getKeysFromLocalStorage()
         if(keys.includes(id.toString())){
@@ -59,4 +59,4 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     )
 }
 
-export default HorizontalPharmacyCard;
+export default LargePharmacyCard;

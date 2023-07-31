@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import UpdatePharmacy from './pages/UpdatePharmacy';
 import {fetchPharmacyList } from './store/pharmacy-actions';
-import Pharmacies from './pages/Pharmacies';
+import Home from './pages/Home'
 import Favorites from './pages/Favorites';
 import { SearchParamsModel } from './models/utils';
 
@@ -26,7 +26,7 @@ root.render(
       <App />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Pharmacies/>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/:id" element={<UpdatePharmacy/>}/>
         <Route path="/favorites" element={<Favorites/>}/>
       </Routes>
