@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy} from "../store/pharmacy-actions";
 import { addToLocalStorage, getKeysFromLocalStorage } from "../utils/localStorage";
 import Button from "./Button";
+import { useEffect } from 'react';
 
 
 const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
@@ -14,6 +15,9 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     const pharmacyList=useAppSelector(state=>state.pharmacy.pharmacy_list)
     const [disabled, setDisabled] = useState(false)
 
+    useEffect(() =>{
+        setDisabled(checkDisable())
+    }, [])
 
     const editClickHandler=(id: number)=>{
         let targetPharmacy = pharmacyList.filter((pharmacy) => pharmacy.id === id)[0]
@@ -22,11 +26,9 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
     }
 
     const  favoriteClickHandler = ( id: number) => {
-       //This is a complete hack, its just slowing it down long enough for the app to get the updated keys
-       //im not even using the local disabled state
-        if(addToLocalStorage(id) === true){
-            setDisabled(true)
-        }
+       addToLocalStorage(id)
+       setDisabled(checkDisable())
+
     }
 
     const checkDisable = () => {
@@ -49,7 +51,7 @@ const HorizontalPharmacyCard = (pharmacy:PharmacyModel) => {
                     <p className="text-gray-700 text-base mb-6">Appeal to the client, sue the vice president . I got your invoice...it seems really high, why did you charge so much can you make the logo bigger yes bigger bigger still the logo is too big im not sure, try something else.</p>
                 
                 <div>
-                    <Button onClick={()=>favoriteClickHandler(pharmacy.id)} disabled={checkDisable()} variant="primary" size="lg" >Add Favorite</Button>
+                    <Button onClick={()=>favoriteClickHandler(pharmacy.id)} disabled={disabled} variant="primary" size="lg" >Add Favorite</Button>
                     <Button onClick={()=>editClickHandler(pharmacy.id)} variant="default" size="md">Edit</Button>
                 </div>
             </div>

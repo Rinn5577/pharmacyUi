@@ -7,7 +7,7 @@ export interface PharmacyModel{
     "zipcode": string,
     "filledPrescriptionsMonthToDate": number,
     "createdAt": string,
-    "updatedAt": string
+    "updatedAt": string,
 }
 export interface PharmacyArrayModel{
     pharmacy_list:PharmacyModel[],
