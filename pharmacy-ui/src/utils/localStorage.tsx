@@ -10,10 +10,9 @@ export const getKeysFromLocalStorage = () => {
         for (let j = 0; j < arrayOfValues.length; j++) {
           if(!faveKeys.includes(arrayOfValues[i])){
             faveKeys.push(arrayOfValues[i]) 
-          }
-           
+          }     
         }
-    }
+    } 
     
   }
   console.log(faveKeys)
@@ -27,7 +26,7 @@ export const addToLocalStorage = (id: number) => {
   if (!keys.includes(id.toString()) && keys.length < 3) {
     //localStorage.setItem(id.toString(), "");
     localStorage.setItem(`favePharm id = ${id}`, id.toString());
-    return true;
+    //return true;
   } else {
     console.log("favorite not added");
   }
