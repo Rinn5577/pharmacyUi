@@ -8,11 +8,15 @@ export const getKeysFromLocalStorage = () => {
   for (let i = 0; i < arrayOfIdentifiers.length; i++) {
     if(arrayOfIdentifiers[i].includes("favePharm")){
         for (let j = 0; j < arrayOfValues.length; j++) {
-          faveKeys.push(arrayOfValues[i])
+          if(!faveKeys.includes(arrayOfValues[i])){
+            faveKeys.push(arrayOfValues[i]) 
+          }
+           
         }
     }
     
   }
+  console.log(faveKeys)
   return faveKeys;
 };
 
