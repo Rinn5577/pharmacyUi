@@ -21,6 +21,7 @@ namespace PharmacyAPI.Controllers
 
             if (pharmacyList.Count == 0)
             {
+
                 return NotFound("Sorry, we couldn't find any pharmacies matching that request.");
             }
 
