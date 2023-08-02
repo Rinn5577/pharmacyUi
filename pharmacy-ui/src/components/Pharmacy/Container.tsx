@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "../../hooks/redux-hooks";
+import {useAppSelector } from "../../hooks/redux-hooks";
 import LargePharmacyCard from "./LargeCard";
 
 const PharmacyContainer = () => {
@@ -12,6 +12,7 @@ const PharmacyContainer = () => {
     return true;
   };
 
+  
   return (
     <div className="pt-3">
       {checkPharmacyList() &&

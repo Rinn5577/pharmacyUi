@@ -10,24 +10,25 @@ import FormInput from "../Form/FormInput";
 const Search = () => {
   const dispatch = useAppDispatch();
   const searchParams = useAppSelector((state) => state.utils.searchParams);
-  const [searchInput, setSearchInput] = useState(searchParams);
-
-  const searchClickHandler = () => {
-    dispatch(setCurrentPage(1));
-    const newSearch = searchFormatter(searchInput);
-    dispatch(setSearchParams(newSearch));
-    dispatch(fetchPharmacyList(1, newSearch));
-  };
+  const [userInput, setUserInput] = useState(searchParams);
 
   const onChangeHandler = (event: React.ChangeEvent<any>) => {
-    setSearchInput({ ...searchInput, [event.target.name]: event.target.value });
+    setUserInput({ ...userInput, [event.target.name]: event.target.value });
+  };
+
+  const searchClickHandler = () => {
+    const newSearch = searchFormatter(userInput);
+    
+    dispatch(setCurrentPage(1));
+    dispatch(setSearchParams(newSearch));
+    dispatch(fetchPharmacyList(1, newSearch));
   };
 
   return (
     <div className="flex flex-col">
       <Selector
         onChange={onChangeHandler}
-        value={searchInput.searchBy}
+        value={userInput.searchBy}
         name="searchBy"
         optionValue={["default", "Id", "Name"]}
       >
@@ -37,16 +38,16 @@ const Search = () => {
       <div className="flex flex-row mt-2">
         <FormInput
           onChange={onChangeHandler}
-          disabled={searchInput.searchBy === "default"}
-          variant={searchInput.searchBy === "Id" ? "number" : "text"}
+          disabled={userInput.searchBy === "default"}
+          variant={userInput.searchBy === "Id" ? "number" : "text"}
           name="input"
           size="inputMd"
         >
-          {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
+          {userInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
         </FormInput>
         <div className="mt-5">
           <Button
-            disabled={searchInput.searchBy === "default"}
+            disabled={userInput.searchBy === "default"}
             onClick={searchClickHandler}
             variant="primary"
             size="md"

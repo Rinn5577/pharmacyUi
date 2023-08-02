@@ -2,7 +2,7 @@ import React from "react";
 import Search from "../components/Search/SearchForm";
 import Pagination from "../components/Pagination/Pagination";
 import PharmacyContainer from "../components/Pharmacy/Container";
-import { useAppDispatch } from "../hooks/redux-hooks";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
 import { resetSearchParams, setCurrentPage } from "../store/actions/utils-actions";
 import Button from "../components/Button";
@@ -11,12 +11,11 @@ import { SearchParams } from "../components/Search/types/searchParams";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-
   const clickHandler = () => {
-    const defaultSearch = {} as SearchParams;
+    const viewAllSearch = {} as SearchParams;
     dispatch(resetSearchParams());
     dispatch(setCurrentPage(1));
-    dispatch(fetchPharmacyList(1, defaultSearch));
+    dispatch(fetchPharmacyList(1, viewAllSearch));
   };
 
   return (
@@ -32,7 +31,7 @@ const Home = () => {
               </Button>
             </div>
           </div>
-          <PharmacyContainer />
+          <PharmacyContainer/>
         </div>
         <Pagination />
       </div>
