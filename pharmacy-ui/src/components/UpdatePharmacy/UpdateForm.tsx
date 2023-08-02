@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { postPharmacyUpdate } from "../../store/actions/pharmacy-actions";
 import Button from "../Button";
-import FormInput from "./FormInput";
+import FormInput from "../Form/FormInput";
 
 const UpdateForm = () => {
   const pharmacy = useAppSelector((state) => state.pharmacy.pharmacy);

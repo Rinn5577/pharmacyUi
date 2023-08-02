@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
-import { setCurrentPage, setSearchParams } from "../../store/actions/utils-actions";
+import {
+  setCurrentPage,
+  setSearchParams,
+} from "../../store/actions/utils-actions";
 import Button from "../Button";
 import { searchFormatter } from "./utils/searchFormatter";
 
@@ -52,6 +55,7 @@ const Search = () => {
             className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
         </div>
+
         <div className="md:w-1/3 px-3 mb-6 md:mb-0">
           <Button
             disabled={searchInput.searchBy === "default"}

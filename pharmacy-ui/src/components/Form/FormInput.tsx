@@ -1,15 +1,15 @@
 import React from "react";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   variant: string;
   disabled?: boolean;
   name: string;
   value: string;
-  placeholder: string;
+  placeholder?: string;
 }
-const formInput: React.FC<Props> = ({
+const FormInput: React.FC<Props> = ({
   children,
   onChange,
   variant,
@@ -38,4 +38,4 @@ const formInput: React.FC<Props> = ({
   );
 };
 
-export default formInput;
+export default FormInput;
