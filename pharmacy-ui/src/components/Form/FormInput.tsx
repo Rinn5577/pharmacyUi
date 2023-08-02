@@ -6,8 +6,9 @@ interface Props {
   variant: string;
   disabled?: boolean;
   name: string;
-  value: string;
+  value?: string;
   placeholder?: string;
+  size: string // inputMd, inputLg
 }
 const FormInput: React.FC<Props> = ({
   children,
@@ -17,15 +18,16 @@ const FormInput: React.FC<Props> = ({
   name,
   value,
   placeholder,
+  size,
   ...rest
 }) => {
   return (
-    <>
+    <div className="flex flex-col">
       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
         {children}
       </label>
       <input
-        className={`input` + (disabled ? ` disabled` : ``)}
+        className={`input ${size}` + (disabled ? ` disabled` : ``)}
         onChange={onChange}
         disabled={disabled}
         name={name}
@@ -34,7 +36,7 @@ const FormInput: React.FC<Props> = ({
         type={variant}
         {...rest}
       />
-    </>
+    </div>
   );
 };
 

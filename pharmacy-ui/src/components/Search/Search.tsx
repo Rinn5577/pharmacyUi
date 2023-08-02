@@ -8,6 +8,7 @@ import {
 import Button from "../Button";
 import { searchFormatter } from "./utils/searchFormatter";
 import Selector from "../Form/Selector";
+import FormInput from "../Form/FormInput";
 
 const Search = () => {
   const dispatch = useAppDispatch();
@@ -36,31 +37,32 @@ const Search = () => {
         Select search by:
       </Selector>
 
-      <div>
-        <label className="inline left-0 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-          {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
-        </label>
-        <div className="flex flex-row">
-        <input
-          disabled={searchInput.searchBy === "default"}
-          type={searchInput.searchBy === "Id" ? "number" : "text"}
-          name="input"
-          onChange={(e) => onChangeHandler(e)}
-          className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        />
-        <Button
-          disabled={searchInput.searchBy === "default"}
-          onClick={searchClickHandler}
-          variant="primary"
-          size="md"
-        >
-          Search
-        </Button>
+     
+        <div className="flex flex-row mt-2">
+          <FormInput
+            onChange={onChangeHandler}
+            disabled={searchInput.searchBy === "default"}
+            variant={searchInput.searchBy === "Id" ? "number" : "text"}
+            name="input"
+            size="inputMd"
+          >
+            {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
+          </FormInput>
+          <div className="mt-5">
+            <Button
+              disabled={searchInput.searchBy === "default"}
+              onClick={searchClickHandler}
+              variant="primary"
+              size="md"
+            >
+              Search
+            </Button>
+          </div>
         </div>
-
       </div>
+    
 
-    </div>
+    // </div>
   );
 };
 export default Search;

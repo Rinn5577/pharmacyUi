@@ -25,13 +25,14 @@ const UpdateForm = () => {
 
   return (
     <>
-      <form className="w-full max-w-lg flex flex-wrap  mb-6 w-full px-3">
+      <form className="w-full max-w-lg mb-6  px-3">
         <FormInput
           onChange={changeHandler}
           name={"name"}
           value={pharmacyChanges.name}
           placeholder={pharmacy.name}
           variant="text"
+          size="inputLg"
         >
           Pharmacy Name
         </FormInput>
@@ -42,18 +43,20 @@ const UpdateForm = () => {
           value={pharmacyChanges.address}
           placeholder={pharmacy.address}
           variant="text"
+          size="inputLg"
         >
           Street Address
         </FormInput>
 
         <div className="flex flex-row -mx-3 ">
-          <div className="w-full md:w-1/3 px-3 ">
+          <div className="w-full w-1/3 px-3 ">
             <FormInput
               onChange={changeHandler}
               name={"city"}
               value={pharmacyChanges.city}
               placeholder={pharmacy.city}
               variant="text"
+              size="inputMd"
             >
               City
             </FormInput>
@@ -70,13 +73,14 @@ const UpdateForm = () => {
             </Selector>
           </div>
 
-          <div className=" md:w-1/3 px-3">
+          <div className="w-1/3 px-3">
             <FormInput
               onChange={changeHandler}
               name={"zipcode"}
               value={pharmacyChanges.zipcode}
               placeholder={pharmacy.zipcode}
               variant="text"
+              size="inputMd"
             >
               Zipcode
             </FormInput>

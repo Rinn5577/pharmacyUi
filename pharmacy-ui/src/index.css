@@ -21,7 +21,13 @@ code {
    @apply font-bold py-2 px-4 m-2 rounded;
   }
   .input{
-    @apply appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
+    @apply appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500
+  }
+  .inputLg{
+    @apply min-w-full
+  }
+  .inputMd{
+    @apply w-full
   }
   .sm {
     @apply px-2;
