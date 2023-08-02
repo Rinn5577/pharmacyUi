@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import pharmacySlice from "./pharmacy-slice";
-import utilsSlice from "./utils-slice";
+import pharmacySlice from "./slice/pharmacy-slice";
+import utilsSlice from "./slice/utils-slice";
 
 const store = configureStore({
   reducer: { pharmacy: pharmacySlice.reducer, utils: utilsSlice.reducer },

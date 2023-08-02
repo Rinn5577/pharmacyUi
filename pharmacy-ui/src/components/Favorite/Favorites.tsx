@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { fetchPharmacyList } from "../store/pharmacy-actions";
-import LargePharmacyCard from "../components/LargePharmacyCard";
-import { getIdsFromLocalStorage } from "../utils/localStorage";
-import { SearchParams } from "../types/utils";
-import NotificationBanner from "../components/NotificationBanner";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
+import LargePharmacyCard from "../Pharmacy/LargeCard";
+import { getIdsFromLocalStorage } from "./utils/localStorage";
+import NotificationBanner from "../Notification/NotificationBanner";
+import { SearchParams } from "../Search/types/searchParams";
+
 
 const Favorites = () => {
   const favorites = useAppSelector((state) => state.pharmacy.pharmacy_list);
@@ -27,7 +28,7 @@ const Favorites = () => {
 
   const checkFavoritePharmacyList = () => {
     if (keys.length === 0) {
-      return <p>Select up to 3 favorite pharmacies!</p>;
+      return <p>Add a pharmacy to your favorites to view! </p>;
     }
     return (
       <div>

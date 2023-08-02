@@ -1,8 +1,9 @@
 import { ThunkAction } from "redux-thunk";
-import utilsSlice from "./utils-slice";
-import { RootState } from "./index";
+import utilsSlice from "../slice/utils-slice";
+import { RootState } from "../index";
 import { AnyAction } from "@reduxjs/toolkit";
-import { ResponseNotification, SearchParams } from '../types/utils';
+import { ResponseNotification } from "../../components/Notification/types/ResponseNotification";
+import { SearchParams } from "../../components/Search/types/searchParams";
 
 export const utilsReducers = utilsSlice.actions;
 

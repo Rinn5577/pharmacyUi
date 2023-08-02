@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import {fetchPharmacyList } from './store/pharmacy-actions';
-import { SearchParams } from './types/utils';
+import {fetchPharmacyList } from './store/actions/pharmacy-actions';
+import { SearchParams } from './components/Search/types/searchParams';
 
 
 store.dispatch(fetchPharmacyList(1,{} as SearchParams))

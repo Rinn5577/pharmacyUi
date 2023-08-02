@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Pharmacy } from "../types/pharmacy";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
-import { setTargetPharmacy } from "../store/pharmacy-actions";
+import { setTargetPharmacy } from "../../store/actions/pharmacy-actions";
 import {
   addToLocalStorage,
   getIdsFromLocalStorage,
-} from "../utils/localStorage";
-import Button from "./Button";
+} from "../Favorite/utils/localStorage";
+import Button from "../Button";
 import { useEffect } from "react";
-import { setResponseNotification } from "../store/utils-actions";
-import { favoriteResponseFormatter } from "../utils/responseFormatter";
+import { setResponseNotification } from "../../store/actions/utils-actions";
+import { favoriteResponseFormatter } from "../../store/utils/responseFormatter";
+import { Pharmacy } from "./types/Pharmacy";
 
 const LargePharmacyCard = (pharmacy: Pharmacy) => {
   const dispatch = useAppDispatch();

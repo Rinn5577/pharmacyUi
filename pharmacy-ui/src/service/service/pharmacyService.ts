@@ -1,7 +1,7 @@
-import api from "./pharmacyApi";
-import { Pharmacy } from "../types/pharmacy";
-import { urlFormatter } from "../utils/urlFormatter";
-import { SearchParams } from "../types/utils";
+import api from "../api/pharmacyApi";
+import { urlFormatter } from "../../store/utils/urlFormatter";
+import { SearchParams } from "../../components/Search/types/searchParams";
+import { Pharmacy } from "../../components/Pharmacy/types/Pharmacy";
 
 export default {
   async getPharmacyList(page: number, searchParams: SearchParams) {

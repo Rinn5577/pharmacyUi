@@ -1,4 +1,5 @@
-import { Pharmacy, PharmacyStateArray } from '../types/pharmacy';
+import { Pharmacy } from '../../components/Pharmacy/types/Pharmacy';
+import {  PharmacyStateArray } from '../types/pharmacyState';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialPharmacyState: PharmacyStateArray = {

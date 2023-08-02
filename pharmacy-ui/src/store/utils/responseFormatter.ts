@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
-import { ResponseNotification } from "../types/utils";
+import { ResponseNotification } from "../../components/Notification/types/ResponseNotification";
+
 
 export const apiResponseFormatter = (err: AxiosError) => {
   let newResponse = {} as ResponseNotification;

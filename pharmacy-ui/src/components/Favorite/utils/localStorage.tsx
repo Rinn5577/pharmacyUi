@@ -1,4 +1,3 @@
-import { favoriteResponseFormatter } from "./responseFormatter";
 
 export const getIdsFromLocalStorage = () => {
   let faveIds = [] as string[];

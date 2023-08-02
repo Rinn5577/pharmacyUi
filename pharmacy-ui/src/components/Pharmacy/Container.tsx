@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppSelector } from "../hooks/redux-hooks";
-import LargePharmacyCard from "./LargePharmacyCard";
+import { useAppSelector } from "../../hooks/redux-hooks";
+import LargePharmacyCard from "./LargeCard";
 
 const PharmacyContainer = () => {
   const pharmacyList = useAppSelector((state) => state.pharmacy.pharmacy_list);

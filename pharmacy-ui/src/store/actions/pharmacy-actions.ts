@@ -1,13 +1,13 @@
-import pharmacySlice from "./pharmacy-slice";
+import pharmacySlice from "../slice/pharmacy-slice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
-import { RootState } from "./index";
-import { Pharmacy } from "../types/pharmacy";
-import PharmacyService from "../service/pharmacyService";
+import { RootState } from "../index";
+import PharmacyService from "../../service/service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
-import { SearchParams } from "../types/utils";
 import { AxiosError } from "axios";
 import { apiResponseFormatter } from "../utils/responseFormatter";
+import { SearchParams } from "../../components/Search/types/searchParams";
+import { Pharmacy } from "../../components/Pharmacy/types/Pharmacy";
 
 export const pharmacyReducers = pharmacySlice.actions;
 

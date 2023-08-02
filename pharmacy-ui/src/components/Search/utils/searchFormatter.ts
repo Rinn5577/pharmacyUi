@@ -1,4 +1,4 @@
-import { SearchParams } from "../types/utils";
+import { SearchParams } from "../types/searchParams";
 
 export const searchFormatter = (searchParams: SearchParams) => {
   let newSearch = {} as SearchParams;

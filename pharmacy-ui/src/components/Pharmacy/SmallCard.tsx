@@ -1,5 +1,5 @@
 import React from "react";
-import { Pharmacy } from "../types/pharmacy";
+import { Pharmacy } from "./types/Pharmacy";
 
 const SmallPharmacyCard = (pharmacy: Pharmacy) => {
   return (

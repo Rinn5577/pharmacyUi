@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ResponseNotification, SearchParams, UtilsStateArray } from "../types/utils";
+import {  UtilsStateArray } from "../types/utilsState";
+import { ResponseNotification } from "../../components/Notification/types/ResponseNotification";
+import { SearchParams } from "../../components/Search/types/searchParams";
 
 const initialUtilsState: UtilsStateArray = {
   currentPage: 1,
