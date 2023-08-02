@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy } from "../store/pharmacy-actions";
 import {
   addToLocalStorage,
-  getKeysFromLocalStorage,
+  getIdsFromLocalStorage,
 } from "../utils/localStorage";
 import Button from "./Button";
 import { useEffect } from "react";
+import { setResponseNotification } from "../store/utils-actions";
 
 const LargePharmacyCard = (pharmacy: Pharmacy) => {
   const dispatch = useAppDispatch();
@@ -29,13 +30,14 @@ const LargePharmacyCard = (pharmacy: Pharmacy) => {
   };
 
   const favoriteClickHandler = (id: number) => {
-    addToLocalStorage(id);
+    let response = addToLocalStorage(id);
+    dispatch(setResponseNotification(response))
     setDisabled(checkIsFavorite());
   };
 
   const checkIsFavorite = () => {
     let id = pharmacy.id;
-    let keys = getKeysFromLocalStorage();
+    let keys = getIdsFromLocalStorage();
     if (keys.includes(id.toString())) {
       return true;
     }

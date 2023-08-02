@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { setPharmacyResponse } from "../store/utils-actions";
+import { resetResponseNotification} from "../store/utils-actions";
 
 const NotificationBanner = () => {
-  const apiResponse = useAppSelector((state) => state.utils.pharmacyResponse);
-  const [updatedResponse, setUpdatedResponse] = useState(apiResponse);
+  const apiResponse = useAppSelector((state) => state.utils.responseNotification);
   const dispatch = useAppDispatch();
+
   const closeNotificationBanner = () => {
-    setUpdatedResponse({ ...updatedResponse, show: false });
-    dispatch(setPharmacyResponse(updatedResponse));
+    dispatch(resetResponseNotification())
   };
 
   const checkResponse = () => {
@@ -26,7 +25,8 @@ const NotificationBanner = () => {
           className="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
           role="alert"
         >
-          <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+          
+          <div className={"inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg" + (apiResponse.status === 200 ? ' success' : ' warning')} >
             <svg
               className="w-5 h-5"
               aria-hidden="true"

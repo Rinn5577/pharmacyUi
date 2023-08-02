@@ -2,7 +2,7 @@ import { ThunkAction } from "redux-thunk";
 import utilsSlice from "./utils-slice";
 import { RootState } from "./index";
 import { AnyAction } from "@reduxjs/toolkit";
-import { ApiResponse, SearchParams } from "../types/utils";
+import { ResponseNotification, SearchParams } from '../types/utils';
 
 export const utilsReducers = utilsSlice.actions;
 
@@ -13,11 +13,16 @@ export const setCurrentPage = (
     dispatch(utilsReducers.setCurrentPage(number));
   };
 };
-export const setPharmacyResponse = (
-  response: ApiResponse
+export const setResponseNotification = (
+  response: ResponseNotification
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
-    dispatch(utilsReducers.setPharmacyResponse(response));
+    dispatch(utilsReducers.setResponseNotification(response));
+  };
+};
+export const resetResponseNotification = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch) => {
+    dispatch(utilsReducers.resetResponseNotification());
   };
 };
 export const setSearchParams = (

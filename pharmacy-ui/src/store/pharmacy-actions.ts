@@ -5,9 +5,9 @@ import { RootState } from "./index";
 import { Pharmacy } from "../types/pharmacy";
 import PharmacyService from "../service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
-import { ApiResponse, SearchParams } from "../types/utils";
+import { ResponseNotification, SearchParams } from "../types/utils";
 import { AxiosError } from "axios";
-import { newErrorResponse } from "../utils/responseFormatter";
+import { apiResponseFormatter } from "../utils/responseFormatter";
 
 export const pharmacyReducers = pharmacySlice.actions;
 
@@ -23,11 +23,11 @@ export const fetchPharmacyList = (
         searchParams
       );
       dispatch(pharmacyReducers.setPharmacyList(response));
-      dispatch(utilsReducers.resetPharmacyResponse());
+      dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
       let err = _err as AxiosError;
-      let response = newErrorResponse(err)
-      dispatch(utilsReducers.setPharmacyResponse(response));
+      let response = apiResponseFormatter(err)
+      dispatch(utilsReducers.setResponseNotification(response));
     }
   };
 };
@@ -38,11 +38,11 @@ export const setTargetPharmacy = (
   return async (dispatch) => {
     try {
       dispatch(pharmacyReducers.setPharmacy(pharmacy));
-      dispatch(utilsReducers.resetPharmacyResponse());
+      dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
-      let err = _err as ApiResponse;
+      let err = _err as ResponseNotification;
       err.show = true;
-      dispatch(utilsReducers.setPharmacyResponse(err));
+      dispatch(utilsReducers.setResponseNotification(err));
     }
   };
 };
@@ -56,11 +56,11 @@ export const postPharmacyUpdate = (
         pharmacy
       );
       dispatch(pharmacyReducers.setPharmacy(response));
-      dispatch(utilsReducers.resetPharmacyResponse());
+      dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
-      let err = _err as ApiResponse;
+      let err = _err as ResponseNotification;
       err.show = true;
-      dispatch(utilsReducers.setPharmacyResponse(err));
+      dispatch(utilsReducers.setResponseNotification(err));
     }
   };
 };

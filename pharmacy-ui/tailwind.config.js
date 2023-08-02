@@ -16,6 +16,7 @@ module.exports = {
       yellow: colors.yellow,
       pink: colors.pink,
       orange: colors.orange,
+      green: colors.green,
 
       //Custom colors
       nuvemBlue: '#2e516d',

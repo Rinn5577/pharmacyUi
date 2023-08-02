@@ -1,32 +1,35 @@
-export const getKeysFromLocalStorage = () => {
-  let faveKeys = [] as string[];
+import { favoriteResponseFormatter } from "./responseFormatter";
+
+export const getIdsFromLocalStorage = () => {
+  let faveIds = [] as string[];
   let localAsString = JSON.stringify(localStorage);
   let localAsObject = JSON.parse(localAsString);
-  let arrayOfIdentifiers = Object.keys(localAsObject);
+  let arrayOfKeys = Object.keys(localAsObject);
   let arrayOfValues = Object.values(localAsObject) as string[];
 
-  for (let i = 0; i < arrayOfIdentifiers.length; i++) {
-    if (arrayOfIdentifiers[i].includes("favePharm")) {
+  //Grabs only the keys and values from localStorage that belong to this application
+  for (let i = 0; i < arrayOfKeys.length; i++) {
+    if (arrayOfKeys[i].includes("favePharm")) {
       for (let j = 0; j < arrayOfValues.length; j++) {
-        if (!faveKeys.includes(arrayOfValues[i])) {
-          faveKeys.push(arrayOfValues[i]);
+        if (!faveIds.includes(arrayOfValues[i])) {
+          faveIds.push(arrayOfValues[i]);
         }
       }
     }
   }
-  console.log(faveKeys);
-  return faveKeys;
+  return faveIds;
 };
 
-export const addToLocalStorage = (id: number) => {
-  let keys = getKeysFromLocalStorage();
-  //let index = getKeysFromLocalStorage().length +1;
+export const addToLocalStorage = (id: number,) => {
+  let ids = getIdsFromLocalStorage();
 
-  if (!keys.includes(id.toString()) && keys.length < 3) {
-    //localStorage.setItem(id.toString(), "");
+  if (!ids.includes(id.toString()) && ids.length < 3) {
     localStorage.setItem(`favePharm id = ${id}`, id.toString());
-    //return true;
+    //return sendNotification(true)
+    return favoriteResponseFormatter(true)
   } else {
-    console.log("favorite not added");
+    return favoriteResponseFormatter(false)
+    
   }
 };
+

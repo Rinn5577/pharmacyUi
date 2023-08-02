@@ -1,4 +1,4 @@
-export type ApiResponse = {
+export type ResponseNotification = {
   code?: string;
   message: string;
   response?: any;
@@ -15,6 +15,6 @@ export type SearchParams = {
 
 export type UtilsStateArray = {
   currentPage: number;
-  pharmacyResponse: ApiResponse;
+  responseNotification: ResponseNotification;
   searchParams: SearchParams;
 };

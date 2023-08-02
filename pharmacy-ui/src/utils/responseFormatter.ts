@@ -1,12 +1,21 @@
 import { AxiosError } from "axios";
-import { ApiResponse } from "../types/utils";
+import { ResponseNotification } from "../types/utils";
 
-export const newErrorResponse = (err: AxiosError) => {
-  let newError = {} as ApiResponse;
-  newError.code = err.code;
-  newError.message = err.message;
-  newError.response = err.response?.data;
-  newError.status = err.status;
-  newError.show = true;
-  return newError;
+export const apiResponseFormatter = (err: AxiosError) => {
+  let newResponse = {} as ResponseNotification;
+  newResponse.code = err.code;
+  newResponse.message = err.message;
+  newResponse.response = err.response?.data;
+  newResponse.status = err.status;
+  newResponse.show = true;
+  return newResponse;
 };
+
+export const favoriteResponseFormatter = (wasAdded:boolean) => {
+  let newResponse = {} as ResponseNotification;
+  newResponse.response = (wasAdded ? "Favorite added" : "Favorite not added")
+  newResponse.show = true;
+  newResponse.status = (wasAdded ? 200 : 400)
+  return newResponse
+}
+

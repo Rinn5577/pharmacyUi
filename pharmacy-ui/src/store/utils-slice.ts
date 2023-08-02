@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ApiResponse, SearchParams, UtilsStateArray } from "../types/utils";
+import { ResponseNotification, SearchParams, UtilsStateArray } from "../types/utils";
 
 const initialUtilsState: UtilsStateArray = {
   currentPage: 1,
-  pharmacyResponse: {
+  responseNotification: {
     code: "",
     message: "",
     response: "",
@@ -24,11 +24,11 @@ const utilsSlice = createSlice({
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
-    setPharmacyResponse(state, action: PayloadAction<ApiResponse>) {
-      state.pharmacyResponse = action.payload;
+    setResponseNotification(state, action: PayloadAction<ResponseNotification>) {
+      state.responseNotification = action.payload;
     },
-    resetPharmacyResponse(state) {
-      state.pharmacyResponse = initialUtilsState.pharmacyResponse;
+    resetResponseNotification(state) {
+      state.responseNotification = initialUtilsState.responseNotification;
     },
     setSearchParams(state, action: PayloadAction<SearchParams>) {
       state.searchParams = action.payload;
