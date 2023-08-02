@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
-import {
-  setCurrentPage,
-  setSearchParams,
-} from "../../store/actions/utils-actions";
+import { setCurrentPage, setSearchParams} from "../../store/actions/utils-actions";
 import Button from "../Button";
 import { searchFormatter } from "./utils/searchFormatter";
 import Selector from "../Form/Selector";
@@ -37,32 +34,28 @@ const Search = () => {
         Select search by:
       </Selector>
 
-     
-        <div className="flex flex-row mt-2">
-          <FormInput
-            onChange={onChangeHandler}
+      <div className="flex flex-row mt-2">
+        <FormInput
+          onChange={onChangeHandler}
+          disabled={searchInput.searchBy === "default"}
+          variant={searchInput.searchBy === "Id" ? "number" : "text"}
+          name="input"
+          size="inputMd"
+        >
+          {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
+        </FormInput>
+        <div className="mt-5">
+          <Button
             disabled={searchInput.searchBy === "default"}
-            variant={searchInput.searchBy === "Id" ? "number" : "text"}
-            name="input"
-            size="inputMd"
+            onClick={searchClickHandler}
+            variant="primary"
+            size="md"
           >
-            {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
-          </FormInput>
-          <div className="mt-5">
-            <Button
-              disabled={searchInput.searchBy === "default"}
-              onClick={searchClickHandler}
-              variant="primary"
-              size="md"
-            >
-              Search
-            </Button>
-          </div>
+            Search
+          </Button>
         </div>
       </div>
-    
-
-    // </div>
+    </div>
   );
 };
 export default Search;

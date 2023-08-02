@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../components/Search/Search";
+import Search from "../components/Search/SearchForm";
 import Pagination from "../components/Pagination/Pagination";
 import PharmacyContainer from "../components/Pharmacy/Container";
 import { useAppDispatch } from "../hooks/redux-hooks";
