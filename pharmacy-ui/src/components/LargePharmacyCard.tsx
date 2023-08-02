@@ -10,6 +10,7 @@ import {
 import Button from "./Button";
 import { useEffect } from "react";
 import { setResponseNotification } from "../store/utils-actions";
+import { favoriteResponseFormatter } from "../utils/responseFormatter";
 
 const LargePharmacyCard = (pharmacy: Pharmacy) => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ const LargePharmacyCard = (pharmacy: Pharmacy) => {
   };
 
   const favoriteClickHandler = (id: number) => {
-    let response = addToLocalStorage(id);
+    let response = addToLocalStorage(id, favoriteResponseFormatter);
     dispatch(setResponseNotification(response))
     setDisabled(checkIsFavorite());
   };

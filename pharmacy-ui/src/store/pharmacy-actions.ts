@@ -11,7 +11,6 @@ import { apiResponseFormatter } from "../utils/responseFormatter";
 
 export const pharmacyReducers = pharmacySlice.actions;
 
-
 export const fetchPharmacyList = (
   page: number,
   searchParams: SearchParams
@@ -26,7 +25,7 @@ export const fetchPharmacyList = (
       dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
       let err = _err as AxiosError;
-      let response = apiResponseFormatter(err)
+      let response = apiResponseFormatter(err);
       dispatch(utilsReducers.setResponseNotification(response));
     }
   };
@@ -52,9 +51,7 @@ export const postPharmacyUpdate = (
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      const response: Pharmacy = await PharmacyService.updatePharmacy(
-        pharmacy
-      );
+      const response: Pharmacy = await PharmacyService.updatePharmacy(pharmacy);
       dispatch(pharmacyReducers.setPharmacy(response));
       dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {

@@ -20,15 +20,14 @@ export const getIdsFromLocalStorage = () => {
   return faveIds;
 };
 
-export const addToLocalStorage = (id: number,) => {
+export const addToLocalStorage = (id: number, formatedResponse:Function) => {
   let ids = getIdsFromLocalStorage();
 
-  if (!ids.includes(id.toString()) && ids.length < 3) {
+  if (!ids.includes(id.toString())) {
     localStorage.setItem(`favePharm id = ${id}`, id.toString());
-    //return sendNotification(true)
-    return favoriteResponseFormatter(true)
+    return formatedResponse(true)
   } else {
-    return favoriteResponseFormatter(false)
+    return formatedResponse(false)
     
   }
 };

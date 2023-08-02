@@ -5,12 +5,7 @@ import { SearchParams } from "../types/utils";
 
 export default {
   async getPharmacyList(page: number, searchParams: SearchParams) {
-    let url = urlFormatter(
-      page,
-      searchParams.searchBy,
-      searchParams.idArray,
-      searchParams.name
-    );
+    let url = urlFormatter(page, searchParams);
     let response = await api().get(url);
     return response.data;
   },

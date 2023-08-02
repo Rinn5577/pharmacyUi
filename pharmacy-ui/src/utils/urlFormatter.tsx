@@ -1,18 +1,15 @@
-export const urlFormatter = (
-  page: number,
-  search_by: string,
-  ids?: Array<string>,
-  name?: string
-) => {
+import { SearchParams } from "../types/utils";
+
+export const urlFormatter = (page: number, search: SearchParams) => {
   let baseUrl = `?page=${page}`;
-  if (search_by === "Id" && ids !== undefined) {
+  if (search.searchBy === "Id" && search.idArray !== undefined) {
     let newUrlArray = [];
-    for (const id of ids) {
+    for (const id of search.idArray) {
       let urlSegment = `&ids=${id}`;
       newUrlArray.push(urlSegment);
     }
     return baseUrl + newUrlArray.join("");
-  } else if (search_by === "Name" && name !== undefined) {
-    return baseUrl + `&name=${name}`;
+  } else if (search.searchBy === "Name" && search.name !== undefined) {
+    return baseUrl + `&name=${search.name}`;
   } else return baseUrl;
 };
