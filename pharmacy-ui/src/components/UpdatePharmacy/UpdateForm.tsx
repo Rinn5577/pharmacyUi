@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { postPharmacyUpdate } from "../../store/actions/pharmacy-actions";
 import Button from "../Button";
 import FormInput from "../Form/FormInput";
+import Selector from "../Form/Selector";
+import stateOptions from "./utils/stateOptions";
 
 const UpdateForm = () => {
   const pharmacy = useAppSelector((state) => state.pharmacy.pharmacy);
   const [pharmacyChanges, setPharmacyChanges] = useState(pharmacy);
   const dispatch = useAppDispatch();
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (event: React.ChangeEvent<any>) => {
     setPharmacyChanges({
       ...pharmacyChanges,
       [event.target.name]: event.target.value,
@@ -23,7 +25,7 @@ const UpdateForm = () => {
 
   return (
     <>
-      <form className="w-full max-w-lg flex flex-wrap -mx-3 mb-6 w-full px-3">
+      <form className="w-full max-w-lg flex flex-wrap  mb-6 w-full px-3">
         <FormInput
           onChange={changeHandler}
           name={"name"}
@@ -44,8 +46,8 @@ const UpdateForm = () => {
           Street Address
         </FormInput>
 
-        <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div className="flex flex-row -mx-3 ">
+          <div className="w-full md:w-1/3 px-3 ">
             <FormInput
               onChange={changeHandler}
               name={"city"}
@@ -57,19 +59,18 @@ const UpdateForm = () => {
             </FormInput>
           </div>
 
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <FormInput
+          <div>
+            <Selector
               onChange={changeHandler}
-              name={"state"}
+              name="state"
               value={pharmacyChanges.state.toUpperCase()}
-              placeholder={pharmacy.state.toUpperCase()}
-              variant="text"
+              optionValue={stateOptions}
             >
               State
-            </FormInput>
+            </Selector>
           </div>
 
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <div className=" md:w-1/3 px-3">
             <FormInput
               onChange={changeHandler}
               name={"zipcode"}
@@ -81,12 +82,9 @@ const UpdateForm = () => {
             </FormInput>
           </div>
         </div>
-
-        <div className="flex items-center justify-between">
-          <Button onClick={(e) => submitHandler(e)} variant="primary" size="lg">
-            Submit
-          </Button>
-        </div>
+        <Button onClick={(e) => submitHandler(e)} variant="primary" size="lg">
+          Submit
+        </Button>
       </form>
     </>
   );

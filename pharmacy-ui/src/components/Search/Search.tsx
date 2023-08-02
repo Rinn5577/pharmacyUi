@@ -7,6 +7,7 @@ import {
 } from "../../store/actions/utils-actions";
 import Button from "../Button";
 import { searchFormatter } from "./utils/searchFormatter";
+import Selector from "../Form/Selector";
 
 const Search = () => {
   const dispatch = useAppDispatch();
@@ -20,53 +21,45 @@ const Search = () => {
     dispatch(fetchPharmacyList(1, newSearch));
   };
 
-  const onChangeHandler = (event: any) => {
+  const onChangeHandler = (event: React.ChangeEvent<any>) => {
     setSearchInput({ ...searchInput, [event.target.name]: event.target.value });
   };
 
   return (
-    <div>
-      <label className="inline left-0  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+    <div className="flex flex-col">
+      <Selector
+        onChange={onChangeHandler}
+        value={searchInput.searchBy}
+        name="searchBy"
+        optionValue={["default", "Id", "Name"]}
+      >
         Select search by:
-      </label>
-      <div className="flex flex-wrap justify-between -mx-3 mb-2 px-3">
-        <select
-          value={searchInput.searchBy}
-          name="searchBy"
+      </Selector>
+
+      <div>
+        <label className="inline left-0 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
+        </label>
+        <div className="flex flex-row">
+        <input
+          disabled={searchInput.searchBy === "default"}
+          type={searchInput.searchBy === "Id" ? "number" : "text"}
+          name="input"
           onChange={(e) => onChangeHandler(e)}
           className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        />
+        <Button
+          disabled={searchInput.searchBy === "default"}
+          onClick={searchClickHandler}
+          variant="primary"
+          size="md"
         >
-          <option value="default">Select</option>
-          <option value="Id">ID</option>
-          <option value="Name">Name</option>
-        </select>
-      </div>
-
-      <label className="inline left-0 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        {searchInput.searchBy === "Id" ? "Search by Id" : "Search by Name"}
-      </label>
-      <div className="flex flex-wrap justify-between -mx-3 mb-2">
-        <div className=" md:w-1/3 px-3 mb-6 md:mb-0">
-          <input
-            disabled={searchInput.searchBy === "default"}
-            type={searchInput.searchBy === "Id" ? "number" : "text"}
-            name="input"
-            onChange={(e) => onChangeHandler(e)}
-            className="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          />
+          Search
+        </Button>
         </div>
 
-        <div className="md:w-1/3 px-3 mb-6 md:mb-0">
-          <Button
-            disabled={searchInput.searchBy === "default"}
-            onClick={searchClickHandler}
-            variant="primary"
-            size="md"
-          >
-            Search
-          </Button>
-        </div>
       </div>
+
     </div>
   );
 };
