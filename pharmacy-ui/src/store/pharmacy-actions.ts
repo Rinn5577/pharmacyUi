@@ -5,7 +5,7 @@ import { RootState } from "./index";
 import { Pharmacy } from "../types/pharmacy";
 import PharmacyService from "../service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
-import { ResponseNotification, SearchParams } from "../types/utils";
+import { SearchParams } from "../types/utils";
 import { AxiosError } from "axios";
 import { apiResponseFormatter } from "../utils/responseFormatter";
 
@@ -39,9 +39,9 @@ export const setTargetPharmacy = (
       dispatch(pharmacyReducers.setPharmacy(pharmacy));
       dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
-      let err = _err as ResponseNotification;
-      err.show = true;
-      dispatch(utilsReducers.setResponseNotification(err));
+      let err = _err as AxiosError;
+      let response = apiResponseFormatter(err);
+      dispatch(utilsReducers.setResponseNotification(response));
     }
   };
 };
@@ -55,9 +55,9 @@ export const postPharmacyUpdate = (
       dispatch(pharmacyReducers.setPharmacy(response));
       dispatch(utilsReducers.resetResponseNotification());
     } catch (_err) {
-      let err = _err as ResponseNotification;
-      err.show = true;
-      dispatch(utilsReducers.setResponseNotification(err));
+      let err = _err as AxiosError;
+      let response = apiResponseFormatter(err);
+      dispatch(utilsReducers.setResponseNotification(response));
     }
   };
 };

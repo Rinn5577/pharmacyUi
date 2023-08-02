@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { resetResponseNotification} from "../store/utils-actions";
 
 const NotificationBanner = () => {
-  const apiResponse = useAppSelector((state) => state.utils.responseNotification);
+  const newResponse = useAppSelector((state) => state.utils.responseNotification);
   const dispatch = useAppDispatch();
 
   const closeNotificationBanner = () => {
@@ -11,7 +11,7 @@ const NotificationBanner = () => {
   };
 
   const checkResponse = () => {
-    if (apiResponse.show === true) {
+    if (newResponse.show === true) {
       return true;
     }
     return false;
@@ -26,7 +26,7 @@ const NotificationBanner = () => {
           role="alert"
         >
           
-          <div className={"inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg" + (apiResponse.status === 200 ? ' success' : ' warning')} >
+          <div className={"inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg" + (newResponse.status === 200 ? ' success' : ' warning')} >
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -38,7 +38,7 @@ const NotificationBanner = () => {
             </svg>
             <span className="sr-only">Warning icon</span>
           </div>
-          <div className="ml-3 text-sm font-normal">{apiResponse.response}</div>
+          <div className="ml-3 text-sm font-normal">{newResponse.message}</div>
           <button
             onClick={closeNotificationBanner}
             type="button"
