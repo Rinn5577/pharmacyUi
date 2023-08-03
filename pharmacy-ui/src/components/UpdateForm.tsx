@@ -49,7 +49,7 @@ const UpdateForm = () => {
         </FormInput>
 
         <div className="flex flex-row -mx-3 ">
-          <div className="w-full w-1/3 px-3 ">
+          <div className="w-1/2 px-3 ">
             <FormInput
               onChange={changeHandler}
               name={"city"}
