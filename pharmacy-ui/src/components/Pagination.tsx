@@ -1,8 +1,8 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
-import { setCurrentPage } from "../../store/actions/utils-actions";
-import Button from "../Button";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
+import { setCurrentPage } from "../store/actions/utils-actions";
+import Button from "./Button";
 
 const Pagination = () => {
   const dispatch = useAppDispatch();

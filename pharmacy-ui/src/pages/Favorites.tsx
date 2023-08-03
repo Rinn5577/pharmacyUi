@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
-import { getIdsFromLocalStorage } from "./utils/localStorage";
-import NotificationBanner from "../Notification/NotificationBanner";
-import { SearchParams } from "../Search/types/searchParams";
-import PharmacyContainer from "../Pharmacy/Container";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
+import { getIdsFromLocalStorage } from "../utils/localStorage";
+import NotificationBanner from "../components/NotificationBanner";
+import { SearchParams } from "../types/searchParams";
+import PharmacyContainer from "../components/Card/Container";
 
 
 const Favorites = () => {

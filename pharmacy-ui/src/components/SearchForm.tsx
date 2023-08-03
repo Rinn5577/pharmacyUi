@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { fetchPharmacyList } from "../../store/actions/pharmacy-actions";
-import { setCurrentPage, setSearchParams} from "../../store/actions/utils-actions";
-import Button from "../Button";
-import { searchFormatter } from "./utils/searchFormatter";
-import Selector from "../Form/Selector";
-import FormInput from "../Form/FormInput";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
+import { setCurrentPage, setSearchParams} from "../store/actions/utils-actions";
+import Button from "./Button";
+import { searchFormatter } from "../utils/searchFormatter";
+import Selector from "./Form/Selector";
+import FormInput from "./Form/FormInput";
 
 const Search = () => {
   const dispatch = useAppDispatch();

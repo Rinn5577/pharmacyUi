@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy } from "../../store/actions/pharmacy-actions";
-import { addToLocalStorage, getIdsFromLocalStorage } from "../Favorite/utils/localStorage";
+import { addToLocalStorage, getIdsFromLocalStorage } from "../../utils/localStorage";
 import Button from "../Button";
 import { useEffect } from "react";
 import { setResponseNotification } from "../../store/actions/utils-actions";
-import { favoriteResponseFormatter } from "../../store/utils/responseFormatter";
-import { Pharmacy } from "./types/Pharmacy";
+import { favoriteResponseFormatter } from "../../utils/responseFormatter";
+import { Pharmacy } from "../../types/Pharmacy";
 
-const LargePharmacyCard = (pharmacy: Pharmacy) => {
+const LargeCard = (pharmacy: Pharmacy) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const pharmacyList = useAppSelector((state) => state.pharmacy.pharmacy_list);
@@ -80,4 +80,4 @@ const LargePharmacyCard = (pharmacy: Pharmacy) => {
   );
 };
 
-export default LargePharmacyCard;
+export default LargeCard;

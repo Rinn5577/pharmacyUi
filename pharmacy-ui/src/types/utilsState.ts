@@ -1,5 +1,5 @@
-import { ResponseNotification } from "../../components/Notification/types/ResponseNotification";
-import { SearchParams } from "../../components/Search/types/searchParams";
+import { ResponseNotification } from "./ResponseNotification";
+import { SearchParams } from "./searchParams";
 
 // export type ResponseNotification = {
 //   code?: string;

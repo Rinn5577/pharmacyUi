@@ -5,9 +5,9 @@ import { RootState } from "../index";
 import PharmacyService from "../../service/service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
 import { AxiosError } from "axios";
-import { apiResponseFormatter } from "../utils/responseFormatter";
-import { SearchParams } from "../../components/Search/types/searchParams";
-import { Pharmacy } from "../../components/Pharmacy/types/Pharmacy";
+import { apiResponseFormatter } from "../../utils/responseFormatter";
+import { SearchParams } from "../../types/searchParams";
+import { Pharmacy } from "../../types/Pharmacy";
 
 export const pharmacyReducers = pharmacySlice.actions;
 

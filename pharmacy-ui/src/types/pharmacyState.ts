@@ -11,7 +11,7 @@
 
 
 // }
-import { Pharmacy } from "../../components/Pharmacy/types/Pharmacy";
+import { Pharmacy } from "./Pharmacy";
 
 export type PharmacyStateArray = {
   pharmacy_list: Pharmacy[];

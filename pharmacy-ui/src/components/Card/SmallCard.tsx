@@ -1,7 +1,7 @@
 import React from "react";
-import { Pharmacy } from "./types/Pharmacy";
+import { Pharmacy } from "../../types/Pharmacy";
 
-const SmallPharmacyCard = (pharmacy: Pharmacy) => {
+const SmallCard = (pharmacy: Pharmacy) => {
   return (
     <div className="mb-4 border border-gray-400  bg-white rounded p-4 flex flex-col justify-between leading-normal">
       <p className="text-sm text-gray-600 flex items-center">
@@ -22,4 +22,4 @@ const SmallPharmacyCard = (pharmacy: Pharmacy) => {
   );
 };
 
-export default SmallPharmacyCard;
+export default SmallCard;

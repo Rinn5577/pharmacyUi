@@ -1,4 +1,4 @@
-import { SearchParams } from "../../components/Search/types/searchParams";
+import { SearchParams } from "../types/searchParams";
 
 export const urlFormatter = (page: number, search: SearchParams) => {
   let baseUrl = `?page=${page}`;

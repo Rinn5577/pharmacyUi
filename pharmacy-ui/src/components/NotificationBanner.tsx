@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { resetResponseNotification} from "../../store/actions/utils-actions";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { resetResponseNotification} from "../store/actions/utils-actions";
 
 const NotificationBanner = () => {
   const newResponse = useAppSelector((state) => state.utils.responseNotification);

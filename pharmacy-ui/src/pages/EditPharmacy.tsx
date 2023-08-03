@@ -1,8 +1,8 @@
 import React from "react";
-import UpdateForm from "./UpdateForm";
-import { useAppSelector } from "../../hooks/redux-hooks";
-import SmallPharmacyCard from "../Pharmacy/SmallCard";
-import NotificationBanner from "../Notification/NotificationBanner";
+import UpdateForm from "../components/UpdateForm";
+import { useAppSelector } from "../hooks/redux-hooks";
+import SmallPharmacyCard from "../components/Card/SmallCard";
+import NotificationBanner from "../components/NotificationBanner";
 
 const EditPharmacy = () => {
   const targetedPharmacy = useAppSelector((state) => state.pharmacy.pharmacy);

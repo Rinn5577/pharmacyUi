@@ -1,13 +1,13 @@
 import React from "react";
-import Search from "../components/Search/SearchForm";
-import Pagination from "../components/Pagination/Pagination";
-import PharmacyContainer from "../components/Pharmacy/Container";
+import Search from "../components/SearchForm";
+import Pagination from "../components/Pagination";
+import PharmacyContainer from "../components/Card/Container";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
 import { resetSearchParams, setCurrentPage } from "../store/actions/utils-actions";
 import Button from "../components/Button";
-import NotificationBanner from "../components/Notification/NotificationBanner";
-import { SearchParams } from "../components/Search/types/searchParams";
+import NotificationBanner from "../components/NotificationBanner";
+import { SearchParams } from "../types/searchParams";
 
 const Home = () => {
   const dispatch = useAppDispatch();

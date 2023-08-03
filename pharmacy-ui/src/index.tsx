@@ -6,7 +6,7 @@ import store from './store'
 import {Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import {fetchPharmacyList } from './store/actions/pharmacy-actions';
-import { SearchParams } from './components/Search/types/searchParams';
+import { SearchParams } from './types/searchParams';
 
 
 store.dispatch(fetchPharmacyList(1,{} as SearchParams))

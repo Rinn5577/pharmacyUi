@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { postPharmacyUpdate } from "../../store/actions/pharmacy-actions";
-import Button from "../Button";
-import FormInput from "../Form/FormInput";
-import Selector from "../Form/Selector";
-import stateOptions from "./utils/stateOptions";
+import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { postPharmacyUpdate } from "../store/actions/pharmacy-actions";
+import Button from "./Button";
+import FormInput from "./Form/FormInput";
+import Selector from "./Form/Selector";
+import stateOptions from "../utils/stateOptions";
 
 const UpdateForm = () => {
   const pharmacy = useAppSelector((state) => state.pharmacy.pharmacy);
