@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy } from "../../store/actions/pharmacy-actions";
-import { addToLocalStorage, getIdsFromLocalStorage } from "../../utils/localStorage";
+import {
+  addToLocalStorage,
+  getIdsFromLocalStorage,
+} from "../../utils/localStorage";
 import Button from "../Button";
 import { useEffect } from "react";
 import { setResponseNotification } from "../../store/actions/utils-actions";
 import { favoriteResponseFormatter } from "../../utils/responseFormatter";
 import { Pharmacy } from "../../types/Pharmacy";
+import PharmacyEntity from "../PharmacyEntity";
 
 const LargeCard = (pharmacy: Pharmacy) => {
   const dispatch = useAppDispatch();
@@ -29,7 +33,7 @@ const LargeCard = (pharmacy: Pharmacy) => {
 
   const favoriteClickHandler = (id: number) => {
     let response = addToLocalStorage(id, favoriteResponseFormatter);
-    dispatch(setResponseNotification(response))
+    dispatch(setResponseNotification(response));
     setDisabled(checkIsFavorite());
   };
 
@@ -44,21 +48,7 @@ const LargeCard = (pharmacy: Pharmacy) => {
 
   return (
     <div className=" my-4 border-r border-b border-l border-gray-400  lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-      <p className="text-sm text-gray-600 flex items-center">
-        Pharmacy ID: {pharmacy.id}
-      </p>
-      <p className="text-gray-900 font-bold text-xl mb-2">{pharmacy.name}</p>
-      <p className="text-gray-700 text-base">{pharmacy.address}</p>
-      <p className="text-gray-700 text-base">
-        {pharmacy.city + ", " + pharmacy.state + ", " + pharmacy.zipcode}
-      </p>
-      <p className="text-gray-700 text-base mb-6">
-        Appeal to the client, sue the vice president . I got your invoice...it
-        seems really high, why did you charge so much can you make the logo
-        bigger yes bigger bigger still the logo is too big im not sure, try
-        something else.
-      </p>
-
+      <PharmacyEntity {...pharmacy} />
       <div>
         <Button
           onClick={() => favoriteClickHandler(pharmacy.id)}
