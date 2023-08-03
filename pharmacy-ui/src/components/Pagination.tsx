@@ -8,8 +8,6 @@ const Pagination = () => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((state) => state.utils.currentPage);
   const searchParams = useAppSelector((state) => state.utils.searchParams);
-
-  //used only for the disable hack. Otherwise paginagtion doesnt care about the list
   const pharmacyList = useAppSelector((state) => state.pharmacy.pharmacy_list);
 
   const navigateClickHandler = (direction: string) => {
@@ -28,8 +26,8 @@ const Pagination = () => {
     return page;
   };
 
-  const disableHack = () => {
-    //a placeholder until I get the total count returned from api
+  //a placeholder until I get the total count returned from api
+  const disableButton = () => {
     if (
       currentPage == 2 ||
       pharmacyList.length < 3 ||
@@ -52,7 +50,7 @@ const Pagination = () => {
       </Button>
       <Button
         onClick={() => navigateClickHandler("next")}
-        disabled={disableHack()}
+        disabled={disableButton()}
         variant="default"
         size="lg"
       >
