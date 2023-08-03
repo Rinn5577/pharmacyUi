@@ -5,7 +5,7 @@ import { RootState } from "../index";
 import PharmacyService from "../../service/service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
 import { AxiosError } from "axios";
-import { apiResponseFormatter } from "../../utils/responseFormatter";
+import { apiResponseFormatter } from "../../utils/Formatters/responseFormatter";
 import { SearchParams } from "../../types/searchParams";
 import { Pharmacy } from "../../types/Pharmacy";
 

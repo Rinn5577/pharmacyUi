@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useNavigate } from "react-router-dom";
 import { setTargetPharmacy } from "../../store/actions/pharmacy-actions";
-import {
-  addToLocalStorage,
-  getIdsFromLocalStorage,
-} from "../../utils/localStorage";
+import { addToLocalStorage, checkIsFavorite } from "../../utils/localStorage";
 import Button from "../Button";
 import { useEffect } from "react";
 import { setResponseNotification } from "../../store/actions/utils-actions";
-import { favoriteResponseFormatter } from "../../utils/responseFormatter";
+import { favoriteResponseFormatter } from "../../utils/Formatters/responseFormatter";
 import { Pharmacy } from "../../types/Pharmacy";
 import PharmacyEntity from "../PharmacyEntity";
 
@@ -20,7 +17,7 @@ const LargeCard = (pharmacy: Pharmacy) => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    setDisabled(checkIsFavorite());
+    setDisabled(checkIsFavorite(pharmacy.id));
   }, []);
 
   const editClickHandler = (id: number) => {
@@ -34,16 +31,7 @@ const LargeCard = (pharmacy: Pharmacy) => {
   const favoriteClickHandler = (id: number) => {
     let response = addToLocalStorage(id, favoriteResponseFormatter);
     dispatch(setResponseNotification(response));
-    setDisabled(checkIsFavorite());
-  };
-
-  const checkIsFavorite = () => {
-    let id = pharmacy.id;
-    let keys = getIdsFromLocalStorage();
-    if (keys.includes(id.toString())) {
-      return true;
-    }
-    return false;
+    setDisabled(checkIsFavorite(id));
   };
 
   return (
