@@ -1,9 +1,8 @@
 ﻿namespace PharmacyAPI.Services
 {
-	public interface IPharmacyService
-	{
-		Task<List<Pharmacy>> GetAllPharmacies();
-		Task<Pharmacy?> GetPharmacyById(int id);
-		Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy pharmacy);
-	}
+    public interface IPharmacyService
+    {
+        public Task<List<Pharmacy>> GetPharmacyList(int page, int pageSize, List<int> id, string? name);
+        public Task<Pharmacy?> UpdatePharmacyById(int id, Pharmacy updatedPharmacy);
+    }
 }

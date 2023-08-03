@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 
 namespace PharmacyAPI.Controllers
 {
@@ -12,35 +13,21 @@ namespace PharmacyAPI.Controllers
             this._pharmacyService = pharmacyService;
         }
 
-        // Returns all pharmacies
         [HttpGet]
-        public async Task<ActionResult<List<Pharmacy>>> GetAllPharmacies()
+        public async Task<ActionResult<Pharmacy>> GetPharmacyList(int page, [Optional][FromQuery] List<int> ids, string name = "")
         {
-            var pharmacies = await _pharmacyService.GetAllPharmacies();
+            var pageSize = 3;
+            var pharmacyList = await _pharmacyService.GetPharmacyList(page, pageSize, ids, name);
 
-            if (pharmacies is null)
+            if (pharmacyList.Count == 0)
             {
-                return NotFound("Sorry, no pharmacies to display.");
+
+                return NotFound("Sorry, we couldn't find any pharmacies matching that request.");
             }
 
-            return Ok(pharmacies);
+            return Ok(pharmacyList);
         }
 
-        // Returns a pharmacy by id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Pharmacy>> GetPharmacyById(int id)
-        {
-            var pharmacy = await _pharmacyService.GetPharmacyById(id);
-
-            if (pharmacy is null)
-            {
-                return NotFound("Sorry, a pharmacy with id " + id + " does not exist.");
-            }
-
-            return Ok(pharmacy);
-        }
-
-        // Updates a pharmacy by id
         [HttpPut("{id}")]
         public async Task<ActionResult<Pharmacy>> UpdatePharmacyById(int id, Pharmacy updatedPharmacy)
         {
