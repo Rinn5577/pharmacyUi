@@ -5,7 +5,10 @@ import { RootState } from "../index";
 import PharmacyService from "../../service/service/pharmacyService";
 import { utilsReducers } from "./utils-actions";
 import { AxiosError } from "axios";
-import { apiResponseFormatter } from "../../utils/Formatters/responseFormatter";
+import {
+  apiResponseFormatter,
+  successResponseFormatter,
+} from "../../utils/Formatters/responseFormatter";
 import { SearchParams } from "../../types/searchParams";
 import { Pharmacy } from "../../types/Pharmacy";
 
@@ -52,8 +55,9 @@ export const postPharmacyUpdate = (
   return async (dispatch) => {
     try {
       const response: Pharmacy = await PharmacyService.updatePharmacy(pharmacy);
+      let success = successResponseFormatter();
       dispatch(pharmacyReducers.setPharmacy(response));
-      dispatch(utilsReducers.resetResponseNotification());
+      dispatch(utilsReducers.setResponseNotification(success));
     } catch (_err) {
       let err = _err as AxiosError;
       let response = apiResponseFormatter(err);

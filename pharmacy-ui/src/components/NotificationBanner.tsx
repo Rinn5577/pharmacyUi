@@ -38,7 +38,7 @@ const NotificationBanner = () => {
             </svg>
             <span className="sr-only">Warning icon</span>
           </div>
-          <div className="ml-3 text-sm font-normal">{newResponse.message}</div>
+          <div className="ml-3 text-sm font-normal">{newResponse.message ? newResponse.message : newResponse.response}</div>
           <button
             onClick={close}
             type="button"
