@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "../components/SearchForm";
 import Pagination from "../components/Pagination";
-import PharmacyContainer from "../components/Card/Container";
+import CardContainer from "../components/Card/CardContainer";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { fetchPharmacyList } from "../store/actions/pharmacy-actions";
 import { resetSearchParams, setCurrentPage } from "../store/actions/utils-actions";
@@ -31,7 +31,7 @@ const Home = () => {
               </Button>
             </div>
           </div>
-          <PharmacyContainer/>
+          <CardContainer/>
         </div>
         <Pagination />
       </div>

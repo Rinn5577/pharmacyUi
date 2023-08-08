@@ -20,7 +20,7 @@ function NavBar() {
           href="/"
           className="block lg:inline-block lg:mt-0 text-nuvemGreen hover:text-white mr-4"
         >
-          Pharmacy List
+          Home
         </a>
         <a
           href="/favorites"

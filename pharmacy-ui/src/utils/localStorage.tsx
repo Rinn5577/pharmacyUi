@@ -20,7 +20,8 @@ export const getIdsFromLocalStorage = () => {
 };
 
 export const addToLocalStorage = (id: number, formatedResponse:Function) => {
-  if(checkIsFavorite(id) === true){
+  let ids = getIdsFromLocalStorage();
+  if(checkIsFavorite(id) === true || ids.length === 3){
     return formatedResponse(false)
   }else{
     localStorage.setItem(`favePharm id = ${id}`, id.toString());

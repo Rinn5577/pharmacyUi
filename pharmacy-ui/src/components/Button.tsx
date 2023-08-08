@@ -3,7 +3,7 @@ import React from "react";
 interface Props {
   children: React.ReactNode;
   onClick: (e?: any) => void;
-  variant?: string; //blue,green
+  variant?: string; //default = blue, primary = green
   size?: string; //sm, md, lg
   disabled?: boolean;
 }
