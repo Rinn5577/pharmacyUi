@@ -11,12 +11,12 @@ namespace PharmacyAPI.Services
             _pharmacyDbContext = pharmacyDbContext;
         }
 
-        public async Task<List<Pharmacy>> GetPharmacyList(int page, int pageSize, List<int> ids, string? name)
+        public async Task<List<Pharmacy>> GetPharmacyList(int page, int pageSize, List<int>? ids, string? name)
         {
             var query = from p in _pharmacyDbContext.Pharmacies
                         select p;
 
-            if(ids.Count() != 0 ) query = query.Where(p => ids.Contains(p.Id));
+            if(ids != null && ids.Count != 0) query = query.Where(p => ids.Contains(p.Id));
             if(!string.IsNullOrEmpty(name)) query = query.Where(p => p.Name.Contains(name)); 
             
             query = query.OrderBy(p => p.Id).Skip((page - 1) * pageSize).Take(pageSize);
@@ -34,7 +34,6 @@ namespace PharmacyAPI.Services
             };
             var pharmacyList = await GetPharmacyList(1, 3, idParam, nameParam);
             var pharmacy = pharmacyList[0];
-            
 
             if (pharmacy is not null)
             {
