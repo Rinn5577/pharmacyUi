@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <NavBar/>
-        <Routes>
+      <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/:id" element={<EditPharmacy/>}/>
         <Route path="/favorites" element={<Favorites/>}/>

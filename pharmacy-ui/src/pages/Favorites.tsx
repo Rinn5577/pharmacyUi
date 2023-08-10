@@ -5,7 +5,6 @@ import { getIdsFromLocalStorage } from "../utils/localStorage";
 import { SearchParams } from "../types/searchParams";
 import CardContainer from "../components/Card/CardContainer";
 
-
 const Favorites = () => {
   const favorites = useAppSelector((state) => state.pharmacy.pharmacy_list);
   const dispatch = useAppDispatch();
