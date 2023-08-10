@@ -1,6 +1,8 @@
 # React UI Using Redux, Typescript, and Tailwind CSS
 
-This project is a simple UI created to work with an API connecting to a Pharmacy database. The functionality allows the user to:
+This project is a simple UI created to work with an API connecting to a Pharmacy database. 
+
+The functionality allows the user to:
  - view pharmacies contained in the database 
  - search by Id or name 
  - edit pharmacies 
